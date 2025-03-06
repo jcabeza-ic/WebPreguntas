@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../CSS/EAPO.css">
+    <title>Repaso de Preguntas</title>
+    <!-- <style>
+        /* Estilos generales */
+        /* Estiliza los radio buttons y checkboxes */
+        input[type="radio"], input[type="checkbox"] {
+            appearance: none; /* Oculta el estilo por defecto */
+            width: 20px;
+            height: 20px;
+            border: 2px solid #007BFF;
+            border-radius: 50%; /* Hace los radio buttons redondos */
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+            vertical-align: middle;
+            background-color: white;
+            transition: 0.3s all ease;
+        }
+
+        /* Efecto al estar seleccionado */
+        input[type="radio"]:checked, input[type="checkbox"]:checked {
+            background-color: #007BFF;
+            border: 2px solid #0056b3;
+        }
+
+        /* Agrega un punto interno cuando está seleccionado */
+        input[type="radio"]::before, input[type="checkbox"]::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: 0.3s all ease;
+        }
+
+        /* Muestra el punto interno cuando está seleccionado */
+        input[type="radio"]:checked::before, input[type="checkbox"]:checked::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:#eef2f3;
+            color: #333;
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 25px;
+            background: #ffffff;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+
+        /* Títulos */
+        h1 {
+            text-align: center;
+            font-size: 30px;
+            color: #444; /* Cambiado a un tono más neutro */
+            font-weight: bold;
+        }
+
+        /* Estilos de las preguntas */
+        .question {
+            padding: 15px;
+            margin-bottom: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Opciones de respuestas */
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            margin: 10px 0;
+        }
+
+        /* Botón principal */
+        .button {
+            display: block;
+            width: fit-content;
+            margin: 10px auto;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .button.red {
+            background-color: #DC3545; /* Rojo */
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .button.red:hover {
+            background-color: #B02A37; /* Rojo más oscuro al pasar el mouse */
+        }
+
+        /* Hover sobre los botones en lugar de las preguntas */
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Botón de desordenar preguntas */
+        .shuffle-button {
+            color: white;
+            background-color: #28a745;
+        }
+
+        .shuffle-button:hover {
+            background-color: #218838;
+        }
+
+        /* Cuadro de respuesta */
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            resize: none;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        /* Resultados de las respuestas */
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        /* Correcto en verde (ahora con texto oscuro para mejor visibilidad) */
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+            border: 2px solid #28a745;
+        }
+
+        .corrects{
+            background-color: #d4edda;
+            color: #155724;
+            border: 2px solid #28a745;
+            text-align: left !important;
+            font-size: 15px;
+            line-height: 1.5;  /* Mejora la legibilidad */
+            padding: 12px;
+        }
+
+        /* Incorrecto en rojo (ya estaba bien, pero lo mantengo aquí) */
+        .wrong {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 2px solid #dc3545;
+        }
+
+
+    </style> -->
+</head>
+
+
+
+<script>
+
+    function shuffleQuestions() {
+        const container = document.querySelector(".container");
+        const questions = Array.from(document.querySelectorAll(".question"));
+        
+        // Desordenar las preguntas usando el algoritmo de Fisher-Yates
+        for (let i = questions.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            container.insertBefore(questions[j], questions[i]);
+        }
+    }
+</script>
+
+
+<body>
+    <div class="container">
+        <h1>Repaso de Preguntas Temas 9 y 10</h1>
+        <button class="button red" onclick="window.location.href='EAPO9-10.html'">Volver al menu de temas</button>
+        <button class="button shuffle-button" onclick="shuffleQuestions()">Desordenar Preguntas</button>
+
+        <!-- Pregunta 1 - Respuesta abierta -->
+        <div class="question">
+            <h2>1. Define que es un protocolo de chequeo</h2>
+            <textarea id="q1-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q1-answer', 'Listado preelaborado donde se incluyen cada uno de los requisitos que se deben comprobar para certificar que la ortesis es correcta.', 'q1-result')">Comprobar</button>
+            <div class="result" id="q1-result"></div>
+        </div>
+
+        <!-- Pregunta 2 - Respuesta abierta -->
+        <div class="question">
+            <h2>2. Si al realizar el protocolo de chequeo comprobamos que no cumple alguno de los requisitos, ¿ Qué debemos hacer?</h2>
+            <textarea id="q2-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q2-answer', 'Lo anotaremos y devolveremos la ortesis al taller, para hacer las modificaciones necesarias que hagan cumplir el criterio.', 'q2-result')">Comprobar</button>
+            <div class="result" id="q2-result"></div>
+        </div>
+
+        <!-- Pregunta 3 - Respuesta abierta -->
+        <div class="question">
+            <h2>3. ¿Qué condiciones estéticas debemos de tener en cuenta al presentar la ortesis al paciente?</h2>
+            <textarea id="q3-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q3-answer', 'Limpia, sin bordes cortantes o que puedan dañar, sin restos de polvo o virutas mal pulidas.', 'q3-result')">Comprobar</button>
+            <div class="result" id="q3-result"></div>
+        </div>
+
+        <!-- Pregunta 4 - Opción múltiple (una respuesta correcta) -->
+        <div class="question">
+            <h2>4. Las ortesis plantares deben ser confeccionadas correctamente, hasta tal punto que no tengan que ser revisadas con el paciente, antes de su entrega definitiva, porque sabemos que funcionarán bien.</h2>
+            <ul class="options">
+                <li><input type="radio" name="q4" value="a"> Verdadero</li>
+                <li><input type="radio" name="q4" value="b"> Falso</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('q4', 'b', 'q4-result')">Comprobar</button>
+            <div class="result" id="q4-result"></div>
+        </div>
+
+        <!-- Pregunta 5 - Respuesta abierta -->
+        <div class="question">
+            <h2>5. ¿Cómo comprobaremos que una ortesis plantar está bien elaborada?</h2>
+            <textarea id="q5-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q5-answer', 'Introduciendo las ortesis en el calzado de uso habitual del paciente, asegurándonos de que puede introducir el pie sin dificultad y haciéndole caminar para comprobar su efecto y confort.', 'q5-result')">Comprobar</button>
+            <div class="result" id="q5-result"></div>
+        </div>
+
+        <!-- Pregunta 6 - Respuesta abierta -->
+        <div class="question">
+            <h2>6. Indica 4 tipos de forros para el forrado de las plantillas Lelievre</h2>
+            <textarea id="q6-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q6-answer', ' <br> -Eva perforado  <br> -Microfibra-Alcántara <br> -Piel natural de cabra <br> -Tejido repelente de la humedad u olor', 'q6-result')">Comprobar</button>
+            <div class="result" id="q6-result"></div>
+        </div>
+
+        <!-- Pregunta 7 - Respuesta abierta -->
+        <div class="question">
+            <h2>7. ¿Qué debemos procurar y evitar en el forrado de las plantillas de Lelievre?</h2>
+            <textarea id="q7-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q7-answer', 'Que el forrado quede liso, sin arrugas o deformidades en el forro.', 'q7-result')">Comprobar</button>
+            <div class="result" id="q7-result"></div>
+        </div>
+
+        <!-- Pregunta 8 - Respuesta abierta -->
+        <div class="question">
+            <h2>8. ¿Qué tipo de forro es más común para forrar unas plantillas blandas termoconformadas?</h2>
+            <textarea id="q8-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q8-answer', 'Eva', 'q8-result')">Comprobar</button>
+            <div class="result" id="q8-result"></div>
+        </div>
+
+        <!-- Pregunta 9 - Respuesta abierta -->
+        <div class="question">
+            <h2>9. ¿Qué debemos comprobar en el plástico de la plantilla UCBL?</h2>
+            <textarea id="q9-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q9-answer', 'Deberemos comprobar que no quedan aristas o zonas cortantes en todo el contorno y superficie de la ortesis.', 'q9-result')">Comprobar</button>
+            <div class="result" id="q9-result"></div>
+        </div>
+
+        <!-- Pregunta 10 - Opción múltiple (una respuesta correcta) -->
+        <div class="question">
+            <h2>10. Sobre el chequeo de ortesis plantares. Señala la correcta.</h2>
+            <ul class="options">
+                <li><input type="radio" name="q10" value="a"> La ortesis plantar siempre hay que comprobarla con un calzado nuevo.</li>
+                <li><input type="radio" name="q10" value="b"> Un calzado excesivamente estrecho impedirá alojar el pie y la plantilla y resultará muy cómoda.</li>
+                <li><input type="radio" name="q10" value="c"> Un tacón desgastado puede provocar malas posiciones del pie.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('q10', 'c', 'q10-result')">Comprobar</button>
+            <div class="result" id="q10-result"></div>
+        </div>
+
+        <!-- Pregunta 11 - Respuesta abierta -->
+        <div class="question">
+            <h2>11. Señala las diferentes situaciones en las que pueden ser utilizadas las ortesis de miembro inferior.</h2>
+            <textarea id="q11-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q11-answer', '<br> -En bipedestación o en estática. <br> -En deambulación. <br> -En sedestación.', 'q11-result')">Comprobar</button>
+            <div class="result" id="q11-result"></div>
+        </div>
+
+        <!-- Pregunta 12 - Respuesta abierta -->
+        <div class="question">
+            <h2>12. ¿En qué situación utilizaremos las ortesis posturales?</h2>
+            <textarea id="q12-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q12-answer', 'En estática o en sedestación.', 'q12-result')">Comprobar</button>
+            <div class="result" id="q12-result"></div>
+        </div>
+
+        <!-- Pregunta 13 - Respuesta abierta -->
+        <div class="question">
+            <h2>13. ¿En qué prestaremos atención en el acabado de una ortesis Afo en termoplástico?</h2>
+            <textarea id="q13-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q13-answer', '<br> -El aspecto estético definitivo. <br> -Su utilidad o funcionalidad.', 'q13-result')">Comprobar</button>
+            <div class="result" id="q13-result"></div>
+        </div>
+
+        <!-- Pregunta 14 - Respuesta abierta -->
+        <div class="question">
+            <h2>14. En el acabado de una Afo ¿ Qué comprobaremos de su funcionalidad?</h2>
+            <textarea id="q14-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q14-answer', '<br> -La forma de la huella se corresponde con la del paciente. <br> -La ortesis tiene una elasticidad suficiente. <br> -La ortesis se mantiene estable sobre la mesa.', 'q14-result')">Comprobar</button>
+            <div class="result" id="q14-result"></div>
+        </div>
+
+        <!-- Pregunta 15 - Respuesta abierta -->
+        <div class="question">
+            <h2>15. ¿En qué dos fases realizaremos el chequeo de una ortesis Afo?</h2>
+            <textarea id="q15-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q15-answer', 'Chequeo en estática y en dinámica.', 'q15-result')">Comprobar</button>
+            <div class="result" id="q15-result"></div>
+        </div>
+
+        <!-- Pregunta 16 - Opción múltiple (una respuesta correcta) -->
+        <div class="question">
+            <h2>16. Sobre el chequeo en dinámica de una Afo. Señala la incorrecta</h2>
+            <ul class="options">
+                <li><input type="radio" name="q16" value="a"> La ortesis tiene un efecto anti-equino adecuado.</li>
+                <li><input type="radio" name="q16" value="b"> La ortesis presiona en maléolos y cabeza de peroné, durante la deambulación.</li>
+                <li><input type="radio" name="q16" value="c"> La correa permite una sujeción firme.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('q16', 'b', 'q16-result')">Comprobar</button>
+            <div class="result" id="q16-result"></div>
+        </div>
+
+        <!-- Pregunta 17 - Respuesta abierta -->
+        <div class="question">
+            <h2>17. En el acabado de una ortesis bitutor metálico, ¿En qué debemos fijarnos en el aspecto estético?</h2>
+            <textarea id="q17-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q17-answer', '<br> -Comprobaremos que la ortesis está limpia. <br> -Los componentes metálicos están pulidos, sin arañazos ni zonas cortantes. <br> -Las cinchas o correas de cierre están bien cosidas.', 'q17-result')">Comprobar</button>
+            <div class="result" id="q17-result"></div>
+        </div>
+
+        <!-- Pregunta 18 - Respuesta abierta -->
+        <div class="question">
+            <h2>18. Define la técnica de pulido de metales.</h2>
+            <textarea id="q18-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q18-answer', 'El pulido de metales es una técnica de embellecimiento de la capa superficial, de manera que proporciona un aspecto liso y brillante.', 'q18-result')">Comprobar</button>
+            <div class="result" id="q18-result"></div>
+        </div>
+
+        <!-- Pregunta 19 - Respuesta abierta -->
+        <div class="question">
+            <h2>19. Nombra las 3 fases del pulido de metales.</h2>
+            <textarea id="q19-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q19-answer', '<br> -Limado de la capa superficial. <br> -Enjabonado y pulido. <br> -Acabado.', 'q19-result')">Comprobar</button>
+            <div class="result" id="q19-result"></div>
+        </div>
+
+        <!-- Pregunta 20 - Respuesta abierta -->
+        <div class="question">
+            <h2>20. En el chequeo de la ortesis Afo metálica en estática, ¿Qué comprobaremos en las barras metálicas de prolongación?</h2>
+            <textarea id="q20-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q20-answer', 'Que las barras de prolongación de pantorrilla quedan ajustadas a esta, sin rozarla y siguiendo su forma.', 'q20-result')">Comprobar</button>
+            <div class="result" id="q20-result"></div>
+        </div>
+
+        <!-- Pregunta 21 - Respuesta abierta -->
+        <div class="question">
+            <h2>21. En el chequeo de la órtesis Afo metálica en dinámica, ¿Qué comprobaremos en el efecto anti-equino?</h2>
+            <textarea id="q21-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q21-answer', 'La ortesis evita el equino de manera suficiente, el efecto antiequino no resulta brusco.', 'q21-result')">Comprobar</button>
+            <div class="result" id="q21-result"></div>
+        </div>
+
+        <!-- Pregunta 22 - Respuesta abierta -->
+        <div class="question">
+            <h2>22. En el chequeo de ortesis Kafo metálicas, ¿Cuál es la holgura adecuada entre la articulación de la ortesis y el tobillo del paciente?</h2>
+            <textarea id="q22-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q22-answer', 'De 5 mm.', 'q22-result')">Comprobar</button>
+            <div class="result" id="q22-result"></div>
+        </div>
+
+        <!-- Pregunta 23 - Respuesta abierta -->
+        <div class="question">
+            <h2>23. Indica la anchura apropiada de la banda del semiaro de pantorrilla y la altura que debe de tener el semiaro de pantorrilla en su extremo proximal.</h2>
+            <textarea id="q23-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q23-answer', 'La anchura de la barra de pantorrilla es de 4 cm y la altura del semiaro en su extremo proximal es de 2,5 cm.', 'q23-result')">Comprobar</button>
+            <div class="result" id="q23-result"></div>
+        </div>
+
+        <!-- Pregunta 24 - Respuesta abierta -->
+        <div class="question">
+            <h2>24. Indica la distancia entre la barra vertical interna y el periné.</h2>
+            <textarea id="q24-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q24-answer', 'Una distancia para un adulto de unos 4 cm será suficiente.', 'q24-result')">Comprobar</button>
+            <div class="result" id="q24-result"></div>
+        </div>
+
+        <!-- Pregunta 25 - Respuesta abierta -->
+        <div class="question">
+            <h2>25. ¿Qué problema ocasionaría que el apoyo isquiático de una Kafo quede demasiado bajo?</h2>
+            <textarea id="q25-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q25-answer', 'Si el apoyo queda demasiado bajo, el paciente puede sentir dolor en la rodilla, al aumentar la tendencia de esta a la flexión y la presión sobre la rodillera.', 'q25-result')">Comprobar</button>
+            <div class="result" id="q25-result"></div>
+        </div>
+
+        <!-- Pregunta 26 - Respuesta abierta -->
+        <div class="question">
+            <h2>26. ¿Qué es el papel de transfer?</h2>
+            <textarea id="q26-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q26-answer', 'Es un papel con dibujos que pegamos al plástico cuando alcanza la temperatura de fusión colocando la cara dibujada del papel en contacto con el plástico y este se calca en el plástico.', 'q26-result')">Comprobar</button>
+            <div class="result" id="q26-result"></div>
+        </div>
+
+        <!-- Pregunta 27 - Respuesta abierta -->
+        <div class="question">
+            <h2>27. ¿Qué debemos revisar al adaptar al paciente las ortesis inmovilizadoras y posturales?</h2>
+            <textarea id="q27-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q27-answer', 'Está limpia y guarda un aspecto estético adecuado, realiza la función para la que se ha diseñado, resulta confortable para el usuario, el paciente puede adaptarse de forma autónoma.', 'q27-result')">Comprobar</button>
+            <div class="result" id="q27-result"></div>
+        </div>
+
+        <!-- Pregunta 28 - Opción múltiple (una respuesta correcta) -->
+        <div class="question">
+            <h2>28. Sobre el chequeo de ortesis inmovilizadoras y posturales. Indica la incorrecta.</h2>
+            <ul class="options">
+                <li><input type="radio" name="q28" value="a"> Que la anchura a todos los niveles es la adecuada, sin resultar estrecha en ninguna zona o excesivamente ancha, de manera que se produzcan movimientos indeseados.</li>
+                <li><input type="radio" name="q28" value="b"> Que el paciente mantiene una posición funcional natural, no forzada y no refiere incomodidad.</li>
+                <li><input type="radio" name="q28" value="c"> Que las zonas de presión están debidamente comprimidas.</li>
+                <li><input type="radio" name="q28" value="d"> Si la ortesis incluye sistemas articulares, deberemos asegurarnos de que se han colocado en los niveles anatómicos correctos.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('q28', 'c', 'q28-result')">Comprobar</button>
+            <div class="result" id="q28-result"></div>
+        </div>
+
+        <!-- Pregunta 29 - Respuesta abierta -->
+        <div class="question">
+            <h2>29. Si al realizar el chequeo de una ortesis no cumple los criterios ¿Qué debo de hacer?</h2>
+            <textarea id="q29-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q29-answer', 'Devolver la ortesis al taller para modificar las no conformidades, el objetivo es cumplir todos los criterios para asegurarnos de que la ortesis funcionará correctamente.', 'q29-result')">Comprobar</button>
+            <div class="result" id="q29-result"></div>
+        </div>
+
+        <!-- Pregunta 30 - Respuesta abierta -->
+        <div class="question">
+            <h2>30. Indica 4 técnicas que podemos utilizar para conseguir una mejor aceptación del adolescente en el acabado y chequeo de las ortesis de columna vertebral.</h2>
+            <textarea id="q30-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q30-answer', '<br> -Utilización de papel transfer, con dibujos divertidos que quedan plasmados en el termoplástico. <br> -Utilización de cinchas de tela con colores, evitando las correas de cuero. <br> -Reducción al mínimo imprescindible de los componentes metálicos. <br> -Pulido o recubrimiento de los componentes metálicos.', 'q30-result')">Comprobar</button>
+            <div class="result" id="q30-result"></div>
+        </div>
+
+        <!-- Pregunta 31 - Respuesta abierta -->
+        <div class="question">
+            <h2>31. Si a la semana de entregar un corsé, nos viene un paciente con un roce y observamos que el plástico se lo está provocando, ¿Qué paso no habremos hecho bien en el chequeo?</h2>
+            <textarea id="q31-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q31-answer', 'El paso de observar la ausencia de bordes afilados, cortantes o mal acabados.', 'q31-result')">Comprobar</button>
+            <div class="result" id="q31-result"></div>
+        </div>
+
+        <!-- Pregunta 32 - Respuesta abierta -->
+        <div class="question">
+            <h2>32. Si al entregar un corsé vemos marcas de rotulador, ¿Qué paso no habremos hecho bien en el chequeo?</h2>
+            <textarea id="q32-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q32-answer', 'El paso del aspecto general y limpieza de la ortesis.', 'q32-result')">Comprobar</button>
+            <div class="result" id="q32-result"></div>
+        </div>
+
+        <!-- Pregunta 33 - Respuesta abierta -->
+        <div class="question">
+            <h2>33. En el chequeo del corsé de Milwaukee ¿Qué debo de tener en cuenta en la cesta pélvica con respecto a las crestas ilíacas?</h2>
+            <textarea id="q33-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q33-answer', '<br> -Apoya sobre las crestas perfectamente. <br> -No presionan a nivel de las crestas ilíacas antero-superiores y quedan libres. <br> -Las crestas ilíacas están niveladas.', 'q33-result')">Comprobar</button>
+            <div class="result" id="q33-result"></div>
+        </div>
+
+        <!-- Pregunta 34 - Respuesta abierta -->
+        <div class="question">
+            <h2>34. En el chequeo del corsé de Milwaukee, ¿Qué debo de tener en cuenta con las barras?</h2>
+            <textarea id="q34-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q34-answer', '<br> -La barra anterior está perpendicular al suelo y centrada sobre el corsé. <br> -Las barras quedan separadas del tórax para permitir inspiraciones profundas (distancia de unos 5cm.). <br> -Las barras pueden ser prolongadas con el crecimiento del niño.', 'q34-result')">Comprobar</button>
+            <div class="result" id="q34-result"></div>
+        </div>
+
+        <!-- Pregunta 35 - Respuesta abierta -->
+        <div class="question">
+            <h2>35. Hemos fabricado un corsé de Boston y al revisar la curva escoliótica radiográficamente con el corsé puesto hemos observado que la curva no reduce. ¿Qué tendremos que hacer?</h2>
+            <textarea id="q35-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q35-answer', 'Tendremos que revisar el diseño general del corsé y la colocación y posición de las almohadillas.', 'q35-result')">Comprobar</button>
+            <div class="result" id="q35-result"></div>
+        </div>
+
+        <!-- Pregunta 36 - Respuesta abierta -->
+        <div class="question">
+            <h2>36. ¿Cómo quedaría el diseño del corsé de Boston en la parte distal anterior?</h2>
+            <textarea id="q36-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q36-answer', 'A 1,5 cm de la sínfisis del pubis.', 'q36-result')">Comprobar</button>
+            <div class="result" id="q36-result"></div>
+        </div>
+
+        <!-- Pregunta 37 - Respuesta abierta -->
+        <div class="question">
+            <h2>37. ¿Cómo quedaría el diseño del corsé de Boston en la parte posterior inferior?</h2>
+            <textarea id="q37-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q37-answer', 'Cubre los dos tercios de glúteos y queda a 3 cm de la silla al sentarse.', 'q37-result')">Comprobar</button>
+            <div class="result" id="q37-result"></div>
+        </div>
+
+        <!-- Pregunta 38 - Respuesta abierta -->
+        <div class="question">
+            <h2>38. En el corsé de Cheneau, ¿Dónde presionaremos en la giba Dorsal?</h2>
+            <textarea id="q38-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q38-answer', 'La presión máxima en la costilla correspondiente a la vértebra ápex y también presiona una por encima y otra por debajo.', 'q38-result')">Comprobar</button>
+            <div class="result" id="q38-result"></div>
+        </div>
+
+        <!-- Pregunta 39 - Respuesta abierta -->
+        <div class="question">
+            <h2>39. ¿Dónde se cierra y se abre el corsé de Cheneau y qué separación hay entre los bordes?</h2>
+            <textarea id="q39-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q39-answer', 'El corsé se cierra por delante y la separación es de 4 a 5 cm.', 'q39-result')">Comprobar</button>
+            <div class="result" id="q39-result"></div>
+        </div>
+
+        <!-- Pregunta 40 - Opción múltiple (una respuesta correcta) -->
+        <div class="question">
+            <h2>40. Sobre el corsé de Cheneau. Indica la falsa.</h2>
+            <ul class="options">
+                <li><input type="radio" name="q40" value="a"> El borde antero-inferior queda unos 5 cm sobre la sínfisis del pubis.</li>
+                <li><input type="radio" name="q40" value="b"> El corsé no presiona en crestas ilíacas ni espinas ilíacas antero-superiores.</li>
+                <li><input type="radio" name="q40" value="c"> En el lado contralateral a la giba dorsal, hay una zona de expansión, que se prolonga desde el apoyo axilar a la zona de presión de la placa lumbar.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('q40', 'a', 'q40-result')">Comprobar</button>
+            <div class="result" id="q40-result"></div>
+        </div>
+        
+
+        <!-- -------------------------------------------------------------------------->
+
+        <!-- Pregunta 1 - Respuesta abierta -->
+        <div class="question">
+            <h2>1. Acabamos de entregar un corsé y la madre nos pregunta cuantos meses debe de tener puesto el corsé su hija. ¿Podemos darle nosotros esa respuesta?. Razona la respuesta.</h2>
+            <textarea id="p1-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p1-answer', 'No, no podemos indicarlo, será el médico especialista quien indicará los meses que deberá tener puesto el corsé la niña', 'p1-result')">Comprobar</button> 
+            <div class="result" id="p1-result"></div> 
+        </div>
+
+        <!-- Pregunta 2 - Respuesta abierta -->
+        <div class="question">
+            <h2>2. ¿Qué establece el Real Decreto 1591/2009, de 16 de Octubre?</h2>
+            <textarea id="p2-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p2-answer', 'Establece los requisitos que deben cumplir los productos sanitarios para su puesta a disposición en el mercado, incluidos los productos ortoprotésicos a medida.', 'p2-result')">Comprobar</button> 
+            <div class="result" id="p2-result"></div> 
+        </div>
+
+        <!-- Pregunta 3 - Respuesta abierta -->
+        <div class="question">
+            <h2>3. Las informaciones que el fabricante debe incluir acompañando al producto sanitario aparecen recogidas en:</h2>
+            <textarea id="p3-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p3-answer', 'Una etiqueta de producto y unas instrucciones de utilización.', 'p3-result')">Comprobar</button> 
+            <div class="result" id="p3-result"></div> 
+        </div>
+
+        <!-- Pregunta 4 - Opción múltiple (una respuesta correcta) -->
+        <div class="question">
+            <h2>4. El anexo I del real decreto 1591/2009 establece que las informaciones que el fabricante debe incluir acompañando al producto son una fotografía del producto y el nombre de la empresa.</h2>
+            <ul class="options">
+                <li><input type="radio" name="p4" value="a"> Verdadero.</li>
+                <li><input type="radio" name="p4" value="b"> Falso.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('p4', 'b', 'p4-result')">Comprobar</button>
+            <div class="result" id="p4-result"></div>
+        </div>
+
+        <!-- Pregunta 5 - Respuesta abierta -->
+        <div class="question">
+            <h2>5. ¿Qué información incluye la etiqueta?</h2>
+            <textarea id="p5-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p5-answer', 'Incluye información fundamental acerca del nombre del producto, la fecha de elaboración, el número de serie y alguna indicación o advertencia importante.', 'p5-result')">Comprobar</button> 
+            <div class="result" id="p5-result"></div> 
+        </div>
+
+        <!-- Pregunta 6 - Respuesta abierta -->
+        <div class="question">
+            <h2>6. ¿Qué es el número de serie de un producto ortoprotésico a medida?</h2>
+            <textarea id="p6-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p6-answer', 'Es un número correlativo que debe permitir identificar para quién ha sido elaborado dicho producto y quien es su prescriptor, con objeto de cumplir con el criterio de vigilancia de los productos que establece el Real Decreto.', 'p6-result')">Comprobar</button> 
+            <div class="result" id="p6-result"></div> 
+        </div>
+
+        <!-- Pregunta 7 - Opción múltiple (una respuesta correcta) -->
+        <div class="question">
+            <h2>7. De los datos que deben incluir la etiqueta en productos ortoprotésicos a medida. Señala la incorrecta.</h2>
+            <ul class="options">
+                <li><input type="radio" name="p7" value="a"> El número de serie del producto.</li>
+                <li><input type="radio" name="p7" value="b"> El nombre o la razón social y la dirección del paciente.</li>
+                <li><input type="radio" name="p7" value="c"> Las instrucciones especiales de utilización (por ejemplo, lado de adaptación de la ortesis, izquierdo o derecho).</li>
+                <li><input type="radio" name="p7" value="d"> La indicación “producto a medida”.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('p7', 'b', 'p7-result')">Comprobar</button>
+            <div class="result" id="p7-result"></div>
+        </div>
+
+        <!-- Pregunta 8 - Respuesta abierta -->
+        <div class="question">
+            <h2>8. ¿Qué son las instrucciones de utilización?</h2>
+            <textarea id="p8-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p8-answer', 'Son un instrumento informativo, en ella se debe incluir toda la info que permita al paciente hacer un uso óptimo del producto.', 'p8-result')">Comprobar</button> 
+            <div class="result" id="p8-result"></div> 
+        </div>
+
+        <!-- Pregunta 9 - Respuesta abierta -->
+        <div class="question">
+            <h2>9. Con respecto a las instrucciones de uso, ¿Qué responsabilidad tendrá la ortopedia?</h2>
+            <textarea id="p9-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p9-answer', 'Cada empresa dispondrá de sus propias instrucciones de utilización para cada tipo de producto y deben estar redactadas en un lenguaje claro y fácilmente comprensible para las personas que harán uso del mismo.', 'p9-result')">Comprobar</button> 
+            <div class="result" id="p9-result"></div> 
+        </div>
+
+        <!-- Pregunta 10 - Respuesta abierta -->
+        <div class="question">
+            <h2>10. ¿Por qué es importante que las instrucciones de utilización estén redactadas en un lenguaje claro y comprensible para los usuarios?</h2>
+            <textarea id="p10-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p10-answer', 'Es crucial que las instrucciones de utilización estén redactadas en un lenguaje claro y comprensible para que los usuarios puedan entender como usar el producto ortoprotésico correctamente. Esto asegura que el paciente haga un uso óptimo del producto.', 'p10-result')">Comprobar</button> 
+            <div class="result" id="p10-result"></div> 
+        </div>
+
+        <!-- Pregunta 11 - Opción múltiple (una respuesta correcta) -->
+        <div class="question">
+            <h2>11. Las instrucciones de utilización incluirán, entre otras, información acerca de:</h2>
+            <ul class="options">
+                <li><input type="checkbox" name="p11" value="a"> El precio de la ortesis.</li>
+                <li><input type="checkbox" name="p11" value="b"> El método de retirada de la ortesis</li>
+                <li><input type="checkbox" name="p11" value="c"> Advertencia de efectos secundarios</li>
+                <li><input type="checkbox" name="p11" value="d"> Fecha de caducidad de la ortesis.</li>
+            </ul>
+            <button class="button" onclick="checkMultiAnswerQuestion('p11', ['b', 'c'], 'p11-result')">Comprobar</button>
+            <div class="result" id="p11-result"></div>
+        </div>
+
+        <!-- Pregunta 12 - Respuesta abierta -->
+        <div class="question">
+            <h2>12. En las instrucciones de utilización con respecto a la adaptación progresiva, ¿En qué tipo de ortesis no podemos indicar el número de horas de utilización diaria?</h2>
+            <textarea id="p12-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p12-answer', 'Ortesis inmovilizadoras pos-fractura o tras intervención quirúrgica.', 'p12-result')">Comprobar</button> 
+            <div class="result" id="p12-result"></div> 
+        </div>
+
+        <!-- Pregunta 13 - Respuesta abierta -->
+        <div class="question">
+            <h2>13. En las instrucciones de utilización ¿Qué explicaremos en el método de retirada?</h2>
+            <textarea id="p13-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p13-answer', 'Cómo abrirla, cómo extraerla, qué posición anatómica en necesario adquirir.', 'p13-result')">Comprobar</button> 
+            <div class="result" id="p13-result"></div> 
+        </div>
+
+        <!-- Pregunta 14 - Respuesta abierta -->
+        <div class="question">
+            <h2>14. ¿Qué explicaremos en la advertencia sobre posibles efectos secundarios?</h2>
+            <textarea id="p14-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p14-answer', 'Deberemos explicar cómo evitar estos efectos secundarios y qué debe hacer el usuario o usuaria en caso de aparición.', 'p14-result')">Comprobar</button> 
+            <div class="result" id="p14-result"></div> 
+        </div>
+
+        <!-- Pregunta 15 - Respuesta abierta -->
+        <div class="question">
+            <h2>15. ¿De qué informaremos en el periodo de utilización?</h2>
+            <textarea id="p15-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p15-answer', 'Simplemente informaremos que el período de utilización debe ser indicado por el equipo médico y que debe atender fielmente sus indicaciones para un buen resultado.', 'p15-result')">Comprobar</button> 
+            <div class="result" id="p15-result"></div> 
+        </div>
+
+        <!-- Pregunta 16 - Respuesta abierta -->
+        <div class="question">
+            <h2>16. ¿Qué recomendaciones específicas se deben dar para evitar escoriaciones o rozaduras durante el uso de ortesis?</h2>
+            <textarea id="p16-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p16-answer', 'Podemos aconsejar la utilización de camisetas o protectores textiles en la interfase de la piel con la ortesis para evitar contacto directo para prevenir escoriaciones o rozaduras.', 'p16-result')">Comprobar</button> 
+            <div class="result" id="p16-result"></div> 
+        </div>
+
+        <!-- Pregunta 17 - Respuesta abierta -->
+        <div class="question">
+            <h2>17. ¿Qué debe hacer el usuario si observa algún mal funcionamiento o daño en la ortesis, según las instrucciones de utilización?</h2>
+            <textarea id="p17-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p17-answer', 'Deberemos informar de la necesidad de acudir a la ortopedia en caso de rotura de algún componente, lo antes posible, así como si se observa un funcionamiento inadecuado, dolor, escoriaciones, etc.', 'p17-result')">Comprobar</button> 
+            <div class="result" id="p17-result"></div> 
+        </div>
+
+        <!-- Pregunta 18 - Respuesta abierta -->
+        <div class="question">
+            <h2>18. Aspectos fundamentales para aclarar durante la fase de adaptación:</h2>
+            <textarea id="p18-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p18-answer', 'Es esencial aclarar las expectativas del paciente especialmente en lo que respecta a lo que la ortesis puede o no lograr el paciente debe ser informado de los beneficios reales que puede esperar para evitar frustraciones por expectativas incorrectas.', 'p18-result')">Comprobar</button> 
+            <div class="result" id="p18-result"></div> 
+        </div>
+
+        <!-- Pregunta 19 - Respuesta abierta -->
+        <div class="question">
+            <h2>19. Influencia de explicar el funcionamiento de la ortesis.</h2>
+            <textarea id="p19-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p19-answer', 'Explicar el funcionamiento de la ortesis y cómo debe colocarse correctamente ayuda a que el paciente entienda su objetivo y cómo usarla de forma efectiva. Lo que mejora su comodidad y efectividad.', 'p19-result')">Comprobar</button> 
+            <div class="result" id="p19-result"></div> 
+        </div>
+
+        <!-- Pregunta 20 - Respuesta abierta -->
+        <div class="question">
+            <h2>20. Importancia de establecer un programa de revisiones.</h2>
+            <textarea id="p20-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p20-answer', 'Establecer un programa revisiones es fundamental para ver el estado de la ortesis y su efectividad. Las ortesis deben ser ajustadas o modificadas para continuar brindando el soporte adecuado.', 'p20-result')">Comprobar</button> 
+            <div class="result" id="p20-result"></div> 
+        </div>
+
+        <!-- Pregunta 21 - Respuesta abierta -->
+        <div class="question">
+            <h2>21. ¿Cómo puede afectar la falta de información sobre el mantenimiento y la limpieza de la ortesis al usuario?</h2>
+            <textarea id="p21-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p21-answer', 'Puede resultar en una disminución de su efectividad y durabilidad.', 'p21-result')">Comprobar</button> 
+            <div class="result" id="p21-result"></div> 
+        </div>
+
+        <!-- Pregunta 22 - Respuesta abierta -->
+        <div class="question">
+            <h2>22. Consejos de utilización del corsé de Milwaukee</h2>
+            <textarea id="p22-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p22-answer', '<br> -Mantener una buena higiene diaria de la piel. <br> -Es aconsejable realizar ejercicios terapéuticos y que practique algún deporte, como natación o baloncesto, todo ello bajo supervisión médica. <br> - Se desaconsejan los deportes de choque o que potencien solo un lado. <br> - En caso de sentir molestias digestivas por aumento de la presión abdominal, puede aflojarse ligeramente el corsé durante las comidas y la digestión', 'p22-result')">Comprobar</button> 
+            <div class="result" id="p22-result"></div> 
+        </div>
+
+        <!-- Pregunta 23 - Respuesta abierta -->
+        <div class="question">
+            <h2>23. Nombra 5 efectos secundarios que puede provocar el corsé de Milwaukee</h2>
+            <textarea id="p23-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p23-answer', 'Dermatitis, erosiones de la piel, rechazo psicológico, úlceras, rozaduras.', 'p23-result')">Comprobar</button> 
+            <div class="result" id="p23-result"></div> 
+        </div>
+
+        <!-- Pregunta 24 - Respuesta abierta -->
+        <div class="question">
+            <h2>24. Indica el mantenimiento del corsé de Milwaukee</h2>
+            <textarea id="p24-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p24-answer', 'Se realizará una revisión de la ortopedia cada 3 meses la limpieza del corsé será al menos semanal con un paño húmedo por la parte interior, evitar contacto del corsé con el agua.', 'p24-result')">Comprobar</button> 
+            <div class="result" id="p24-result"></div> 
+        </div>
+
+        <!-- Pregunta 25 - Respuesta abierta -->
+        <div class="question">
+            <h2>25. ¿Qué información sobre la finalidad de la ortesis plantar debe incluirse en las instrucciones de uso para adultos?</h2>
+            <textarea id="p25-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p25-answer', 'Es importante especificar la finalidad de la ortesis. Para adultos diríamos que la finalidad de la ortesis es favorecer un reparto de la carga, para evitar presiones excesivas y re-alinear la posición del pie y tobillo.', 'p25-result')">Comprobar</button> 
+            <div class="result" id="p25-result"></div> 
+        </div>
+
+        <!-- Pregunta 26 - Respuesta abierta -->
+        <div class="question">
+            <h2>26. ¿Cuáles son las recomendaciones para el mantenimiento adecuado de la plantilla de Lelievre?</h2>
+            <textarea id="p26-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p26-answer', '<br> -La recomendación de limpiar la ortesis con frecuencia, por ejemplo pasando un paño húmedo y dejándola secar. <br> -Extraerlas de los zapatos para airear y evitar humedad. <br> -En caso de rotura, acudir inmediatamente a la ortopedia para valorar su reparación o sustitución.', 'p26-result')">Comprobar</button> 
+            <div class="result" id="p26-result"></div> 
+        </div>
+
+        <!-- Pregunta 27 - Respuesta abierta -->
+        <div class="question">
+            <h2>27. Indica las características que tiene que tener el calzado para alojar las plantillas.</h2>
+            <textarea id="p27-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p27-answer', 'El calzado debe tener profundidad, para evitar presiones en dedos o empeine, evitar el calzado a punta de flecha. No puede estar deformado en suela o tacón.', 'p27-result')">Comprobar</button> 
+            <div class="result" id="p27-result"></div> 
+        </div>
+
+        <!-- Pregunta 28 - Respuesta abierta -->
+        <div class="question">
+            <h2>28. Indica 3 medidas para un buen mantenimiento de una ortesis AFO</h2>
+            <textarea id="p28-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p28-answer', '<br> -El método y frecuencia de limpieza. <br> -Necesidad de acudir inmediatamente a la ortopedia en caso de rotura, para valorar la reparación o sustitución. <br> -Indicar la necesidad de realizar revisiones periódicas para comprobar el estado de los materiales y el correcto funcionamiento.', 'p28-result')">Comprobar</button> 
+            <div class="result" id="p28-result"></div> 
+        </div>
+
+        <!-- Pregunta 29 - Respuesta abierta -->
+        <div class="question">
+            <h2>29. Señala los posibles efectos secundarios que puede provocar una ortesis Afo.</h2>
+            <textarea id="p29-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p29-answer', '<br> -Lesiones cutáneas. <br> -Atrofias musculares. Por uso prolongado <br> -Hiperqueratosis. Por presión <br> -Alteraciones de la marcha. Por mal diseño de la órtesis', 'p29-result')">Comprobar</button> 
+            <div class="result" id="p29-result"></div> 
+        </div>
+
+        <!-- Pregunta 30 - Respuesta abierta -->
+        <div class="question">
+            <h2>30. ¿Qué puede provocar que se deforme la ortesis por mal uso del paciente?</h2>
+            <textarea id="p30-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p30-answer', 'Acercar la ortesis a la fuente de calor ya que puede deformar el termoplástico', 'p30-result')">Comprobar</button> 
+            <div class="result" id="p30-result"></div> 
+        </div>
+
+        <!-- Pregunta 31 - Respuesta abierta -->
+        <div class="question">
+            <h2>31. En las instrucciones de utilización de la ortesis Kafo bitutor metálico incluiremos la finalidad fundamental de la ortesis. Indícala.</h2>
+            <textarea id="p31-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p31-answer', 'Señalaremos que el objetivo es mantener la extensión de la rodilla durante la fase de apoyo de la pierna afectada, permitiendo la consecución del paso.', 'p31-result')">Comprobar</button> 
+            <div class="result" id="p31-result"></div> 
+        </div>
+
+        <!-- Pregunta 32 - Respuesta abierta -->
+        <div class="question">
+            <h2>32. Efectos secundarios de la ortesis Kafo bitutor metálica.</h2>
+            <textarea id="p32-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p32-answer', '<br> -Trastornos cutáneos. <br> -Problemas derivados de una mala adaptación. <br> -Rechazo psicológico.', 'p32-result')">Comprobar</button> 
+            <div class="result" id="p32-result"></div> 
+        </div>
+
+        <!-- Pregunta 33 - Opción múltiple (una respuesta correcta) -->
+        <div class="question">
+            <h2>33. En las instrucciones de utilización de una ortesis Kafo bitutor metálica Kafo:</h2>
+            <ul class="options">
+                <li><input type="radio" name="p33" value="a"> Advertiremos al usuario o usuaria de que si no puede andar con la ortesis, no podrá andar con nada.</li>
+                <li><input type="radio" name="p33" value="b"> Informaremos de que es el equipo médico el responsable de que el usuario o usuaria camine con la ortesis.</li>
+                <li><input type="radio" name="p33" value="c"> Advertiremos al usuario de que debe informarnos de los posibles problemas, durante la fase de adaptación, dado que con posterioridad no tenemos por qué responsabilizarnos.</li>
+                <li><input type="radio" name="p33" value="d"> Informaremos de que en caso de rotura debe acudir inmediatamente a la ortopedia.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('p33', 'd', 'p33-result')">Comprobar</button>
+            <div class="result" id="p33-result"></div>
+        </div>
+
+        <!-- Pregunta 34 - Respuesta abierta -->
+        <div class="question">
+            <h2>34. Durante la fase de adaptación debemos de informar al paciente acerca de la finalidad que busca la ortesis. Indica la finalidad de los corsés correctores.</h2>
+            <textarea id="p34-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p34-answer', 'Llevar a la columna vertebral hacia la línea media, evitando la progresión de la curva.', 'p34-result')">Comprobar</button> 
+            <div class="result" id="p34-result"></div> 
+        </div>
+
+        <!-- Pregunta 35 - Respuesta abierta -->
+        <div class="question">
+            <h2>35. En caso de aparecer problemas circulatorios en la utilización de una ortesis de columna vertebral ¿Qué información debemos incluirle al paciente para que sepa actuar?</h2>
+            <textarea id="p35-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p35-answer', 'Elevar ligeramente las piernas durante el descanso, para favorecer el retorno venoso, y comunicar a su médico.', 'p35-result')">Comprobar</button> 
+            <div class="result" id="p35-result"></div> 
+        </div>
+
+        <!-- Pregunta 36 - Respuesta abierta -->
+        <div class="question">
+            <h2>36. ¿Cómo abrocharemos el corsé de Milwaukee?</h2>
+            <textarea id="p36-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p36-answer', 'Será conveniente flexionar un poco las rodillas y seguidamente abrochar las correas de la cesta pélvica y el tornillo de cierre del collarín.', 'p36-result')">Comprobar</button> 
+            <div class="result" id="p36-result"></div> 
+        </div>
+
+        <!-- Pregunta 37 - Respuesta abierta -->
+        <div class="question">
+            <h2>37. Medidas de protección de la piel para una ortesis de columna vertebral.</h2>
+            <textarea id="p37-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p37-answer', '<br> -No usar cremas, lociones ni polvos en las zonas de contacto con el corsé. <br> -Utilizar una camiseta sin costuras.', 'p37-result')">Comprobar</button> 
+            <div class="result" id="p37-result"></div> 
+        </div>
+
+        <!-- Pregunta 38 - Respuesta abierta -->
+        <div class="question">
+            <h2>38. ¿Qué información debemos explicar al paciente en el caso de utilizar una ortesis pasiva de muñeca y mano con función inmovilizadora?</h2>
+            <textarea id="p38-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p38-answer', 'Deberemos explicar que su finalidad es estabilizar la fractura y evitar movimientos o malas posturas que pudieran afectar a su consolidación.', 'p38-result')">Comprobar</button> 
+            <div class="result" id="p38-result"></div> 
+        </div>
+
+        <!-- Pregunta 39 - Respuesta abierta -->
+        <div class="question">
+            <h2>39. Recomendaciones de uso de las ortesis de miembro superior</h2>
+            <textarea id="p39-answer" rows="4" style="width: 100%;"></textarea> 
+            <button class="button" onclick="checkDevelopment('p39-answer', '<br> -El uso de un guante de algodón que proteja la piel, en la zona en contacto con la ortesis, no utilizar cremas ni lociones que reblandezcan la piel. <br> -Recomendar utilizar la ortesis el periodo temporal que le haya prescrito su médico, no debiendo retirarla sin su indicación.', 'p39-result')">Comprobar</button> 
+            <div class="result" id="p39-result"></div> 
+        </div>
+
+        <!-- Pregunta 40 - Opción múltiple (una respuesta correcta) -->
+        <div class="question">
+            <h2>40. Sobre la Información para las ortesis de miembro superior. Indica la falsa.</h2>
+            <ul class="options">
+                <li><input type="radio" name="p40" value="a"> Realizar ejercicios fisioterapéuticos, prescritos por su médico, para evitar rigideces</li>
+                <li><input type="radio" name="p40" value="b"> No retirar la ortesis sin la expresa indicación de su médico</li>
+                <li><input type="radio" name="p40" value="c"> Retirar la ortesis cuando ya no se sienta dolor para evitar rigideces articulares.</li>
+                <li><input type="radio" name="p40" value="d"> Recomendaremos una limpieza diaria, pasando un paño húmedo por el interior, eliminando el acúmulo de sudor.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('p40', 'c', 'p40-result')">Comprobar</button>
+            <div class="result" id="p40-result"></div>
+        </div>
+        <button class="button red" onclick="window.location.href='EAPO9-10.html'">Volver al menu de temas</button>
+    </div>
+
+    <script>
+        function checkQuestion(name, correctAnswer, resultId) {
+            const selected = document.querySelector(`input[name="${name}"]:checked`);
+            const resultDiv = document.getElementById(resultId);
+            if (!selected) {
+                resultDiv.textContent = 'Por favor, selecciona una respuesta.';
+                resultDiv.className = 'result wrong';
+                return;
+            }
+
+            if (selected.value === correctAnswer) {
+                resultDiv.textContent = 'Correcto.';
+                resultDiv.className = 'result correct';
+            } else {
+                resultDiv.textContent = `Incorrecto. La respuesta correcta es: ${correctAnswer}.`;
+                resultDiv.className = 'result wrong';
+            }
+        }
+
+        function checkDevelopment(answerId, correctAnswer, resultId) {
+            const userAnswer = document.getElementById(answerId).value;
+            const resultDiv = document.getElementById(resultId);
+            resultDiv.innerHTML = `<strong><u>Tu respuesta:</u></strong> ${userAnswer}<br><strong><u>Respuesta correcta:</u></strong> ${correctAnswer}`;
+            resultDiv.className = 'result corrects';
+        }
+
+
+        function checkMultiAnswerQuestion(name, correctAnswers, resultId) {
+            const selected = Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(input => input.value);
+            const resultDiv = document.getElementById(resultId);
+
+            const isCorrect = correctAnswers.every(answer => selected.includes(answer)) &&
+                            selected.every(answer => correctAnswers.includes(answer));
+
+            if (selected.length === 0) {
+                resultDiv.textContent = 'Por favor, selecciona al menos una respuesta.';
+                resultDiv.className = 'result wrong';
+            } else if (isCorrect) {
+                resultDiv.textContent = 'Correcto. Las respuestas son: ' + correctAnswers.join(', ') + '.';
+                resultDiv.className = 'result correct';
+            } else {
+                resultDiv.textContent = 'Incorrecto. Las respuestas correctas son: ' + correctAnswers.join(', ') + '.';
+                resultDiv.className = 'result wrong';
+            }
+        }
+
+
+    </script>
+</body>
+</html>
+

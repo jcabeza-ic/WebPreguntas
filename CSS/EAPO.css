@@ -1,0 +1,178 @@
+
+/* Estilos generales */
+/* Estiliza los radio buttons y checkboxes */
+input[type="radio"], input[type="checkbox"] {
+    appearance: none; /* Oculta el estilo por defecto */
+    width: 20px;
+    height: 20px;
+    border: 2px solid #007BFF;
+    border-radius: 50%; /* Hace los radio buttons redondos */
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    vertical-align: middle;
+    background-color: white;
+    transition: 0.3s all ease;
+}
+
+/* Efecto al estar seleccionado */
+input[type="radio"]:checked, input[type="checkbox"]:checked {
+    background-color: #007BFF;
+    border: 2px solid #0056b3;
+}
+
+/* Agrega un punto interno cuando está seleccionado */
+input[type="radio"]::before, input[type="checkbox"]::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 0.3s all ease;
+}
+
+/* Muestra el punto interno cuando está seleccionado */
+input[type="radio"]:checked::before, input[type="checkbox"]:checked::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color:#eef2f3;
+    color: #333;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 25px;
+    background: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+}
+
+/* Títulos */
+h1 {
+    text-align: center;
+    font-size: 30px;
+    color: #444; /* Cambiado a un tono más neutro */
+    font-weight: bold;
+}
+
+/* Estilos de las preguntas */
+.question {
+    padding: 15px;
+    margin-bottom: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+/* Opciones de respuestas */
+.options {
+    list-style: none;
+    padding: 0;
+}
+
+.options li {
+    margin: 10px 0;
+}
+
+/* Botón principal */
+.button {
+    display: block;
+    width: fit-content;
+    margin: 10px auto;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.button.red {
+    background-color: #DC3545; /* Rojo */
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.button.red:hover {
+    background-color: #B02A37; /* Rojo más oscuro al pasar el mouse */
+}
+
+/* Hover sobre los botones en lugar de las preguntas */
+.button:hover {
+    background-color: #0056b3;
+}
+
+/* Botón de desordenar preguntas */
+.shuffle-button {
+    background-color: #28a745;
+}
+
+.shuffle-button:hover {
+    background-color: #218838;
+}
+
+/* Cuadro de respuesta */
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    resize: none;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+/* Resultados de las respuestas */
+.result {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* Correcto en verde (ahora con texto oscuro para mejor visibilidad) */
+.correct {
+    background-color: #d4edda;
+    color: #155724;
+    border: 2px solid #28a745;
+}
+
+.corrects{
+    background-color: #d4edda;
+    color: #155724;
+    border: 2px solid #28a745;
+    text-align: left !important;
+    font-size: 15px;
+    line-height: 1.5;  /* Mejora la legibilidad */
+    padding: 12px;
+}
+
+/* Incorrecto en rojo (ya estaba bien, pero lo mantengo aquí) */
+.wrong {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 2px solid #dc3545;
+}
+

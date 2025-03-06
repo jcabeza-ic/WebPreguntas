@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/APS.css">
+    <title>Repaso de Preguntas</title>
+</head>
+
+
+
+<script>
+
+    function shuffleQuestions() {
+        const container = document.querySelector(".container");
+        const questions = Array.from(document.querySelectorAll(".question"));
+        
+        // Desordenar las preguntas usando el algoritmo de Fisher-Yates
+        for (let i = questions.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            container.insertBefore(questions[j], questions[i]);
+        }
+    }
+</script>
+
+
+<body>
+    <div class="container">
+        <h1>Repaso de Preguntas Tema 5</h1>
+        <button class="button red" onclick="window.location.href='../index.html'">Volver al menu de temas</button>
+        <button class="button shuffle-button" onclick="shuffleQuestions()">Desordenar Preguntas</button>
+
+        <!-- Pregunta 1 -->
+        <div class="question">
+            <h2>1. ¿Cuál de las siguientes funciones NO corresponde a un responsable técnico en el ámbito ortoprotésico?</h2>
+            <ul class="options">
+                <li><input type="radio" name="q1" value="a"> Supervisar la calidad en la fabricación de dispositivos ortopédicos</li>
+                <li><input type="radio" name="q1" value="b"> Diagnosticar enfermedades ortopédicas</li>
+                <li><input type="radio" name="q1" value="c"> Capacitar al personal técnico en el manejo de materiales</li>
+                <li><input type="radio" name="q1" value="d"> Colaborar con otros profesionales de la salud para evaluar necesidades de los pacientes</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('q1', 'b', 'q1-result')">Comprobar</button>
+            <div class="result" id="q1-result"></div>
+        </div>
+
+        <!-- Pregunta 2 -->
+        <div class="question">
+            <h2>2. ¿Cuál de las siguientes afirmaciones describe la prestación ortoprotésica?</h2>
+            <ul class="options">
+                <li><input type="radio" name="q2" value="a"> Implica la utilización de productos sanitarios que sustituyen total o parcialmente estructuras corporales.</li>
+                <li><input type="radio" name="q2" value="b"> Modifica, corrige o facilita la función de las estructuras corporales.</li>
+                <li><input type="radio" name="q2" value="c"> Incluye elementos que mejoran la calidad de vida y la autonomía del usuario.</li>
+                <li><input type="radio" name="q2" value="d"> Todas son correctas.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('q2', 'd', 'q2-result')">Comprobar</button>
+            <div class="result" id="q2-result"></div>
+        </div>
+
+        <!-- Pregunta 3 -->
+        <div class="question">
+            <h2>3. ¿Cuál es el principal objetivo de la desinfección y esterilización en un establecimiento ortopédico?</h2>
+            <ul class="options">
+                <li><input type="radio" name="q3" value="a"> Mejorar la apariencia estética del local</li>
+                <li><input type="radio" name="q3" value="b"> Prevenir infecciones y garantizar la seguridad de los pacientes</li>
+                <li><input type="radio" name="q3" value="c"> Reducir el costo de los insumos</li>
+                <li><input type="radio" name="q3" value="d"> Acelerar el proceso de atención al paciente</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('q3', 'b', 'q3-result')">Comprobar</button>
+            <div class="result" id="q3-result"></div>
+        </div>
+
+        <!-- Pregunta 4 -->
+        <div class="question">
+            <h2>4. ¿Cómo se asegura un establecimiento ortopédico de que sus insumos cumplen con las normativas sanitarias?</h2>
+            <ul class="options">
+                <li><input type="radio" name="q4" value="a"> Realizando auditorías internas periódicas</li>
+                <li><input type="radio" name="q4" value="b"> Adquiriendo solo productos de proveedores locales</li>
+                <li><input type="radio" name="q4" value="c"> Realizando la esterilización solo al momento de usarlos</li>
+                <li><input type="radio" name="q4" value="d"> Asegurándose de que los productos sean económicos</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('q4', 'a', 'q4-result')">Comprobar</button>
+            <div class="result" id="q4-result"></div>
+        </div>
+
+        <!-- Pregunta 5 -->
+        <div class="question">
+            <h2>5. Según la normativa vigente en España, ¿qué requisitos debe cumplir un establecimiento de ortopedia para su autorización y funcionamiento? Señala la incorrecta.</h2>
+            <ul class="options">
+                <li><input type="radio" name="q5" value="a"> Disponer de licencia sanitaria otorgada por la autoridad competente.</li>
+                <li><input type="radio" name="q5" value="b"> Contar con personal cualificado y titulado en ortopedia.</li>
+                <li><input type="radio" name="q5" value="c"> Cumplir con las condiciones higiénico-sanitarias establecidas en la legislación.</li>
+                <li><input type="radio" name="q5" value="d"> No es necesario registrar el establecimiento ante la administración sanitaria.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('q5', 'd', 'q5-result')">Comprobar</button>
+            <div class="result" id="q5-result"></div>
+        </div>
+
+        <!-- Pregunta 6 -->
+        <div class="question">
+            <h2>6. ¿Qué normativa regula la fabricación y distribución de productos ortoprotésicos en la Unión Europea? Señala la incorrecta.</h2>
+            <ul class="options">
+                <li><input type="radio" name="q6" value="a"> El Reglamento (UE) 2017/745 sobre productos sanitarios.</li>
+                <li><input type="radio" name="q6" value="b"> La Ley General de Sanidad y sus normativas de desarrollo.</li>
+                <li><input type="radio" name="q6" value="c"> La normativa de Buenas Prácticas de Fabricación de productos sanitarios.</li>
+                <li><input type="radio" name="q6" value="d"> No es necesario cumplir normativas específicas para distribuir productos ortoprotésicos.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('q6', 'd', 'q6-result')">Comprobar</button>
+            <div class="result" id="q6-result"></div>
+        </div>
+
+        <!-- Pregunta 7 -->
+        <div class="question">
+            <h2>7. Según el Real Decreto-Ley 16/2012, ¿cuál de las siguientes afirmaciones es correcta respecto a la cartera de servicios del Sistema Nacional de Salud?</h2>
+            <ul class="options">
+                <li><input type="radio" name="q7" value="a"> Solo existe una única cartera común de servicios asistenciales, financiada completamente por fondos públicos.</li>
+                <li><input type="radio" name="q7" value="b"> La cartera común básica cubre servicios asistenciales de forma completa, mientras que la cartera común suplementaria incluye prestaciones sujetas a aportación del usuario.</li>
+                <li><input type="radio" name="q7" value="c"> La cartera común de servicios accesorios incluye la prestación farmacéutica y ortoprotésica, con financiación pública total.</li>
+                <li><input type="radio" name="q7" value="d"> El Real Decreto-Ley 16/2012 no regula la clasificación de la cartera de servicios sanitarios.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('q7', 'b', 'q7-result')">Comprobar</button>
+            <div class="result" id="q7-result"></div>
+        </div>
+
+        <!-- Pregunta 8 -->
+        <div class="question">
+            <h2>8. ¿Qué norma establece la Cartera de Servicios Comunes del Sistema Nacional de Salud y el procedimiento para su actualización?</h2>
+            <ul class="options">
+                <li><input type="radio" name="q8" value="a"> Real Decreto 1030/2006, de 15 de septiembre.</li>
+                <li><input type="radio" name="q8" value="b"> Ley 16/2003, de 28 de mayo, de cohesión y calidad del Sistema Nacional de Salud.</li>
+                <li><input type="radio" name="q8" value="c"> Orden SCB/45/2019, de 22 de enero.</li>
+                <li><input type="radio" name="q8" value="d"> Real Decreto-Ley 16/2012, de 20 de abril.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('q8', 'b', 'q8-result')">Comprobar</button>
+            <div class="result" id="q8-result"></div>
+        </div>
+
+        <!-- Pregunta 9 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>9. En el gabinete de adaptación y toma de medidas la superficie no puede ser menos de. Marca la correcta.</h2>
+            <ul class="options">
+                <li><input type="radio" name="q9" value="a"> 25 Metros cuadrados</li>
+                <li><input type="radio" name="q9" value="b"> 10 Metros cuadrados</li>
+                <li><input type="radio" name="q9" value="c"> 15 Metros cuadrados</li>
+                <li><input type="radio" name="q9" value="d"> No tiene superficie mínima</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('q9', 'b', 'q9-result')">Comprobar</button>
+            <div class="result" id="q9-result"></div>
+        </div>
+
+        <!-- Pregunta 10 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>10. Las características que deben estar aplicadas a las áreas o zonas funcionales de las ortopedias van establecidas en el real decreto. Marca la correcta.</h2>
+            <ul class="options">
+                <li><input type="radio" name="q10" value="a"> RD 74/1995</li>
+                <li><input type="radio" name="q10" value="b"> RD 45/1992</li>
+                <li><input type="radio" name="q10" value="c"> RD 72/1992</li>
+                <li><input type="radio" name="q10" value="d"> RD 72/1995</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('q10', 'c', 'q10-result')">Comprobar</button>
+            <div class="result" id="q10-result"></div>
+        </div>
+
+        <!-- Pregunta 1 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>1. ¿Qué documentos debe aportar el fabricante para que un producto ortoprotésico pueda ser incluido en el catálogo de prestaciones del sistema sanitario?</h2>
+            <ul class="options">
+                <li><input type="radio" name="p1" value="a"> Únicamente una factura de compra y un manual de uso.</li>
+                <li><input type="radio" name="p1" value="b"> Documentos que acrediten la calidad y conformidad del producto con la normativa vigente.</li>
+                <li><input type="radio" name="p1" value="c"> Sólo una declaración verbal del fabricante sobre la seguridad del producto.</li>
+                <li><input type="radio" name="p1" value="d"> Un certificado de garantía sin necesidad de cumplir normativas específicas.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('p1', 'b', 'p1-result')">Comprobar</button>
+            <div class="result" id="p1-result"></div>
+        </div>
+
+        <!-- Pregunta 2 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>2. ¿Qué información debe incluir el manual de usuario de un producto ortoprotésico?</h2>
+            <ul class="options">
+                <li><input type="radio" name="p2" value="a"> El modo de empleo, ya que el resto de la información no es relevante para el usuario.</li>
+                <li><input type="radio" name="p2" value="b"> Advertencias, precauciones, modo de empleo, mantenimiento, limpieza y limitaciones del producto.</li>
+                <li><input type="radio" name="p2" value="c"> Únicamente las recomendaciones del fabricante sin necesidad de detallar su mantenimiento.</li>
+                <li><input type="radio" name="p2" value="d"> Instrucciones generales sin especificar cómo colocar o ajustar el producto.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('p2', 'b', 'p2-result')">Comprobar</button>
+            <div class="result" id="p2-result"></div>
+        </div>
+
+        <!-- Pregunta 3 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>3. ¿Cuál es el principal objetivo del Sistema de Información Protésica y Ortesis para los pacientes que las necesitan?</h2>
+            <ul class="options">
+                <li><input type="radio" name="p3" value="a"> Garantizar el acceso equitativo a prótesis y ortesis para los pacientes que las necesiten.</li>
+                <li><input type="radio" name="p3" value="b"> Asegurar que todas las prótesis sean fabricadas con materiales reciclados.</li>
+                <li><input type="radio" name="p3" value="c"> Limitar el acceso a prótesis únicamente a pacientes con discapacidad permanente.</li>
+                <li><input type="radio" name="p3" value="d"> Sustituir por completo la valoración médica en la prescripción de prótesis.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('p3', 'a', 'p3-result')">Comprobar</button>
+            <div class="result" id="p3-result"></div>
+        </div>
+
+        <!-- Pregunta 4 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>4. ¿Para qué sirve el Sistema de Información Protésica?</h2>
+            <ul class="options">
+                <li><input type="radio" name="p4" value="a"> Para optimizar la administración, el registro y el seguimiento de los productos ortoprotésicos.</li>
+                <li><input type="radio" name="p4" value="b"> Para fabricar prótesis.</li>
+                <li><input type="radio" name="p4" value="c"> Para diagnosticar enfermedades.</li>
+                <li><input type="radio" name="p4" value="d"> Para entrenar a médicos.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('p4', 'a', 'p4-result')">Comprobar</button>
+            <div class="result" id="p4-result"></div>
+        </div>
+
+        <!-- Pregunta 5 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>5. Los datos médicos deben conservarse…</h2>
+            <ul class="options">
+                <li><input type="radio" name="p5" value="a"> 3 años</li>
+                <li><input type="radio" name="p5" value="b"> 5 años</li>
+                <li><input type="radio" name="p5" value="c"> 1 año</li>
+                <li><input type="radio" name="p5" value="d"> toda la vida</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('p5', 'b', 'p5-result')">Comprobar</button>
+            <div class="result" id="p5-result"></div>
+        </div>
+
+        <!-- Pregunta 6 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>6. Los datos de facturación deben conservarse…</h2>
+            <ul class="options">
+                <li><input type="radio" name="p6" value="a"> 6 años</li>
+                <li><input type="radio" name="p6" value="b"> 2 días</li>
+                <li><input type="radio" name="p6" value="c"> a y b son correctas</li>
+                <li><input type="radio" name="p6" value="d"> 2 meses</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('p6', 'a', 'p6-result')">Comprobar</button>
+            <div class="result" id="p6-result"></div>
+        </div>
+
+        <!-- Pregunta 7 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>7. La ficha generada al entregarse al paciente junto al producto ortoprotésico contiene. Señala la incorrecta.</h2>
+            <ul class="options">
+                <li><input type="radio" name="p7" value="a"> instrucciones de uso</li>
+                <li><input type="radio" name="p7" value="b"> firma del paciente</li>
+                <li><input type="radio" name="p7" value="c"> dirección de la empresa</li>
+                <li><input type="radio" name="p7" value="d"> fecha </li>
+            </ul>
+            <button class="button" onclick="checkQuestion('p7', 'c', 'p7-result')">Comprobar</button>
+            <div class="result" id="p7-result"></div>
+        </div>
+
+        <!-- Pregunta 8 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>8. El informe de seguimiento:</h2>
+            <ul class="options">
+                <li><input type="radio" name="p8" value="a"> asegurar la efectividad a corto tiempo</li>
+                <li><input type="radio" name="p8" value="b"> asegurar la efectividad a largo tiempo</li>
+                <li><input type="radio" name="p8" value="c"> asegurar la funcionalidad a corto plazo</li>
+                <li><input type="radio" name="p8" value="d"> asegurar la funcionalidad a largo plazo</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('p8', 'b', 'p8-result')">Comprobar</button>
+            <div class="result" id="p8-result"></div>
+        </div>
+
+        <!-- Pregunta 9 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>9. ¿Cuál de los siguientes documentos es esencial en un establecimiento ortoprotésico para registrar la venta de un producto al cliente?</h2>
+            <ul class="options">
+                <li><input type="radio" name="p9" value="a"> Receta médica</li>
+                <li><input type="radio" name="p9" value="b"> Factura o ticket de compra</li>
+                <li><input type="radio" name="p9" value="c"> Manual de usuario del producto</li>
+                <li><input type="radio" name="p9" value="d"> Póliza de seguro</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('p9', 'b', 'p9-result')">Comprobar</button>
+            <div class="result" id="p9-result"></div>
+        </div>
+
+        <!-- Pregunta 10 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>10. ¿Qué documento es necesario para justificar la fabricación de un producto ortoprotésico a medida?</h2>
+            <ul class="options">
+                <li><input type="radio" name="p10" value="a"> Prescripción médica</li>
+                <li><input type="radio" name="p10" value="b"> Lista de precios del establecimiento</li>
+                <li><input type="radio" name="p10" value="c"> Publicidad del producto</li>
+                <li><input type="radio" name="p10" value="d"> Catálogo del fabricante</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('p10', 'a', 'p10-result')">Comprobar</button>
+            <div class="result" id="p10-result"></div>
+        </div>
+
+        <!-- PREGUNTAS APS GRUPO 3 -->
+
+        <!-- Pregunta 1 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>1. ¿Cuál es el principal beneficio de la escucha activa en el proceso de resolución de conflictos en la prestación ortoprotésica?</h2>
+            <ul class="options">
+                <li><input type="radio" name="c1" value="a"> Identificar la causa del conflicto sin necesidad de soluciones.</li>
+                <li><input type="radio" name="c1" value="b"> Aumentar la velocidad de resolución de las reclamaciones.</li>
+                <li><input type="radio" name="c1" value="c"> Ayudar a entender el origen del conflicto, ya sea técnico, emocional o de servicio.</li>
+                <li><input type="radio" name="c1" value="d"> Generar soluciones automáticas a los problemas de los pacientes.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('c1', 'c', 'c1-result')">Comprobar</button>
+            <div class="result" id="c1-result"></div>
+        </div>
+
+        <!-- Pregunta 2 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>2. ¿Qué técnica es clave para garantizar que el paciente esté completamente informado sobre el uso adecuado de su dispositivo ortoprotésico?</h2>
+            <ul class="options">
+                <li><input type="radio" name="c2" value="a"> Empatía y validación emocional.</li>
+                <li><input type="radio" name="c2" value="b"> Clarificación y educación al paciente.</li>
+                <li><input type="radio" name="c2" value="c"> Ofrecer alternativas.</li>
+                <li><input type="radio" name="c2" value="d"> Disculpas y responsabilidad.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('c2', 'b', 'c2-result')">Comprobar</button>
+            <div class="result" id="c2-result"></div>
+        </div>
+
+        <!-- Pregunta 3 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>3. ¿Qué es clave cuando recibes una queja de un paciente?</h2>
+            <ul class="options">
+                <li><input type="radio" name="c3" value="a"> Ignorar la queja.</li>
+                <li><input type="radio" name="c3" value="b"> Escuchar activamente.</li>
+                <li><input type="radio" name="c3" value="c"> Hablar rápido para resolver.</li>
+                <li><input type="radio" name="c3" value="d"> Evitar dar una respuesta.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('c3', 'b', 'c3-result')">Comprobar</button>
+            <div class="result" id="c3-result"></div>
+        </div>
+
+        <!-- Pregunta 4 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>4. ¿Por qué es importante la capacitación continua del personal?</h2>
+            <ul class="options">
+                <li><input type="radio" name="c4" value="a"> Para mejorar la comunicación con pacientes.</li>
+                <li><input type="radio" name="c4" value="b"> Para hacer más tareas administrativas.</li>
+                <li><input type="radio" name="c4" value="c"> Para aumentar las ganancias.</li>
+                <li><input type="radio" name="c4" value="d"> Para evitar que los pacientes hablen.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('c4', 'a', 'c4-result')">Comprobar</button>
+            <div class="result" id="c4-result"></div>
+        </div>
+
+        <!-- Pregunta 5 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>5. ¿Cuál de los siguientes NO es un factor que influye en la satisfacción del cliente?</h2>
+            <ul class="options">
+                <li><input type="radio" name="c5" value="a"> Calidad del producto o servicio.</li>
+                <li><input type="radio" name="c5" value="b"> Estrategias de marketing digital.</li>
+                <li><input type="radio" name="c5" value="c"> Atención al cliente.</li>
+                <li><input type="radio" name="c5" value="d"> Relación calidad-precio.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('c5', 'b', 'c5-result')">Comprobar</button>
+            <div class="result" id="c5-result"></div>
+        </div>
+
+        <!-- Pregunta 6 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>6. ¿Cuál de las siguientes estrategias NO mejora la satisfacción del cliente?</h2>
+            <ul class="options">
+                <li><input type="radio" name="c6" value="a"> Escuchar activamente al cliente.</li>
+                <li><input type="radio" name="c6" value="b"> Ofrecer descuentos frecuentes.</li>
+                <li><input type="radio" name="c6" value="c"> Resolver problemas de forma rápida y eficaz.</li>
+                <li><input type="radio" name="c6" value="d"> Capacitar al personal para una mejor atención.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('c6', 'b', 'c6-result')">Comprobar</button>
+            <div class="result" id="c6-result"></div>
+        </div>
+
+        <!-- Pregunta 7 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>7. ¿Qué debe hacer el contratista tras recibir una reclamación de garantía?</h2>
+            <ul class="options">
+                <li><input type="radio" name="c7" value="a"> Responder en un plazo máximo de 72 horas, aceptando o rechazando la reclamación.</li>
+                <li><input type="radio" name="c7" value="b"> Analizar la reclamación, dar una respuesta en un máximo de 48 horas y coordinar la reparación si es aceptada.</li>
+                <li><input type="radio" name="c7" value="c"> Esperar a que la Fundación realice la reparación y luego evaluar su validez.</li>
+                <li><input type="radio" name="c7" value="d"> Informar a la Fundación que la revisión puede tardar hasta dos semanas.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('c7', 'b', 'c7-result')">Comprobar</button>
+            <div class="result" id="c7-result"></div>
+        </div>
+
+        <!-- Pregunta 8 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>8. ¿Cuándo se considera cerrada una reclamación si la Fundación no la finaliza formalmente?</h2>
+            <ul class="options">
+                <li><input type="radio" name="c8" value="a"> Después de 48 horas sin respuesta.</li>
+                <li><input type="radio" name="c8" value="b"> A los 7 días de la finalización de los trabajos.</li>
+                <li><input type="radio" name="c8" value="c"> A los 15 días de la solicitud de cierre, si la Fundación no actúa.</li>
+                <li><input type="radio" name="c8" value="d"> Nunca, siempre debe haber una confirmación explícita de cierre.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('c8', 'c', 'c8-result')">Comprobar</button>
+            <div class="result" id="c8-result"></div>
+        </div>
+
+        <!-- Pregunta 9 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>9. ¿Cuánto tiempo tiene una entidad para responder una reclamación sencilla?</h2>
+            <ul class="options">
+                <li><input type="radio" name="c9" value="a"> 48 horas</li>
+                <li><input type="radio" name="c9" value="b"> 15 días hábiles</li>
+                <li><input type="radio" name="c9" value="c"> 30 días hábiles</li>
+                <li><input type="radio" name="c9" value="d"> 7 días hábiles</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('c9', 'b', 'c9-result')">Comprobar</button>
+            <div class="result" id="c9-result"></div>
+        </div>
+
+        <!-- Pregunta 10 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>10. ¿Qué acción puede tomar un reclamante si no está conforme con la respuesta recibida?</h2>
+            <ul class="options">
+                <li><input type="radio" name="c10" value="a"> Ignorar la respuesta</li>
+                <li><input type="radio" name="c10" value="b"> Solicitar una revisión interna</li>
+                <li><input type="radio" name="c10" value="c"> Aceptar la respuesta sin más</li>
+                <li><input type="radio" name="c10" value="d"> Hacer una queja en redes sociales</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('c10', 'b', 'c10-result')">Comprobar</button>
+            <div class="result" id="c10-result"></div>
+        </div>
+
+        <!-- PREGUNTAS APS GRUPO 4 -->
+
+        <!-- Pregunta 1 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>1. ¿Qué documento es fundamental para detallar los procedimientos operativos estándar en un establecimiento ortoprotésico?</h2>
+            <ul class="options">
+                <li><input type="radio" name="d1" value="a"> Registro de usuarios</li>
+                <li><input type="radio" name="d1" value="b"> Manual de procedimientos</li>
+                <li><input type="radio" name="d1" value="c"> Normativa de calidad</li>
+                <li><input type="radio" name="d1" value="d"> Control de calidad de componentes</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('d1', 'b', 'd1-result')">Comprobar</button>
+            <div class="result" id="d1-result"></div>
+        </div>
+
+        <!-- Pregunta 2 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>2. ¿Qué elemento del sistema de organización muestra la estructura jerárquica y responsabilidades del equipo?</h2>
+            <ul class="options">
+                <li><input type="radio" name="d2" value="a"> Registro de usuarios</li>
+                <li><input type="radio" name="d2" value="b"> Manual de procedimientos</li>
+                <li><input type="radio" name="d2" value="c"> Organigrama</li>
+                <li><input type="radio" name="d2" value="d"> Normativa de calidad</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('d2', 'c', 'd2-result')">Comprobar</button>
+            <div class="result" id="d2-result"></div>
+        </div>
+
+        <!-- Pregunta 3 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>3. ¿Cuál de los siguientes aspectos es fundamental en la implementación del Sistema de Gestión de Calidad en un establecimiento ortoprotésico?</h2>
+            <ul class="options">
+                <li><input type="radio" name="d3" value="a"> La mejora continua y la satisfacción del cliente</li>
+                <li><input type="radio" name="d3" value="b"> La trazabilidad y conformidad en cada etapa del proceso</li>
+                <li><input type="radio" name="d3" value="c"> El desarrollo de procedimientos para la fabricación y distribución de productos</li>
+                <li><input type="radio" name="d3" value="d"> Todas son correctas</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('d3', 'd', 'd3-result')">Comprobar</button>
+            <div class="result" id="d3-result"></div>
+        </div>
+
+        <!-- Pregunta 4 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>4. ¿Por qué es importante la formación continua del personal en un establecimiento ortoprotésico?</h2>
+            <ul class="options">
+                <li><input type="radio" name="d4" value="a"> Para actualizar conocimientos sobre normativas y avances tecnológicos</li>
+                <li><input type="radio" name="d4" value="b"> Para garantizar la calidad en el diseño y adaptación de productos ortoprotésicos</li>
+                <li><input type="radio" name="d4" value="c"> Para mejorar la eficiencia y la seguridad en los procesos de fabricación</li>
+                <li><input type="radio" name="d4" value="d"> Todas son correctas</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('d4', 'd', 'd4-result')">Comprobar</button>
+            <div class="result" id="d4-result"></div>
+        </div>
+
+        <!-- Pregunta 5 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>5. ¿Cuáles de estas opciones no es una característica de los procesos asistenciales?</h2>
+            <ul class="options">
+                <li><input type="radio" name="d5" value="a"> Están orientados hacia la obtención de resultados</li>
+                <li><input type="radio" name="d5" value="b"> Enfoque dirigido hacia el usuario</li>
+                <li><input type="radio" name="d5" value="c"> Saber la máxima información del paciente</li>
+                <li><input type="radio" name="d5" value="d"> Evaluaciones periódicas</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('d5', 'c', 'd5-result')">Comprobar</button>
+            <div class="result" id="d5-result"></div>
+        </div>
+
+        <!-- Pregunta 6 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>6. Con el objetivo general de los procesos asistenciales, ¿qué se pretende elevar?</h2>
+            <ul class="options">
+                <li><input type="radio" name="d6" value="a"> El grado de bienestar biológico, psicológico y social</li>
+                <li><input type="radio" name="d6" value="b"> El grado de bienestar biológico, anatómico y social</li>
+                <li><input type="radio" name="d6" value="c"> El grado de bienestar biológico, psicológico y económico</li>
+                <li><input type="radio" name="d6" value="d"> El grado de bienestar funcional, psicológico y social</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('d6', 'a', 'd6-result')">Comprobar</button>
+            <div class="result" id="d6-result"></div>
+        </div>
+
+        <!-- Pregunta 7 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>7. ¿Cuáles son los tipos de control de calidad?</h2>
+            <ul class="options">
+                <li><input type="radio" name="d7" value="a"> Control de calidad estadística</li>
+                <li><input type="radio" name="d7" value="b"> Control de calidad del producto</li>
+                <li><input type="radio" name="d7" value="c"> Control de calidad del proceso</li>
+                <li><input type="radio" name="d7" value="d"> Todas son correctas</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('d7', 'd', 'd7-result')">Comprobar</button>
+            <div class="result" id="d7-result"></div>
+        </div>
+
+        <!-- Pregunta 8 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>8. ¿Qué control recopila el análisis de datos para evaluar la calidad del producto o servicio?</h2>
+            <ul class="options">
+                <li><input type="radio" name="d8" value="a"> Control de calidad estadístico</li>
+                <li><input type="radio" name="d8" value="b"> Control de calidad externo</li>
+                <li><input type="radio" name="d8" value="c"> Control de calidad interno</li>
+                <li><input type="radio" name="d8" value="d"> Control de calidad del ambiente</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('d8', 'a', 'd8-result')">Comprobar</button>
+            <div class="result" id="d8-result"></div>
+        </div>
+
+        <!-- Pregunta 9 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>9. ¿Qué es la retroalimentación?</h2>
+            <ul class="options">
+                <li><input type="radio" name="d9" value="a"> Comer a media mañana después del desayuno</li>
+                <li><input type="radio" name="d9" value="b"> Es clave para detectar problemas y oportunidades de mejora en el proceso de producción o prestación de servicio</li>
+                <li><input type="radio" name="d9" value="c"> Alimentarse a uno mismo con una cuchara angulosa</li>
+                <li><input type="radio" name="d9" value="d"> Un tipo de música retro o vintage</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('d9', 'b', 'd9-result')">Comprobar</button>
+            <div class="result" id="d9-result"></div>
+        </div>
+
+        <!-- Pregunta 10 - Tipo test (una respuesta correcta) -->
+        <div class="question">
+            <h2>10. ¿Qué mide un indicador de calidad del servicio?</h2>
+            <ul class="options">
+                <li><input type="radio" name="d10" value="a"> La satisfacción del cliente</li>
+                <li><input type="radio" name="d10" value="b"> La cantidad de productos fabricados</li>
+                <li><input type="radio" name="d10" value="c"> El número de empleados en la empresa</li>
+                <li><input type="radio" name="d10" value="d"> El tamaño del establecimiento</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('d10', 'a', 'd10-result')">Comprobar</button>
+            <div class="result" id="d10-result"></div>
+        </div>
+
+        <button class="button red" onclick="window.location.href='../index.html'">Volver al menu de temas</button>
+
+
+    </div>
+
+    <script>
+        function checkQuestion(name, correctAnswer, resultId) {
+            const selected = document.querySelector(`input[name="${name}"]:checked`);
+            const resultDiv = document.getElementById(resultId);
+            if (!selected) {
+                resultDiv.textContent = 'Por favor, selecciona una respuesta.';
+                resultDiv.className = 'result wrong';
+                return;
+            }
+
+            if (selected.value === correctAnswer) {
+                resultDiv.textContent = 'Correcto.';
+                resultDiv.className = 'result correct';
+            } else {
+                resultDiv.textContent = `Incorrecto. La respuesta correcta es: ${correctAnswer}.`;
+                resultDiv.className = 'result wrong';
+            }
+        }
+
+        function checkDevelopment(answerId, correctAnswer, resultId) {
+            const userAnswer = document.getElementById(answerId).value;
+            const resultDiv = document.getElementById(resultId);
+            resultDiv.innerHTML = `<strong><u>Tu respuesta:</u></strong> ${userAnswer}<br><strong><u>Respuesta correcta:</u></strong> ${correctAnswer}`;
+            resultDiv.className = 'result corrects';
+        }
+
+
+        function checkMultiAnswerQuestion(name, correctAnswers, resultId) {
+            const selected = Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(input => input.value);
+            const resultDiv = document.getElementById(resultId);
+
+            const isCorrect = correctAnswers.every(answer => selected.includes(answer)) &&
+                            selected.every(answer => correctAnswers.includes(answer));
+
+            if (selected.length === 0) {
+                resultDiv.textContent = 'Por favor, selecciona al menos una respuesta.';
+                resultDiv.className = 'result wrong';
+            } else if (isCorrect) {
+                resultDiv.textContent = 'Correcto. Las respuestas son: ' + correctAnswers.join(', ') + '.';
+                resultDiv.className = 'result correct';
+            } else {
+                resultDiv.textContent = 'Incorrecto. Las respuestas correctas son: ' + correctAnswers.join(', ') + '.';
+                resultDiv.className = 'result wrong';
+            }
+        }
+
+
+    </script>
+</body>
+</html>
+

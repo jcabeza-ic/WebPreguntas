@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../CSS/EAPO.css">
+    <title>Repaso de Preguntas</title>
+    <!-- <style>
+        /* Estilos generales */
+        /* Estiliza los radio buttons y checkboxes */
+        input[type="radio"], input[type="checkbox"] {
+            appearance: none; /* Oculta el estilo por defecto */
+            width: 20px;
+            height: 20px;
+            border: 2px solid #007BFF;
+            border-radius: 50%; /* Hace los radio buttons redondos */
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+            vertical-align: middle;
+            background-color: white;
+            transition: 0.3s all ease;
+        }
+
+        /* Efecto al estar seleccionado */
+        input[type="radio"]:checked, input[type="checkbox"]:checked {
+            background-color: #007BFF;
+            border: 2px solid #0056b3;
+        }
+
+        /* Agrega un punto interno cuando está seleccionado */
+        input[type="radio"]::before, input[type="checkbox"]::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: 0.3s all ease;
+        }
+
+        /* Muestra el punto interno cuando está seleccionado */
+        input[type="radio"]:checked::before, input[type="checkbox"]:checked::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:#eef2f3;
+            color: #333;
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 25px;
+            background: #ffffff;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+
+        /* Títulos */
+        h1 {
+            text-align: center;
+            font-size: 30px;
+            color: #444; /* Cambiado a un tono más neutro */
+            font-weight: bold;
+        }
+
+        /* Estilos de las preguntas */
+        .question {
+            padding: 15px;
+            margin-bottom: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Opciones de respuestas */
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            margin: 10px 0;
+        }
+
+        /* Botón principal */
+        .button {
+            display: block;
+            width: fit-content;
+            margin: 10px auto;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .button.red {
+            background-color: #DC3545; /* Rojo */
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .button.red:hover {
+            background-color: #B02A37; /* Rojo más oscuro al pasar el mouse */
+        }
+
+        /* Hover sobre los botones en lugar de las preguntas */
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Botón de desordenar preguntas */
+        .shuffle-button {
+            background-color: #28a745;
+        }
+
+        .shuffle-button:hover {
+            background-color: #218838;
+        }
+
+        /* Cuadro de respuesta */
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            resize: none;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        /* Resultados de las respuestas */
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        /* Correcto en verde (ahora con texto oscuro para mejor visibilidad) */
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+            border: 2px solid #28a745;
+        }
+
+        .corrects{
+            background-color: #d4edda;
+            color: #155724;
+            border: 2px solid #28a745;
+            text-align: left !important;
+            font-size: 15px;
+            line-height: 1.5;  /* Mejora la legibilidad */
+            padding: 12px;
+        }
+
+        /* Incorrecto en rojo (ya estaba bien, pero lo mantengo aquí) */
+        .wrong {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 2px solid #dc3545;
+        }
+
+
+    </style> -->
+</head>
+
+
+
+<script>
+    
+    function shuffleQuestions() {
+        const container = document.querySelector(".container");
+        const questions = Array.from(document.querySelectorAll(".question"));
+        
+        // Desordenar las preguntas usando el algoritmo de Fisher-Yates
+        for (let i = questions.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            container.insertBefore(questions[j], questions[i]);
+        }
+    }
+</script>
+
+
+<body>
+    <div class="container">
+        <h1>Repaso de Preguntas Tema 7</h1>
+        <button class="button red" onclick="window.location.href='EAPO7-8.html'">Volver al menu de temas</button>
+        <button class="button shuffle-button" onclick="shuffleQuestions()">Desordenar Preguntas</button>
+
+        <!-- Pregunta 1 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>1. ¿Para qué están indicadas las ortesis pasivas de miembro superior?</h2>
+            <textarea id="q1-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q1-answer', '<br>- Lesiones traumáticas <br>- Problemas neurológicos que provocan desequilibrios musculares <br>- Síndromes dolorosos o inflamatorios articulares (artritis reumática, artrosis), óseos (osteonecrosis, pseudoartrosis) o de las partes blandas (sinovitis, lesiones ligamentosas) que afectan a la zona de la muñeca y mano.', 'q1-result')">Comprobar</button>
+            <div class="result" id="q1-result"></div>
+        </div>
+
+        <!-- Pregunta 2 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>2. En una ortesis inmovilizadora de muñeca a nivel de muñeca, ¿dónde expandimos y por qué?</h2>
+            <textarea id="q2-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q2-answer', 'A nivel de estiloides cubital para evitar el roce y el dolor.', 'q2-result')">Comprobar</button>
+            <div class="result" id="q2-result"></div>
+        </div>
+
+        <!-- Pregunta 3 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>3. Explica cuál es la posición funcional de la muñeca.</h2>
+            <textarea id="q3-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q3-answer', 'Extensión dorsal entre 30º y 35º, con ligera desviación cubital de entre 10º y 15º.', 'q3-result')">Comprobar</button>
+            <div class="result" id="q3-result"></div>
+        </div>
+
+        <!-- Pregunta 4 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>4. ¿Cuál es la posición del pulgar para que nos permita la prensión de objetos?</h2>
+            <textarea id="q4-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q4-answer', 'Oposición mira hacia el contrario del resto de los dedos y abducción separada del resto de los dedos.', 'q4-result')">Comprobar</button>
+            <div class="result" id="q4-result"></div>
+        </div>
+
+        <!-- Pregunta 5 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>5. Las ortesis inmovilizadoras de muñeca y pulgar en termoplástico. Indica su función.</h2>
+            <textarea id="q5-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q5-answer', 'Mantener la posición funcional de la columna pulgar, a la vez que mantienen la posición funcional de la muñeca.', 'q5-result')">Comprobar</button>
+            <div class="result" id="q5-result"></div>
+        </div>
+
+        <!-- Pregunta 6 - Opción múltiple (una respuesta correcta) -->
+        <div class="question tema-1">
+            <h2>6. Sobre las indicaciones de las ortesis inmovilizadoras de muñeca y pulgar en termoplástico. Señala la incorrecta.</h2>
+            <ul class="options">
+                <li><input type="radio" name="q6" value="a"> Procesos que requieran inmovilización de la muñeca y de la articulación trapeciometacarpiana e interfalángica del pulgar.</li>
+                <li><input type="radio" name="q6" value="b"> Fracturas de las estructuras de la columna del pulgar: escafoides, trapecio-metacarpiana.</li>
+                <li><input type="radio" name="q6" value="c"> Traumatismos del primer metatarsiano</li>
+                <li><input type="radio" name="q6" value="d"> Tendinitis de muñeca y pulgar.</li>
+                <li><input type="radio" name="q6" value="e"> Poscirugía de muñeca y pulgar.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('q6', 'c', 'q6-result')">Comprobar</button>
+            <div class="result" id="q6-result"></div>
+        </div>
+
+        <!-- Pregunta 7 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>7. Función de la ortesis pasiva de muñeca-mano-dedos.</h2>
+            <textarea id="q7-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q7-answer', 'Inmovilizar las articulaciones de muñeca, mano y dedos en la posición deseada, generalmente la posición funcional.', 'q7-result')">Comprobar</button>
+            <div class="result" id="q7-result"></div>
+        </div>
+
+        <!-- Pregunta 8 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>8. Mecanismos de acción de la ortesis pasiva de muñeca-mano-dedos.</h2>
+            <textarea id="q8-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q8-answer', 'La rigidez del material y su adaptación a la forma mantienen las articulaciones de la muñeca y de la mano en la posición deseada.', 'q8-result')">Comprobar</button>
+            <div class="result" id="q8-result"></div>
+        </div>
+
+        <!-- Pregunta 9 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>9. P.N.T para la confección de ortesis pasiva de muñeca y mano.</h2>
+            <textarea id="q9-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q9-answer', 'Toma de medidas, toma de molde, llenado, rectificado, termomoldeado, recorte, prueba y acabado.', 'q9-result')">Comprobar</button>
+            <div class="result" id="q9-result"></div>
+        </div>
+
+        <!-- Pregunta 10 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>10. En el protocolo de medidas para la fabricación de una ortesis pasiva de muñeca y mano, ¿qué medidas tomaremos?</h2>
+            <textarea id="q10-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q10-answer', '<br>- Perímetros de: muñeca, tercio medio y proximal de antebrazo. <br>- Longitud desde tercio proximal de antebrazo hasta muñeca y hasta articulación metacarpo-falángica. <br>- Diámetros a nivel de tercio proximal de antebrazo, muñeca y palma de la mano.', 'q10-result')">Comprobar</button>
+            <div class="result" id="q10-result"></div>
+        </div>
+
+        <!-- Pregunta 11 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>11. Para la toma del molde de una ortesis pasiva de muñeca y mano, ¿qué y cómo vendaremos?</h2>
+            <textarea id="q11-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q11-answer', 'Desde los dedos, cubriendo la articulación metacarpo-falángica, hasta el tercio proximal del antebrazo, asegurándonos de que el paciente mantiene la posición funcional de muñeca.', 'q11-result')">Comprobar</button>
+            <div class="result" id="q11-result"></div>
+        </div>
+
+        <!-- Pregunta 12 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>12. En la toma del molde para una ortesis pasiva de muñeca y mano, si se trata de una fractura. ¿Cómo se debe tomar el molde?</h2>
+            <textarea id="q12-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q12-answer', 'Es conveniente que se realice la toma de molde en posición de prono-supinación neutra de muñeca.', 'q12-result')">Comprobar</button>
+            <div class="result" id="q12-result"></div>
+        </div>
+
+        <!-- Pregunta 13 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>13. En el rectificado de la ortesis pasiva de muñeca y mano, ¿dónde aumentaremos la escayola, cuánto y qué forma debe de tener?</h2>
+            <textarea id="q13-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q13-answer', '1cm aprox en la estiloides cubital formando un óvalo.', 'q13-result')">Comprobar</button>
+            <div class="result" id="q13-result"></div>
+        </div>
+
+        <!-- Pregunta 14 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>14. En el recorte de la ortesis pasiva de muñeca y mano. Describe la forma.</h2>
+            <textarea id="q14-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q14-answer', '<br>- Alcanzar hasta las articulaciones metacarpo-falángicas. <br>- Dejar libre el pulgar. <br>- Cubrir los dos tercios anteriores del antebrazo.', 'q14-result')">Comprobar</button>
+            <div class="result" id="q14-result"></div>
+        </div>
+
+        <!-- Pregunta 15 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>15. Indicaciones de la férula pasiva para las articulaciones MF.</h2>
+            <textarea id="q15-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q15-answer', '<br>- En diversas lesiones nerviosas, tendinitis, artritis, artrosis... de articulación metacarpo-falángica. <br>- Inmovilización postraumática de articulaciones metacarpo-falángicas. <br>- Limitación postquirúrgica de la movilidad de las articulaciones metacarpo-falángicas.', 'q15-result')">Comprobar</button>
+            <div class="result" id="q15-result"></div>
+        </div>
+
+        <!-- Pregunta 16 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>16. Mecanismos de acción de la férula pasiva para las articulaciones MF.</h2>
+            <textarea id="q16-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q16-answer', 'La ortesis limita o impide la movilidad de las articulaciones metacarpo-falángicas sobre las que se aplica.', 'q16-result')">Comprobar</button>
+            <div class="result" id="q16-result"></div>
+        </div>
+
+        <!-- Pregunta 17 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>17. Indicaciones de la ortesis pasiva de antebrazo.</h2>
+            <textarea id="q17-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q17-answer', 'Inmovilización tras uso de escayola, post-fractura de cúbito y radio. Pseudoartrosis de cúbito y radio. Lesiones de partes blandas del antebrazo.', 'q17-result')">Comprobar</button>
+            <div class="result" id="q17-result"></div>
+        </div>
+
+        <!-- Pregunta 18 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>18. En la ortesis pasiva de codo sin articulación, explica la posición funcional del codo.</h2>
+            <textarea id="q18-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q18-answer', 'Flexión de 90º con prono-supinación neutra del antebrazo (pulgar hacia arriba).', 'q18-result')">Comprobar</button>
+            <div class="result" id="q18-result"></div>
+        </div>
+
+        <!-- Pregunta 19 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>19. Función del brace de húmero.</h2>
+            <textarea id="q19-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q19-answer', '<br>- Inmovilización de los fragmentos óseos del húmero. <br>- Control de las cargas mecánicas en la fractura. <br>- Potenciación de la consolidación de la fractura.', 'q19-result')">Comprobar</button>
+            <div class="result" id="q19-result"></div>
+        </div>
+
+        <!-- Pregunta 20 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>20. Define qué es un brace articulado.</h2>
+            <textarea id="q20-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q20-answer', 'El brace articulado es una ortesis de miembro superior, construida en termoplástico formada por dos segmentos: uno braquial y otro antebraquial unidos entre sí por dos barras de duraluminio, una medial y otra lateral, que se articulan a nivel del codo.', 'q20-result')">Comprobar</button>
+            <div class="result" id="q20-result"></div>
+        </div>
+
+                <!-- Pregunta 21 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>21. Define la articulación controlable en flexo-extensión para un brace articulado.</h2>
+            <textarea id="q21-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q21-answer', 'Incorpora un sistema de limitación de los movimientos de flexión y extensión, contiene unos topes que puedan variar el rango del movimiento.', 'q21-result')">Comprobar</button>
+            <div class="result" id="q21-result"></div>
+        </div>
+
+        <!-- Pregunta 22 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>22. ¿Qué efectos fundamentales produce el brace articulado?</h2>
+            <textarea id="q22-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q22-answer', 'Inmovilización/estabilización del segmento lesionado y movilización/recuperación del rango de movimiento del codo.', 'q22-result')">Comprobar</button>
+            <div class="result" id="q22-result"></div>
+        </div>
+
+        <!-- Pregunta 23 - Opción múltiple (una respuesta correcta) -->
+        <div class="question tema-1">
+            <h2>23. Señala la incorrecta.</h2>
+            <ul class="options">
+                <li><input type="radio" name="q23" value="a"> La finalidad de la ortesis de codo mediante tornillo sin fin será ayudar a recuperar el rango de movimiento de flexión o extensión parcial.</li>
+                <li><input type="radio" name="q23" value="b"> Su finalidad de la ortesis de codo mediante tornillo sin fin ya no será tanto estabilizar la fractura, sino alcanzar un grado de extensión o flexión de codo lo más completo posible.</li>
+                <li><input type="radio" name="q23" value="c"> Una de las finalidades del brace articulado será ayudar a alcanzar el parámetro normal de movimiento de flexión y extensión del codo.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('q23', 'a', 'q23-result')">Comprobar</button>
+            <div class="result" id="q23-result"></div>
+        </div>
+
+        <!-- Pregunta 25 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>25. Posición que debe adoptar el brazo del paciente para la toma de molde de brace articulado de húmero.</h2>
+            <textarea id="q24-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q24-answer', 'Flexión de codo a 90º y prono-supinación neutra de antebrazo.', 'q24-result')">Comprobar</button>
+            <div class="result" id="q24-result"></div>
+        </div>
+
+        <!-- Pregunta 25 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>26. En la rectificación del molde en positivo de un brace articulado, ¿dónde debemos aplanar y dónde aumentaremos la escayola?</h2>
+            <textarea id="q25-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q25-answer', 'Aumentar escayola en las estiloides radial y cubital, y aplanar ligeramente las zonas del brazo y la parte anterior del antebrazo.', 'q25-result')">Comprobar</button>
+            <div class="result" id="q25-result"></div>
+        </div>
+
+        <!-- Pregunta 27 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>27. ¿Para qué están indicadas las ortesis funcionales dinámicas de miembro superior?</h2>
+            <textarea id="q27-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q27-answer', 'En personas con dificultad para los movimientos de la mano y con debilidad muscular.', 'q27-result')">Comprobar</button>
+            <div class="result" id="q27-result"></div>
+        </div>
+
+        <!-- Pregunta 28 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>28. Indica la función de la ortesis activa para el dedo pulgar.</h2>
+            <textarea id="q28-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q28-answer', 'Facilita la abducción y oposición del pulgar que es deficitaria.', 'q28-result')">Comprobar</button>
+            <div class="result" id="q28-result"></div>
+        </div>
+
+        <!-- Pregunta 29 - Opción múltiple (respuestas múltiples permitidas) -->
+        <div class="question tema-1">
+            <h2>29. Sobre la ortesis activa extensora de las articulaciones MF, señala la o las falsas.</h2>
+            <ul class="options">
+                <li><input type="checkbox" name="q29" value="a"> Cuanto mayor sea la tensión del elástico, mayor será la fuerza flexora.</li>
+                <li><input type="checkbox" name="q29" value="b"> El soporte palmar de las falanges está unido al soporte dorsal con dos alambres de acero, en forma de L invertida.</li>
+                <li><input type="checkbox" name="q29" value="c"> Está indicada después de reparaciones tendinosas a nivel de metacarpofalángicas.</li>
+                <li><input type="checkbox" name="q29" value="d"> La función es aumentar y controlar la capacidad de flexión de las articulaciones metacarpo-falángicas.</li>
+            </ul>
+            <button class="button" onclick="checkMultiAnswerQuestion('q29', ['a', 'd'], 'q29-result')">Comprobar</button>
+            <div class="result" id="q29-result"></div>
+        </div>
+
+        <!-- Pregunta 30 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>30. Paciente de 65 años con limitación de la flexión de las articulaciones metacarpo-falángicas, ¿qué ortesis está indicada para esta patología?</h2>
+            <textarea id="q30-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q30-answer', 'Ortesis activa flexora MF.', 'q30-result')">Comprobar</button>
+            <div class="result" id="q30-result"></div>
+        </div>
+
+        <!-- Pregunta 31 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>31. Indicaciones de la ortesis activa flexora MF con aditamento extensor de dedos</h2>
+            <textarea id="q31-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q31-answer', 'Después de fracturas o lesiones por aplastamiento de la mano y dedos, con pérdida de la capacidad de flexionar a nivel metacarpo-falángica y de extender los dedos.', 'q31-result')">Comprobar</button>
+            <div class="result" id="q31-result"></div>
+        </div>
+
+        <!-- Pregunta 32 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>32. Componentes de la ortesis activa de muñeca. </h2>
+            <textarea id="q32-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q32-answer', '<br>- Un aro de duraluminio almohadillado antebraquial ventral. <br>- Un aro de duraluminio almohadillado dorsal de muñeca. <br>- Un apoyo palmar a nivel de los metacarpianos', 'q32-result')">Comprobar</button>
+            <div class="result" id="q32-result"></div>
+        </div>
+
+        <!-- Pregunta 33 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>33. Describe la ortesis activa flexora MF con estabilización de muñeca.</h2>
+            <textarea id="q33-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q33-answer', 'Se trata de una ortesis activa, compuesta por un apoyo antebraquial de termoplástico que se extiende por el antebrazo, con una prolongación metálica moldeable hasta la palma.', 'q33-result')">Comprobar</button>
+            <div class="result" id="q33-result"></div>
+        </div>
+
+        <!-- Pregunta 34 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>34. Mecanismos de acción de la ortesis activa extensora MF con estabilización demuñeca.</h2>
+            <textarea id="q34-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q34-answer', 'Inmoviliza la articulación de la muñeca mediante un brazalete o muñequera pasiva que se extiende hasta la mano y mediante los elásticos favorece activamente los movimientos de las articulaciones metacarpo-falángicas.', 'q34-result')">Comprobar</button>
+            <div class="result" id="q34-result"></div>
+        </div>
+
+        <!-- Pregunta 35 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>35. Finalidad de la Ortesis activa extensora Mf con aditamento extensor de dedos.</h2>
+            <textarea id="q35-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q35-answer', 'Facilitar el movimiento extensor de mano y dedos, perdido, generalmente, como consecuencia de una lesión en el nervio radial', 'q35-result')">Comprobar</button>
+            <div class="result" id="q35-result"></div>
+        </div>
+
+        <!-- Pregunta 36 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>36. Función de los dediles de tracción de la ortesis activa flexora MF con aditamento flexor de dedos.</h2>
+            <textarea id="q36-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q36-answer', 'Al extremo de los dediles se sujeta un elástico que se anuda al extremo proximal de la ortesis de manera que tracciona los dedos hacía la flexión.', 'q36-result')">Comprobar</button>
+            <div class="result" id="q36-result"></div>
+        </div>
+
+        <!-- Pregunta 37 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>37. Señala los objetivos fundamentales de la ortesis para la parálisis de los nervios periféricos.</h2>
+            <textarea id="q37-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q37-answer', 'Recuperar función perdida, prevenir deformidades, rehabilitar los músculos afectado lo antes posible y proteger la piel.', 'q37-result')">Comprobar</button>
+            <div class="result" id="q37-result"></div>
+        </div>
+
+        <!-- Pregunta 38 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>39. Finalidad de la ortesis para la parálisis del nervio mediano.</h2>
+            <textarea id="q38-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q38-answer', 'Facilitar la abducción y oposición del pulgar, mejorando la capacidad prensora.', 'q38-result')">Comprobar</button>
+            <div class="result" id="q38-result"></div>
+        </div>
+
+        <!-- Pregunta 39 - Respuesta abierta -->
+        <div class="question tema-1">
+            <h2>40. La ortesis para la parálisis del nervio cubital cuando la garra es irreductible¿Que debe incluir?</h2>
+            <textarea id="q39-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q39-answer', 'Deberá incluir un dispositivo de tracción sobre las falanges proximales, para realizar la extensión de los dedos', 'q39-result')">Comprobar</button>
+            <div class="result" id="q39-result"></div>
+        </div>
+        <button class="button red" onclick="window.location.href='EAPO7-8.html'">Volver al menu de temas</button>
+
+
+    </div>
+
+    <script>
+        function checkQuestion(name, correctAnswer, resultId) {
+            const selected = document.querySelector(`input[name="${name}"]:checked`);
+            const resultDiv = document.getElementById(resultId);
+            if (!selected) {
+                resultDiv.textContent = 'Por favor, selecciona una respuesta.';
+                resultDiv.className = 'result wrong';
+                return;
+            }
+
+            if (selected.value === correctAnswer) {
+                resultDiv.textContent = 'Correcto.';
+                resultDiv.className = 'result correct';
+            } else {
+                resultDiv.textContent = `Incorrecto. La respuesta correcta es: ${correctAnswer}.`;
+                resultDiv.className = 'result wrong';
+            }
+        }
+
+        function checkDevelopment(answerId, correctAnswer, resultId) {
+            const userAnswer = document.getElementById(answerId).value;
+            const resultDiv = document.getElementById(resultId);
+            resultDiv.innerHTML = `<strong><u>Tu respuesta:</u></strong> ${userAnswer}<br><strong><u>Respuesta correcta:</u></strong> ${correctAnswer}`;
+            resultDiv.className = 'result corrects';
+        }
+
+
+        function checkMultiAnswerQuestion(name, correctAnswers, resultId) {
+            const selected = Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(input => input.value);
+            const resultDiv = document.getElementById(resultId);
+
+            const isCorrect = correctAnswers.every(answer => selected.includes(answer)) &&
+                            selected.every(answer => correctAnswers.includes(answer));
+
+            if (selected.length === 0) {
+                resultDiv.textContent = 'Por favor, selecciona al menos una respuesta.';
+                resultDiv.className = 'result wrong';
+            } else if (isCorrect) {
+                resultDiv.textContent = 'Correcto. Las respuestas son: ' + correctAnswers.join(', ') + '.';
+                resultDiv.className = 'result correct';
+            } else {
+                resultDiv.textContent = 'Incorrecto. Las respuestas correctas son: ' + correctAnswers.join(', ') + '.';
+                resultDiv.className = 'result wrong';
+            }
+        }
+
+
+    </script>
+</body>
+</html>
+

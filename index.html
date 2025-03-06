@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repaso de Preguntas</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 900px;
+            margin-top: 50px;
+            padding: 25px;
+            background: #ffffff;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        /* Títulos */
+        h1 {
+            font-size: 30px;
+            color: #444;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 30px;
+            color: #444;
+            font-weight: bold;
+            overflow: hidden;
+            white-space: nowrap;
+            display: inline-block;
+            border-right: 2px solid #444;
+            animation: escribir 3s steps(30, end) forwards, parpadeo 0.7s infinite;
+            max-width: 0;
+        }
+
+        /* Animación de escritura */
+        @keyframes escribir {
+            from {
+                max-width: 0;
+            }
+            to {
+                max-width: 100%;
+            }
+        }
+
+        /* Efecto de parpadeo del cursor */
+        @keyframes parpadeo {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        /* Botón principal */
+        .button {
+            display: block;
+            width: fit-content;
+            margin: 10px auto;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .button.yellow {
+            background-color: #FFC107; /* Amarillo */
+            border: none;
+            color: black;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .button.yellow:hover {
+            background-color: #D39E00; /* Amarillo más oscuro al pasar el mouse */
+        }
+
+        .button.morado {
+            background-color: #6f42c1; /* Morado */
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+            width: 80px; /* Ancho fijo */
+            height: 40px; /* Alto fijo */
+        }
+
+        .button.morado:hover {
+            background-color: #5a32a3; /* Morado más oscuro */
+        }
+        .button.rosa {
+            background-color: #e83e8c; /* Rosa */
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+            width: 80px; /* Ancho fijo */
+            height: 40px; /* Alto fijo */
+        }
+
+        .button.rosa:hover {
+            background-color: #c82368; /* Rosa más oscuro al pasar el mouse */
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1><u>Repaso de Preguntas</u></h1>
+        <h2>¿Qué asignatura quieres respasar?</h2>
+        <button class="button" onclick="window.location.href='/EAPO/EAPO.html'">EAPO</button>
+        <button class="button yellow" onclick="window.location.href='/EAPE/EAPE.html'">EAPE</button>
+        <button class="button morado" onclick="window.location.href='APS/APS-Tema5.html'">APS</button>
+        <button class="button rosa" onclick="window.location.href='./AOP/AOPFinal.html'">AOP</button>
+
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/AOP.css">
+    <title>Repaso de Preguntas</title>
+</head>
+
+
+
+<script>
+
+    function shuffleQuestions() {
+        const container = document.querySelector(".container");
+        const questions = Array.from(document.querySelectorAll(".question"));
+        
+        // Desordenar las preguntas usando el algoritmo de Fisher-Yates
+        for (let i = questions.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            container.insertBefore(questions[j], questions[i]);
+        }
+    }
+</script>
+
+
+<body>
+    <div class="container">
+        <h1>Repaso de Preguntas AOP</h1>
+        <button class="button red" onclick="window.location.href='../index.html'">Volver al menu de temas</button>
+        <button class="button shuffle-button" onclick="shuffleQuestions()">Desordenar Preguntas</button>
+
+        <!-- Pregunta 1 -->
+        <div class="question">
+            <img src="./imagenes/Imagen1.jpg" alt="Pregunta 1" class="imagen-centrada">
+            <textarea id="q1-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q1-answer', '<br>- Nombre: Discos protectores <br> - Función: Proteger del roce y/o la presión pequeñas zonas digitales o metatarsofalángicas, evitan la aparición de hiperqueratosis en zonas de presióny suelen aliviar la zona con un resultado aceptable, pero pueden llegar a originar una succión de los tejidos recogidos en la fenestración.', 'q1-result')">Comprobar</button>
+            <div class="result" id="q1-result"></div>
+        </div>
+
+        <!-- Pregunta 2 -->
+        <div class="question">
+            <div class="imagenes-centradas">
+                <img src="./imagenes/Imagen2-1.jpg" alt="Pregunta 2" class="imagen-centrada">
+                <img src="./imagenes/Imagen2-2.jpg" alt="Pregunta 2" class="imagen-centrada">
+            </div>
+            <textarea id="q2-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q2-answer', '<br>- Nombre: Protector de juanete de sastre<br> - Función: Se coloca de forma que la almohadilla quede inmediatamente detrás de la prominencia y no encima de la misma, para evitar la presión dolorosa sobre la articulación.', 'q2-result')">Comprobar</button>
+            <div class="result" id="q2-result"></div>
+        </div>
+
+        <!-- Pregunta 3 -->
+        <div class="question">
+            <img src="./imagenes/Imagen3.jpg" alt="Pregunta 3" class="imagen-centrada">
+            <textarea id="q3-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q3-answer', '<br>- Nombre: Separador interdigital<br> - Función: Separan los dedos que se desvían en abducción-aducción y alivian las compresiones derivadas de esta posición incorrecta. Asimismo contribuyen a la alineación de las desviaciones laterales de los dedos.', 'q3-result')">Comprobar</button>
+            <div class="result" id="q3-result"></div>
+        </div>
+
+        <!-- Pregunta 4 -->
+        <div class="question">
+            <div class="imagenes-centradas">
+                <img src="./imagenes/Imagen4-1.jpg" alt="Pregunta 4" class="imagen-centrada">
+                <img src="./imagenes/Imagen4-2.jpg" alt="Pregunta 4" class="imagen-centrada">
+            </div>
+            <textarea id="q4-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q4-answer', '<br>- Nombre: Almohadillas metatarsales<br> - Función: Dan confort a zonas de hiperapoyo sin conseguir descargar la zona. Útiles si la hiperpresión es por falta de tejido adiposo subcapital.', 'q4-result')">Comprobar</button>
+            <div class="result" id="q4-result"></div>
+        </div>
+
+        <!-- Pregunta 5 -->
+        <div class="question">
+            <img src="./imagenes/Imagen5.jpg" alt="Pregunta 5" class="imagen-centrada">
+            <textarea id="q5-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q5-answer', '<br>- Nombre: Corrector hallux valgus<br> - Función: Se utiliza para evitar que la deformidad avance y especialmente después de los tratamientos postquirúrgicos para evitar recaídas. Se utiliza por la noche, ya que no admite la carga que se genera en la bipedestación y deambulación.', 'q5-result')">Comprobar</button>
+            <div class="result" id="q5-result"></div>
+        </div>
+
+        <!-- Pregunta 6 -->
+        <div class="question">
+            <div class="imagenes-centradas">
+                <img src="./imagenes/Imagen6-1.jpg" alt="Pregunta 6" class="imagen-centrada">
+                <img src="./imagenes/Imagen6-2.png" alt="Pregunta 6" class="imagen-centrada">
+            </div>
+            <textarea id="q6-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q6-answer', '<br>- Nombre: Almohadilla plantar con placas rígidas<br> - Función: Este dispositivo se sujeta con un anillo elástico ajustable al dedo medio. El anillo tira del dedo hacia abajo, ejerciendo una tracción suave o fuerte sobre la articulación y así se corrige la deformidad en forma de garra.', 'q6-result')">Comprobar</button>
+            <div class="result" id="q6-result"></div>
+        </div>
+
+        <!-- Pregunta 7 -->
+        <div class="question">
+            <img src="./imagenes/Imagen7.png" alt="Pregunta 7" class="imagen-centrada">
+            <textarea id="q7-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q7-answer', '<br>- Nombre: Barra metatarsiana<br> - Función: Transferir las presiones de las cabezas a las diáfisis,  aliviando la presión en la cabeza de los metatarsianos.', 'q7-result')">Comprobar</button>
+            <div class="result" id="q7-result"></div>
+        </div>
+
+        <!-- Pregunta 8 -->
+        <div class="question">
+            <img src="./imagenes/Imagen8.png" alt="Pregunta 8" class="imagen-centrada">
+            <textarea id="q8-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q8-answer', '<br>- Nombre: Suela en balancín<br> - Función: Implica una descarga de las presiones en antepié. Se utilizan para  compensar la inmovilidad debida a una rigidez articular de tarso o tobillo.  ', 'q8-result')">Comprobar</button>
+            <div class="result" id="q8-result"></div>
+        </div>
+
+        <!-- Pregunta 9 -->
+        <div class="question">
+            <img src="./imagenes/Imagen9.png" alt="Pregunta 9" class="imagen-centrada">
+            <textarea id="q9-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q9-answer', '<br>- Nombre: Tacón pico de pato<br> - Función: Mejora la  estabilidad. Indicado en casos de varo o valgo de talón muy acentuados. Suele ir  acompañada de una plantilla semirrígida en el interior del zapato. ', 'q9-result')">Comprobar</button>
+            <div class="result" id="q9-result"></div>
+        </div>
+
+        <!-- Pregunta 10 -->
+        <div class="question">
+            <img src="./imagenes/Imagen10.png" alt="Pregunta 10" class="imagen-centrada">
+            <textarea id="q10-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q10-answer', '<br>- Nombre: Tacón amortiguador de Sach<br> - Función: Actúa amortiguando los golpes del talón con el suelo durante la marcha y  simula la plantiflexión por medio de un material más blando como el caucho,  manteniendo así la estabilidad durante la bipedestación y la marcha. ', 'q10-result')">Comprobar</button>
+            <div class="result" id="q10-result"></div>
+        </div>
+        
+
+
+        <button class="button red" onclick="window.location.href='../index.html'">Volver al menu de temas</button>
+
+
+    </div>
+
+    <script>
+        function checkQuestion(name, correctAnswer, resultId) {
+            const selected = document.querySelector(`input[name="${name}"]:checked`);
+            const resultDiv = document.getElementById(resultId);
+            if (!selected) {
+                resultDiv.textContent = 'Por favor, selecciona una respuesta.';
+                resultDiv.className = 'result wrong';
+                return;
+            }
+
+            if (selected.value === correctAnswer) {
+                resultDiv.textContent = 'Correcto.';
+                resultDiv.className = 'result correct';
+            } else {
+                resultDiv.textContent = `Incorrecto. La respuesta correcta es: ${correctAnswer}.`;
+                resultDiv.className = 'result wrong';
+            }
+        }
+
+        function checkDevelopment(answerId, correctAnswer, resultId) {
+            const userAnswer = document.getElementById(answerId).value;
+            const resultDiv = document.getElementById(resultId);
+            resultDiv.innerHTML = `<strong><u>Tu respuesta:</u></strong> ${userAnswer}<br><strong><u>Respuesta correcta:</u></strong> ${correctAnswer}`;
+            resultDiv.className = 'result corrects';
+        }
+
+
+        function checkMultiAnswerQuestion(name, correctAnswers, resultId) {
+            const selected = Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(input => input.value);
+            const resultDiv = document.getElementById(resultId);
+
+            const isCorrect = correctAnswers.every(answer => selected.includes(answer)) &&
+                            selected.every(answer => correctAnswers.includes(answer));
+
+            if (selected.length === 0) {
+                resultDiv.textContent = 'Por favor, selecciona al menos una respuesta.';
+                resultDiv.className = 'result wrong';
+            } else if (isCorrect) {
+                resultDiv.textContent = 'Correcto. Las respuestas son: ' + correctAnswers.join(', ') + '.';
+                resultDiv.className = 'result correct';
+            } else {
+                resultDiv.textContent = 'Incorrecto. Las respuestas correctas son: ' + correctAnswers.join(', ') + '.';
+                resultDiv.className = 'result wrong';
+            }
+        }
+
+
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../CSS/EAPO.css">
+    <title>Repaso de Preguntas</title>
+    <!-- <style>
+        /* Estilos generales */
+        /* Estiliza los radio buttons y checkboxes */
+        input[type="radio"], input[type="checkbox"] {
+            appearance: none; /* Oculta el estilo por defecto */
+            width: 20px;
+            height: 20px;
+            border: 2px solid #007BFF;
+            border-radius: 50%; /* Hace los radio buttons redondos */
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+            vertical-align: middle;
+            background-color: white;
+            transition: 0.3s all ease;
+        }
+
+        /* Efecto al estar seleccionado */
+        input[type="radio"]:checked, input[type="checkbox"]:checked {
+            background-color: #007BFF;
+            border: 2px solid #0056b3;
+        }
+
+        /* Agrega un punto interno cuando está seleccionado */
+        input[type="radio"]::before, input[type="checkbox"]::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: 0.3s all ease;
+        }
+
+        /* Muestra el punto interno cuando está seleccionado */
+        input[type="radio"]:checked::before, input[type="checkbox"]:checked::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:#eef2f3;
+            color: #333;
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 25px;
+            background: #ffffff;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+
+        /* Títulos */
+        h1 {
+            text-align: center;
+            font-size: 30px;
+            color: #444; /* Cambiado a un tono más neutro */
+            font-weight: bold;
+        }
+
+        /* Estilos de las preguntas */
+        .question {
+            padding: 15px;
+            margin-bottom: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Opciones de respuestas */
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            margin: 10px 0;
+        }
+
+        /* Botón principal */
+        .button {
+            display: block;
+            width: fit-content;
+            margin: 10px auto;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+        .button.red {
+            background-color: #DC3545; /* Rojo */
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .button.red:hover {
+            background-color: #B02A37; /* Rojo más oscuro al pasar el mouse */
+        }
+
+
+        /* Hover sobre los botones en lugar de las preguntas */
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Botón de desordenar preguntas */
+        .shuffle-button {
+            background-color: #28a745;
+        }
+
+        .shuffle-button:hover {
+            background-color: #218838;
+        }
+
+        /* Cuadro de respuesta */
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            resize: none;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        /* Resultados de las respuestas */
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        /* Correcto en verde (ahora con texto oscuro para mejor visibilidad) */
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+            border: 2px solid #28a745;
+        }
+
+        .corrects{
+            background-color: #d4edda;
+            color: #155724;
+            border: 2px solid #28a745;
+            text-align: left !important;
+            font-size: 15px;
+            line-height: 1.5;  /* Mejora la legibilidad */
+            padding: 12px;
+        }
+
+        /* Incorrecto en rojo (ya estaba bien, pero lo mantengo aquí) */
+        .wrong {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 2px solid #dc3545;
+        }
+
+
+    </style> -->
+</head>
+
+
+
+<script>
+
+    function shuffleQuestions() {
+        const container = document.querySelector(".container");
+        const questions = Array.from(document.querySelectorAll(".question"));
+        
+        // Desordenar las preguntas usando el algoritmo de Fisher-Yates
+        for (let i = questions.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            container.insertBefore(questions[j], questions[i]);
+        }
+    }
+</script>
+
+
+<body>
+    <div class="container">
+        <h1>Repaso de Preguntas Tema 8</h1>
+        <button class="button red" onclick="window.location.href='EAPO7-8.html'">Volver al menu de temas</button>
+        <button class="button shuffle-button" onclick="shuffleQuestions()">Desordenar Preguntas</button>
+        <!-- Pregunta 1 - Respuesta abierta -->
+        <div class="question">
+            <h2>1. Función del estribo</h2>
+            <textarea id="p1-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p1-answer', '<br>- Sirve de sistema de enganche del zapato o plantilla a la ortesis. <br>- Forma parte del sistema de articulación de tobillo.', 'p1-result')">Comprobar</button>
+            <div class="result" id="p1-result"></div>
+        </div>
+
+        <!-- Pregunta 2 - Respuesta abierta -->
+        <div class="question">
+            <h2>2. ¿Qué 3 partes componen el estribo?</h2>
+            <textarea id="p2-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p2-answer', '<br>- Base <br>- Aleta <br>- Componente articular', 'p2-result')">Comprobar</button>
+            <div class="result" id="p2-result"></div>
+        </div>
+
+        <!-- Pregunta 3 - Respuesta abierta -->
+        <div class="question">
+            <h2>3. Describe la aleta de un estribo</h2>
+            <textarea id="p3-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p3-answer', 'Cada una de las prolongaciones a cada lado de la base se dobla en forma de U para abarcar al tobillo.', 'p3-result')">Comprobar</button>
+            <div class="result" id="p3-result"></div>
+        </div>
+
+        <!-- Pregunta 4 - Respuesta abierta -->
+        <div class="question">
+            <h2>4. ¿Dónde queda el eje articular del estribo?</h2>
+            <textarea id="p4-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p4-answer', 'Se encuentra justo por debajo del maléolo interno.', 'p4-result')">Comprobar</button>
+            <div class="result" id="p4-result"></div>
+        </div>
+
+        <!-- Pregunta 5 - Respuesta abierta -->
+        <div class="question">
+            <h2>5. Enumera los distintos tipos de estribos en función de la articulación de tobillo.</h2>
+            <textarea id="p5-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p5-answer', '<br>- Estribo estándar <br>- Estribo con asistencia a la dorsiflexión <br>- Estribo de doble acción', 'p5-result')">Comprobar</button>
+            <div class="result" id="p5-result"></div>
+        </div>
+
+        <!-- Pregunta 6 - Respuesta abierta -->
+        <div class="question">
+            <h2>6. En el estribo estándar para permitir algún grado de movimiento, ¿ Qué debemos hacer?</h2>
+            <textarea id="p6-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p6-answer', 'Se debe limar los extremos del estribo anterior y posterior. ', 'p6-result')">Comprobar</button>
+            <div class="result" id="p6-result"></div>
+        </div>
+
+        <!-- Pregunta 7 - Respuesta abierta -->
+        <div class="question">
+            <h2>7. Enumera los tipos de estribos más característicos en función de su forma.</h2>
+            <textarea id="p7-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p7-answer', '<br>- Estribos partidos <br>- Estribos partidos con placa de pinza <br>- Estribos partidos con placa de pinza de movimiento libre', 'p7-result')">Comprobar</button>
+            <div class="result" id="p7-result"></div>
+        </div>
+
+        <!-- Pregunta 7 - Respuesta abierta -->
+        <div class="question">
+            <h2>8. ¿En qué casos utilizaremos los estribos con placa de pinza de movimiento libre?</h2>
+            <textarea id="p8-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p8-answer', 'Para personas con cierto control de tobillo en quienes no es preciso limitar la flexión plantar o dorsal del pie.', 'p8-result')">Comprobar</button>
+            <div class="result" id="p8-result"></div>
+        </div>
+
+        <!-- Pregunta 9 - Respuesta abierta -->
+        <div class="question">
+            <h2>9. Función de las articulaciones de tobillo</h2>
+            <textarea id="p9-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p9-answer', '<br>- Mecanismo de enganchae entre el estribo y las barras de prolongación de pantorrilla. <br>- Actuar como sistema de articulación.', 'p9-result')">Comprobar</button>
+            <div class="result" id="p9-result"></div>
+        </div>
+
+        <!-- Pregunta 10 - Respuesta abierta ---------------------------------------->
+        <!-- Pregunta 10 - Opción múltiple (una respuesta correcta) -->
+        <div class="question">
+            <h2>10. Sobre la articulación de tobillo. Señala la falsa</h2>
+            <ul class="options">
+                <li><input type="radio" name="q100" value="a"> Todos los modelos de articulación de tobillo encapsulan a la barra de prolongación de pantorrilla</li>
+                <li><input type="radio" name="q100" value="b"> Las articulaciones de tobillo son elementos que se sitúan a nivel de la articulación anatómica de tobillo.</li>
+                <li><input type="radio" name="q100" value="c"> La articulación de tobillo se une y se sujeta con el aro de pantorrilla mediante dos tornillos o mediante remaches de hierro o acero</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('q100', 'c', 'q100-result')">Comprobar</button>
+            <div class="result" id="q100-result"></div>
+        </div>
+
+        <!-- Pregunta 11 - Respuesta abierta -->
+        <div class="question">
+            <h2>11. En la articulación estándar ¿Como bloqueo el movimiento?</h2>
+            <textarea id="p11-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p11-answer', 'Dejando uno de los extremos del estribos sin limar', 'p11-result')">Comprobar</button>
+            <div class="result" id="p11-result"></div>
+        </div>
+
+        <!-- Pregunta 12 - Respuesta abierta -->
+        <div class="question">
+            <h2>12. ¿ Qué movimientos permiten las articulaciones de tobillo de doble acción?</h2>
+            <textarea id="p12-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p12-answer', 'Movimientos de flexión y extensión', 'p12-result')">Comprobar</button>
+            <div class="result" id="p12-result"></div>
+        </div>
+
+        <!-- Pregunta 13 - Respuesta abierta --------------------------------------->
+        <!-- Pregunta 13 - Opción múltiple (una respuesta correcta) -->
+        <div class="question">
+            <h2>13. Sobre las articulaciones de tobillo de doble acción. Señala la correcta.</h2>
+            <ul class="options">
+                <li><input type="radio" name="p13" value="a"> Tendremos que limar el estribo para graduar los grados de flexo- extensión</li>
+                <li><input type="radio" name="p13" value="b"> Cuando ambos tornillos están apretados, presionando contra el extremo superior del estribo, la articulación se desbloquea.</li>
+                <li><input type="radio" name="p13" value="c"> Si aflojamos el tornillo anterior, permitiremos realizar dorsiflexión del pie.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('p13', 'c', 'p13-result')">Comprobar</button>
+            <div class="result" id="p13-result"></div>
+        </div>
+
+        <!-- Pregunta 14 - Respuesta abierta -->
+        <div class="question">
+            <h2>14. ¿ En que ortesis se utiliza la articulación de tobillo de asistencia a la dorsiflexión?</h2>
+            <textarea id="p14-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p14-answer', 'Ortesis Klenzack', 'p14-result')">Comprobar</button>
+            <div class="result" id="p14-result"></div>
+        </div>
+
+        <!-- Pregunta 15 - Respuesta abierta -->
+        <div class="question">
+            <h2>15. ¿ Cuál es el objetivo de la articulación de tobillo de asistencia a la dorsiflexión?</h2>
+            <textarea id="p15-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p15-answer', 'Facilitar el movimiento de flexión dorsal que la persona con equinismo no puede realizar.', 'p15-result')">Comprobar</button>
+            <div class="result" id="p15-result"></div>
+        </div>
+
+        <!-- Pregunta 16 - Respuesta abierta -->
+        <div class="question">
+            <h2>16. ¿ En qué tipo de ortesis de utiliza la articulación de Tamarack?</h2>
+            <textarea id="p16-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p16-answer', 'Se utilizan como sistema de articulación de tobillo para ortesis termoplásticas pero también puede utilizarse para ortesis de codo', 'p16-result')">Comprobar</button>
+            <div class="result" id="p16-result"></div>
+        </div>
+
+        <!-- Pregunta 17 - Respuesta abierta -->
+        <div class="question">
+            <h2>17. Función de los Dummys</h2>
+            <textarea id="p17-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p17-answer', 'Son unos moldes que al hacer vacío sobre el plástico caliente moldeado, adquiere la forma de estos moldes, sin deformarse, formando una cápsula en la que encajaremos la articulación', 'p17-result')">Comprobar</button>
+            <div class="result" id="p17-result"></div>
+        </div>
+
+        <!-- Pregunta 18 - Respuesta abierta -->
+        <div class="question">
+            <h2>18. Indica para que pacientes puede ser más útil las articulaciones de Tamarack con asistencia variable.</h2>
+            <textarea id="p18-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p18-answer', 'Personas con evolución progresiva y requiere una variación en el grado de asistencia dorsiflexión.', 'p18-result')">Comprobar</button>
+            <div class="result" id="p18-result"></div>
+        </div>
+
+        <!-- Pregunta 19 - Respuesta abierta -->
+        <div class="question">
+            <h2>19. Diferencia entre la articulación de Tamarack y la articulación de Tamarack con asistencia variable</h2>
+            <textarea id="p19-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p19-answer', 'La Tamarack con asistencia variable incluye un mecanismo de regulación de la asistencia ala dorsiflexión.', 'p19-result')">Comprobar</button>
+            <div class="result" id="p19-result"></div>
+        </div>
+
+        <!-- Pregunta 20 - Respuesta abierta -------------------------------------->
+        <!-- Pregunta 20 - Opción múltiple (una respuesta correcta) -->
+        <div class="question">
+            <h2>20. Sobre las articulaciones mecánicas de rodilla innovadoras señala la correcta.</h2>
+            <ul class="options">
+                <li><input type="radio" name="p20" value="a">  La articulación de ratcher de bloqueo para su desbloqueo es necesario tirar de pestillo frontal hacia abajo.</li>
+                <li><input type="radio" name="p20" value="b">  La articulación con respuesta de Becker permite una flexión de rodilla en la fase de apoyo de hasta 18º</li>
+                <li><input type="radio" name="p20" value="c"> La articulación Fullstride, el cierre en gatillo se bloquea durante la fase debalanceo</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('p20', 'b', 'p20-result')">Comprobar</button>
+            <div class="result" id="p20-result"></div>
+        </div>
+
+        <!-- Pregunta 21 - Respuesta abierta -->
+        <div class="question">
+            <h2>21. ¿Como bloqueo y desbloqueo la Articulación de rodilla E- MAG Control de Otto Bock y como sabré que está bloqueado?</h2>
+            <textarea id="p21-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p21-answer', 'Se bloquea o desbloquea mediante un mando a distancia, y un pitido indica cuando está bloqueada', 'p21-result')">Comprobar</button>
+            <div class="result" id="p21-result"></div>
+        </div>
+
+        <!-- Pregunta 22 - Respuesta abierta -->
+        <div class="question">
+            <h2>22. ¿Cómo funciona la Articulación E-MAG Active?</h2>
+            <textarea id="p22-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p22-answer', 'Básicamente consiste en un sistema sensor inteligente que mide y calcula la posición de la pierna al caminar y bloquea o desbloquea la articulación ortésica de rodilla.', 'p22-result')">Comprobar</button>
+            <div class="result" id="p22-result"></div>
+        </div>
+
+        <!-- Pregunta 23 - Respuesta abierta -->
+        <div class="question">
+            <h2>23. Describe la articulación policéntrica de rodilla.</h2>
+            <textarea id="p23-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p23-answer', 'Dispositivo articular confeccionado en aluminio, que consta de dos ejes de articulación y dos barras de prolongación maleables, para sujetar al componente de pierna y de muslo.', 'p23-result')">Comprobar</button>
+            <div class="result" id="p23-result"></div>
+        </div>
+
+        <!-- Pregunta 24 - Respuesta abierta -->
+        <div class="question">
+            <h2>24. Función de la articulación policéntrica con sistema de control de la flexoextensión.</h2>
+            <textarea id="p24-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p24-answer', 'Permitir los movimientos de flexoextensión activos de la rodilla dentro del rango articular elegido', 'p24-result')">Comprobar</button>
+            <div class="result" id="p24-result"></div>
+        </div>
+
+        <!-- Pregunta 25 - Respuesta abierta -->
+        <div class="question">
+            <h2>25. La articulación de cadera libre, ¿Dónde se sitúa el eje de la articulación en el plano sagital?</h2>
+            <textarea id="p25-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p25-answer', 'A 0,6 cm por encima del vértice proximal del trocánter mayor.', 'p25-result')">Comprobar</button>
+            <div class="result" id="p25-result"></div>
+        </div>
+
+        <!-- Pregunta 26 - Respuesta abierta -->
+        <div class="question">
+            <h2>26. Un paciente con una articulación de cadera con cierre de anillas, ¿Cómo bloquea y desbloquea la articulación?</h2>
+            <textarea id="p26-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p26-answer', '<br>Bloqueo: Dejar caer las anillas por su propio peso. <br>Desbloqueo: Levantar las anillas para liberar la articulación a la hora de sentarse.', 'p26-result')">Comprobar</button>
+            <div class="result" id="p26-result"></div>
+        </div>
+
+        <!-- Pregunta 27 - Respuesta abierta -->
+        <div class="question">
+            <h2>27. De que consta la articulación de cadera con cierre Suizo.</h2>
+            <textarea id="p27-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p27-answer', 'Consta de dos barras articuladas, con una articulación de un eje y un sistema de cierre de gatillo.', 'p27-result')">Comprobar</button>
+            <div class="result" id="p27-result"></div>
+        </div>
+
+        <!-- Pregunta 28 - Respuesta abierta -->
+        <div class="question">
+            <h2>28. Nombra los apoyos del collarín cervical del corsé de Milwaukee</h2>
+            <textarea id="p28-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p28-answer', 'Apoyo glótico y dos apoyos occipitales.', 'p28-result')">Comprobar</button>
+            <div class="result" id="p28-result"></div>
+        </div>
+
+        <!-- Pregunta 29 - Respuesta abierta -->
+        <div class="question">
+            <h2>29. ¿ Cómo se abre y se cierra el collarín cervical del corsé de Milwaukee?</h2>
+            <textarea id="p29-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p29-answer', 'Está articulado mediante dos bisagras antero-laterales y se cierra por la parte posterior, mediante un tornillo de presión.', 'p29-result')">Comprobar</button>
+            <div class="result" id="p29-result"></div>
+        </div>
+
+        <!-- Pregunta 30 - Respuesta abierta -->
+        <div class="question">
+            <h2>30. ¿Cómo se unen las placas del Corsé de Michel y Stagnara?</h2>
+            <textarea id="p30-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p30-answer', 'Se unen a través de una barra de aluminio anterior y posterior que se moldea a la forma del paciente.', 'p30-result')">Comprobar</button>
+            <div class="result" id="p30-result"></div>
+        </div>
+
+        <!-- Pregunta 31 - Respuesta abierta ------------------------------------------------->
+        <!-- Pregunta 31 - Opción múltiple (una respuesta correcta) -->
+        <div class="question">
+            <h2>31. Sobre los componentes para el corsé de Michel y Stagnara señala la incorrecta.</h2>
+            <ul class="options">
+                <li><input type="radio" name="p31" value="a"> Los cierres de corsé quedan situados en la parte posterior.</li>
+                <li><input type="radio" name="p31" value="b"> Las bisagras para corsé son unas piezas metálicas compuestas por una placa base de forma cuadrada, y una pletina de unos 8 cm de longitud que se unen mediante una bisagra central.</li>
+                <li><input type="radio" name="p31" value="c"> Su posición se puede cambiar con el crecimiento del niño, atornillando la placa base en una posición más alta en la pletina posterior o remachando la placa de termoplástico en un agujero más adelantado de la pletina anterior.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('p31', 'a', 'p31-result')">Comprobar</button>
+            <div class="result" id="p31-result"></div>
+        </div>
+
+        <!-- Pregunta 32 - Respuesta abierta -->
+        <div class="question">
+            <h2>32. En una ortesis modular activa de mano y muñeca, ¿Para qué sirven los tirantes de dedos?</h2>
+            <textarea id="p32-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p32-answer', 'Enganchar los elásticos que traccionan de los dedos en distintas direcciones.', 'p32-result')">Comprobar</button>
+            <div class="result" id="p32-result"></div>
+        </div>
+
+        <!-- Pregunta 33 - Respuesta abierta -->
+        <div class="question">
+            <h2>33. Función de los dediles en una ortesis de miembro superior</h2>
+            <textarea id="p33-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p33-answer', 'Funcionan como hamaca para los dedos, a ellos se sujetan los elásticos que se anudan al tirante de dedos.', 'p33-result')">Comprobar</button>
+            <div class="result" id="p33-result"></div>
+        </div>
+
+        <!-- Pregunta 34 - Respuesta abierta -->
+        <div class="question">
+            <h2>34. ¿ Qué son las articulaciones de muñeca de un solo eje?</h2>
+            <textarea id="p34-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p34-answer', 'Son dispositivos que unen los segmentos de antebrazo y mano de una ortesis', 'p34-result')">Comprobar</button>
+            <div class="result" id="p34-result"></div>
+        </div>
+
+        <!-- Pregunta 35 - Respuesta abierta -->
+        <div class="question">
+            <h2>35. ¿Dónde va colocada la articulación dorsal para desviación cubital o radial?</h2>
+            <textarea id="p35-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p35-answer', 'En la parte dorsal de la ortesis', 'p35-result')">Comprobar</button>
+            <div class="result" id="p35-result"></div>
+        </div>
+
+        <!-- Pregunta 36 - Respuesta abierta -->
+        <div class="question">
+            <h2>36. Tipos de articulaciones de codo. </h2>
+            <textarea id="p36-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p36-answer', '<br>- Monocéntrica <br>- Policéntrica <br>- Para control progresivo de flexo-extensión', 'p36-result')">Comprobar</button>
+            <div class="result" id="p36-result"></div>
+        </div>
+
+        <!-- Pregunta 37 - Respuesta abierta -->
+        <div class="question">
+            <h2>37. Función de la articulación monocéntrica de codo.</h2>
+            <textarea id="p37-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p37-answer', 'Evita los movimientos de prono-supinación del antebrazo y permiten una libre flexión sin limitación', 'p37-result')">Comprobar</button>
+            <div class="result" id="p37-result"></div>
+        </div>
+
+        <!-- Pregunta 38 - Respuesta abierta -->
+        <div class="question">
+            <h2>38. ¿ Para qué se utiliza la articulación progresiva de codo?</h2>
+            <textarea id="p38-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p38-answer', 'Para ortesis de codo que pretenden forzar la consecución de grados de flexión o extensión del codo.', 'p38-result')">Comprobar</button>
+            <div class="result" id="p38-result"></div>
+        </div>
+
+        <!-- Pregunta 39 - Respuesta abierta -->
+        <div class="question">
+            <h2>39. Función de la articulación tipo cremallera o rueda dentada.</h2>
+            <textarea id="p39-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p39-answer', 'Graduar y fijar el codo en una posición deseada.', 'p39-result')">Comprobar</button>
+            <div class="result" id="p39-result"></div>
+        </div>
+
+        <!-- Pregunta 40 - Respuesta abierta ----------------------------------------------- -->
+        <!-- Pregunta 40 - Opción múltiple (una respuesta correcta) -->
+        <div class="question">
+            <h2>40. Sobre la articulación de codo tipo tornillo sin fin. Señala la falsa.</h2>
+            <ul class="options">
+                <li><input type="radio" name="p40" value="a"> Suelen emplearse en combinación con articulaciones libres monocéntricas o policéntricas.</li>
+                <li><input type="radio" name="p40" value="b"> Se compone de dos varillas metálicas roscadas, mediante un tornillo, a una tuerca lateral. </li>
+                <li><input type="radio" name="p40" value="c"> Se trata de un mecanismo que permite realizar tracción o extensión.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('p40', 'b', 'p40-result')">Comprobar</button>
+            <div class="result" id="p40-result"></div>
+        </div>
+
+        <button class="button red" onclick="window.location.href='EAPO7-8.html'">Volver al menu de temas</button>
+
+
+    </div>
+
+    <script>
+        function checkQuestion(name, correctAnswer, resultId) {
+            const selected = document.querySelector(`input[name="${name}"]:checked`);
+            const resultDiv = document.getElementById(resultId);
+            if (!selected) {
+                resultDiv.textContent = 'Por favor, selecciona una respuesta.';
+                resultDiv.className = 'result wrong';
+                return;
+            }
+
+            if (selected.value === correctAnswer) {
+                resultDiv.textContent = 'Correcto.';
+                resultDiv.className = 'result correct';
+            } else {
+                resultDiv.textContent = `Incorrecto. La respuesta correcta es: ${correctAnswer}.`;
+                resultDiv.className = 'result wrong';
+            }
+        }
+
+        function checkDevelopment(answerId, correctAnswer, resultId) {
+            const userAnswer = document.getElementById(answerId).value;
+            const resultDiv = document.getElementById(resultId);
+            resultDiv.innerHTML = `<strong><u>Tu respuesta:</u></strong> ${userAnswer}<br><strong><u>Respuesta correcta:</u></strong> ${correctAnswer}`;
+            resultDiv.className = 'result corrects';
+        }
+
+
+        function checkMultiAnswerQuestion(name, correctAnswers, resultId) {
+            const selected = Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(input => input.value);
+            const resultDiv = document.getElementById(resultId);
+
+            const isCorrect = correctAnswers.every(answer => selected.includes(answer)) &&
+                            selected.every(answer => correctAnswers.includes(answer));
+
+            if (selected.length === 0) {
+                resultDiv.textContent = 'Por favor, selecciona al menos una respuesta.';
+                resultDiv.className = 'result wrong';
+            } else if (isCorrect) {
+                resultDiv.textContent = 'Correcto. Las respuestas son: ' + correctAnswers.join(', ') + '.';
+                resultDiv.className = 'result correct';
+            } else {
+                resultDiv.textContent = 'Incorrecto. Las respuestas correctas son: ' + correctAnswers.join(', ') + '.';
+                resultDiv.className = 'result wrong';
+            }
+        }
+
+
+    </script>
+</body>
+</html>
+

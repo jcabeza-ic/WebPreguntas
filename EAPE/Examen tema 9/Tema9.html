@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../CSS/EAPE.css">
+    <title>Repaso de Preguntas</title>
+</head>
+
+
+
+<script>
+
+    function shuffleQuestions() {
+        const container = document.querySelector(".container");
+        const questions = Array.from(document.querySelectorAll(".question"));
+        
+        // Desordenar las preguntas usando el algoritmo de Fisher-Yates
+        for (let i = questions.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            container.insertBefore(questions[j], questions[i]);
+        }
+    }
+</script>
+
+
+<body>
+    <div class="container">
+        <h1>Repaso de Preguntas Tema 9</h1>
+        <button class="button red" onclick="window.location.href='../EAPE.html'">Volver al menu de exámenes</button>
+        <button class="button shuffle-button" onclick="shuffleQuestions()">Desordenar Preguntas</button>
+
+        <!-- Pregunta 1 - Respuesta abierta -->
+        <div class="question">
+            <h2>1. Que es el "par de apriete" de un tornillo?</h2>
+            <textarea id="q1-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q1-answer', 'Es la fuerza por la cual debemos apretar un tornillo.', 'q1-result')">Comprobar</button>
+            <div class="result" id="q1-result"></div>
+        </div>
+
+        <!-- Pregunta 2 - Respuesta abierta -->
+        <div class="question">
+            <h2>2. Que es fijatornillos?</h2>
+            <textarea id="q2-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q2-answer', 'Es un adhesivo usado para fijar tornillos, impidiendo holguras y reteniendo estos en su rosca.', 'q2-result')">Comprobar</button>
+            <div class="result" id="q2-result"></div>
+        </div>
+
+        <!-- Pregunta 3 - Respuesta abierta -->
+        <div class="question">
+            <h2>3. Será igual una funda cosmetica para una protesis femoral con encaje cuadrangular y pie sach, con
+                rodilla de bloqueo, que la de una una funda cosmetica para una protesis femoral con encaje
+                cuadrangular y pie sach, con rodilla de freno de fricción, porque?</h2>
+            <textarea id="q3-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q3-answer', 'No, porque una tiene que tener el interior más holgado para que no bloquee la rodilla de freno de fricción.', 'q3-result')">Comprobar</button>
+            <div class="result" id="q3-result"></div>
+        </div>
+
+        <!-- Pregunta 4 - Respuesta abierta -->
+        <div class="question">
+            <h2>4. El técnico ortopedico fabricará el pie tipo acumulador de energia, de una protesis modular tibial con
+                encaje de carbono. verdadero o falso y por que?</h2>
+            <textarea id="q4-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q4-answer', 'Falso, elegirá el apropiado de los disponibles de las distintas casas comerciales.', 'q4-result')">Comprobar</button>
+            <div class="result" id="q4-result"></div>
+        </div>
+
+        <!-- Pregunta 5 - Respuesta abierta -->
+        <div class="question">
+            <h2>5. El tecnico ortopedico fabricara el pie sach de una protesis tipo syme exoesqueletica. verdadero o
+                falso y por que?</h2>
+            <textarea id="q5-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q5-answer', 'Verdadero, lo realizará componiendolo con las piezas específicas fabricadas para montarlo, o directamente lo realizará en espuma.', 'q5-result')">Comprobar</button>
+            <div class="result" id="q5-result"></div>
+        </div>
+
+        <!-- Pregunta 6 - Respuesta abierta -->
+        <div class="question">
+            <h2>6. Por que puede estar partida en dos partes la funda cosmetica de una protesis femoral:</h2>
+            <textarea id="q6-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q6-answer', 'Porque para acceder a su regulación la funda cosmética debe estar compuesta de dos partes: femoral y tibial.', 'q6-result')">Comprobar</button>
+            <div class="result" id="q6-result"></div>
+        </div>
+
+        <!-- Pregunta 7 - Respuesta abierta -->
+        <div class="question">
+            <h2>7. Como se llaman las fresadoras usadas en ortopedia, para la terminacion de fundas de protesis:</h2>
+            <textarea id="q7-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q7-answer', 'Fresadoras de eje libre largo, normalmente con rosca de ⅝', 'q7-result')">Comprobar</button>
+            <div class="result" id="q7-result"></div>
+        </div>
+
+        <!-- Pregunta 8 - Respuesta abierta -->
+        <div class="question">
+            <h2>8. Que tendrá una protesis de hemipelvectomia:</h2>
+            <textarea id="q8-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q8-answer', 'Una cesta pélvica', 'q8-result')">Comprobar</button>
+            <div class="result" id="q8-result"></div>
+        </div>
+
+        <!-- Pregunta 9 -->
+        <div class="question">
+            <h2>9. De qué material será la media cosmética de una prótesis:</h2>
+            <ul class="options">
+                <li><input type="radio" name="q9" value="a"> De nylon o perlon</li>
+                <li><input type="radio" name="q9" value="b"> De nylon o perlon con banda superior elástica o en silicona</li>
+                <li><input type="radio" name="q9" value="c"> De poliamida acrílica con banda superior elástica o en silicona</li>
+                <li><input type="radio" name="q9" value="d"> Todas son correctas, el Nylon y el Perlon son poliamidas....</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('q9', 'd', 'q9-result')">Comprobar</button>
+            <div class="result" id="q9-result"></div>
+        </div>
+
+
+        <!-- Pregunta 10 - Respuesta abierta -->
+        <div class="question">
+            <h2>10. Como le daremos las instrucciones de uso y mantenimiento de una protesis al paciente:</h2>
+            <textarea id="q10-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q10-answer', 'De viva voz, ayudandole y explicandole hasta que comprenda perfectamente las instrucciones y caracteristicas y por escrito, firmando el paciente justificante de su recepcion.', 'q10-result')">Comprobar</button>
+            <div class="result" id="q10-result"></div>
+        </div>
+
+        <!-- Pregunta 11 - Respuesta abierta -->
+        <div class="question">
+            <h2>11. En que instrucciones insistiremos con especial atencion sobre el mantenimiento de una protesis:</h2>
+            <textarea id="q11-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q11-answer', 'En la limpieza', 'q11-result')">Comprobar</button>
+            <div class="result" id="q11-result"></div>
+        </div>
+
+        <!-- Pregunta 12 - Respuesta abierta -->
+        <div class="question">
+            <h2>12. Que problemas piensas que puede tener una paciente con una protesis tibial, cuando va en verano a pasear en bañador y chanclas por el paseo maritimo de Benalmadena?</h2>
+            <textarea id="q12-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q12-answer', 'Que la alineación es distinta ya que no tiene tacón', 'q12-result')">Comprobar</button>
+            <div class="result" id="q12-result"></div>
+        </div>
+
+        <!-- Pregunta 13 - Respuesta abierta -->
+        <div class="question">
+            <h2>13. Que tipo de crema o pomada, es necesario usar en una protesis tibial con apoyo en tendon rotuliano en un uso prolongado?</h2>
+            <textarea id="q13-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q13-answer', 'Ningun producto, debe estar limpia y seca', 'q13-result')">Comprobar</button>
+            <div class="result" id="q13-result"></div>
+        </div>
+
+        <!-- Pregunta 14 - Respuesta abierta -->
+        <div class="question">
+            <h2>14. Como debe ser la adaptacion de un paciente a una protesis: marca la correcta: Extensiva, Progresiva, Pausada, Alternativa, Condicionada, Alternativa, Diferida</h2>
+            <textarea id="q14-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q14-answer', 'Progresiva', 'q14-result')">Comprobar</button>
+            <div class="result" id="q14-result"></div>
+        </div>
+
+        <!-- Pregunta 15 - Respuesta abierta -->
+        <div class="question">
+            <h2>15. Que tipo de pacientes deben tener un especial interes y atencion en las rozaduras y erosiones con las protesis, marca la mas correcta:</h2>
+            <textarea id="q15-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q15-answer', 'Amputados oncologicos, amputados traumaticos y sobre todo los amputados diabeticos.', 'q15-result')">Comprobar</button>
+            <div class="result" id="q15-result"></div>
+        </div>
+
+        <!-- Pregunta 16 - Respuesta abierta -->
+        <div class="question">
+            <h2>16. Que puede obstaculizar el tiro de una protesis cinematizada por cable o con pronosupinacion electrica y que solucion le daremos:</h2>
+            <textarea id="q16-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q16-answer', 'El guante cosmético, por eso lo recortaremos un poco por encima del estiloides de la muñeca.', 'q16-result')">Comprobar</button>
+            <div class="result" id="q16-result"></div>
+        </div>
+
+        <!-- Pregunta 17 - Respuesta abierta -->
+        <div class="question">
+            <h2>17. Que intentaremos evitar para la buena funcionalidad de cualquier protesis?</h2>
+            <textarea id="q17-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q17-answer', 'El exceso de peso y el consumo excesivo de energía (eléctrica o corporal).', 'q17-result')">Comprobar</button>
+            <div class="result" id="q17-result"></div>
+        </div>
+
+        <!-- Pregunta 18 - Respuesta abierta -->
+        <div class="question">
+            <h2>18. En que será directamente proporcional el grado de dificultad de uso y aprovechamiento de una protesis de miembro superior</h2>
+            <textarea id="q18-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q18-answer', 'Con el nivel de amputación', 'q18-result')">Comprobar</button>
+            <div class="result" id="q18-result"></div>
+        </div>
+
+        <!-- Pregunta 19 - Respuesta abierta -->
+        <div class="question">
+            <h2>19. De que estan echos habitualmente los guantes cosmeticos de protesis de miembro superior</h2>
+            <textarea id="q19-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q19-answer', 'PVC o silicona.', 'q19-result')">Comprobar</button>
+            <div class="result" id="q19-result"></div>
+        </div>
+
+        <!-- Pregunta 20 - Respuesta abierta -->
+        <div class="question">
+            <h2>20. Cual puede ser la causa recurrente en dias alternos, de falta de funcionamiento de una protesis mioelectrica por un paciente amputado del lado izquierdo?</h2>
+            <textarea id="q20-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q20-answer', 'Batería descargada', 'q20-result')">Comprobar</button>
+            <div class="result" id="q20-result"></div>
+        </div>
+
+        <!-- Pregunta 21 - Respuesta abierta -->
+        <div class="question">
+            <h2>21. Como realizaremos la pronosupinacion de una protesis cosmetica</h2>
+            <textarea id="q21-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q21-answer', 'De forma manual, con el miembro contralateral.', 'q21-result')">Comprobar</button>
+            <div class="result" id="q21-result"></div>
+        </div>
+
+        <!-- Pregunta 22 - Respuesta abierta -->
+        <div class="question">
+            <h2>22. Cual es la principal funcion de una protesis transradial mioelectrica:</h2>
+            <textarea id="q22-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q22-answer', 'Apertura y cierre de la mano, haciendo pinza.', 'q22-result')">Comprobar</button>
+            <div class="result" id="q22-result"></div>
+        </div>
+
+        <!-- Pregunta 23 - Respuesta abierta -->
+        <div class="question">
+            <h2>23. Quien debe revisar el malfunciomiento de una protesis de miembro inferior, con rodilla tipo Mausch con control de flexoextension neumatico:</h2>
+            <textarea id="q23-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q23-answer', 'Un tecnico protesico cualificado', 'q23-result')">Comprobar</button>
+            <div class="result" id="q23-result"></div>
+        </div>
+
+        <!-- Pregunta 24 - Respuesta abierta -->
+        <div class="question">
+            <h2>24. Que pueden influir en el correcto funcionamiento de una protesis con rodilla, con control electronico de un paciente residente en siberia:</h2>
+            <textarea id="q24-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q24-answer', 'Las condiciones climatológicas', 'q24-result')">Comprobar</button>
+            <div class="result" id="q24-result"></div>
+        </div>
+
+        <!-- Pregunta 25 - Respuesta abierta -->
+        <div class="question">
+            <h2>25. Que debemos indicarle al paciente, antes de que se marche de nuestro establecimiento entregandoselo por escrito, con justificacion de entrega?</h2>
+            <textarea id="q25-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q25-answer', 'Las condiciones de uso y periodo de garantía y sus condiciones', 'q25-result')">Comprobar</button>
+            <div class="result" id="q25-result"></div>
+        </div>
+
+        <!-- Pregunta 26 - Respuesta abierta -->
+        <div class="question">
+            <h2>26. Para limpiar, el paciente, un guante cosmetico de una protesis de miembro superior, retiraremos el guante de la protesis para que no se moje y posteriormente limpiaremos el mismo, cuidadosamente, con un jabon delicado de pH neutro y dejaremos secar el mismo, con cuidado y no exponiendolo directamente al sol, ni a fuentes de calor, verdadero o falso:</h2>
+            <textarea id="q26-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q26-answer', 'Falso, el paciente no debe sacar el guante de la protesis', 'q26-result')">Comprobar</button>
+            <div class="result" id="q26-result"></div>
+        </div>
+
+        <!-- Pregunta 27 - Respuesta abierta -->
+        <div class="question">
+            <h2>27. Que problema puede presentarse si el paciente residente en Ecija, dejó su protesis tibial con encaje de burbuja, desde las 12.00 AM hasta las 19.00 PM dentro del coche el dia Viernes 15 de Agosto del 2025?</h2>
+            <textarea id="q27-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q27-answer', 'Deformación del encaje por calor extremo.', 'q27-result')">Comprobar</button>
+            <div class="result" id="q27-result"></div>
+        </div>
+
+        <!-- Pregunta 28 - Respuesta abierta -->
+        <div class="question">
+            <h2>28. Existen protesis de baño, que característica principal tienen?</h2>
+            <textarea id="q28-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q28-answer', 'Si, son impermeables, no flotan y evacuan el agua.', 'q28-result')">Comprobar</button>
+            <div class="result" id="q28-result"></div>
+        </div>
+
+        <!-- Pregunta 29 - Respuesta abierta -->
+        <div class="question">
+            <h2>29. Podra llevar un tobillo de control electronico de la casa ossur una protesis de baño</h2>
+            <textarea id="q29-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q29-answer', 'No, porque el agua dañaría los componentes electrónicos.', 'q29-result')">Comprobar</button>
+            <div class="result" id="q29-result"></div>
+        </div>
+
+        <!-- Pregunta 30 - Respuesta abierta -->
+        <div class="question">
+            <h2>30. Que diferencia tienen entre los pies Sach, con dedos separados y los pies Sach con dedos unidos en funcionalidad?</h2>
+            <textarea id="q30-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q30-answer', 'Ninguna en funcionalidad, solo que la de los dedos separados pueden usar chanclas.', 'q30-result')">Comprobar</button>
+            <div class="result" id="q30-result"></div>
+        </div>
+        <button class="button red" onclick="window.location.href='../EAPE.html'">Volver al menu de exámenes</button>
+        </div>
+
+    <script>
+        function checkQuestion(name, correctAnswer, resultId) {
+            const selected = document.querySelector(`input[name="${name}"]:checked`);
+            const resultDiv = document.getElementById(resultId);
+            if (!selected) {
+                resultDiv.textContent = 'Por favor, selecciona una respuesta.';
+                resultDiv.className = 'result wrong';
+                return;
+            }
+
+            if (selected.value === correctAnswer) {
+                resultDiv.textContent = 'Correcto.';
+                resultDiv.className = 'result correct';
+            } else {
+                resultDiv.textContent = `Incorrecto. La respuesta correcta es: ${correctAnswer}.`;
+                resultDiv.className = 'result wrong';
+            }
+        }
+
+        function checkDevelopment(answerId, correctAnswer, resultId) {
+            const userAnswer = document.getElementById(answerId).value;
+            const resultDiv = document.getElementById(resultId);
+            resultDiv.innerHTML = `<strong><u>Tu respuesta:</u></strong> ${userAnswer}<br><strong><u>Respuesta correcta:</u></strong> ${correctAnswer}`;
+            resultDiv.className = 'result corrects';
+        }
+
+
+        function checkMultiAnswerQuestion(name, correctAnswers, resultId) {
+            const selected = Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(input => input.value);
+            const resultDiv = document.getElementById(resultId);
+
+            const isCorrect = correctAnswers.every(answer => selected.includes(answer)) &&
+                            selected.every(answer => correctAnswers.includes(answer));
+
+            if (selected.length === 0) {
+                resultDiv.textContent = 'Por favor, selecciona al menos una respuesta.';
+                resultDiv.className = 'result wrong';
+            } else if (isCorrect) {
+                resultDiv.textContent = 'Correcto. Las respuestas son: ' + correctAnswers.join(', ') + '.';
+                resultDiv.className = 'result correct';
+            } else {
+                resultDiv.textContent = 'Incorrecto. Las respuestas correctas son: ' + correctAnswers.join(', ') + '.';
+                resultDiv.className = 'result wrong';
+            }
+        }
+
+
+    </script>
+</body>
+</html>
+

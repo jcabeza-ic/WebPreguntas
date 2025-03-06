@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../CSS/EAPE.css">
+    <title>Repaso de Preguntas</title>
+</head>
+
+
+
+<script>
+
+    function shuffleQuestions() {
+        const container = document.querySelector(".container");
+        const questions = Array.from(document.querySelectorAll(".question"));
+        
+        // Desordenar las preguntas usando el algoritmo de Fisher-Yates
+        for (let i = questions.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            container.insertBefore(questions[j], questions[i]);
+        }
+    }
+</script>
+
+
+<body>
+    <div class="container">
+        <h1>Repaso de Preguntas Tema 7</h1>
+        <button class="button red" onclick="window.location.href='EAPE7-8.html'">Volver al menu de temas</button>
+        <button class="button shuffle-button" onclick="shuffleQuestions()">Desordenar Preguntas</button>
+
+        <!-- Pregunta 1 - Respuesta abierta -->
+        <div class="question">
+            <h2>1. Las composiciones de elementos mecanicos de una protesis exoesqueletica, seran:
+                <br>- tobillo
+                <br>- pie
+                <br>- tubo y adapta piramidal
+                <br>- rodilla
+                <br>- pantorrilla
+                <br>Verdadero o falso y por que?
+                </h2>
+            <textarea id="q1-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q1-answer', 'Falso, no llevan tubo ni adapta piramidal', 'q1-result')">Comprobar</button>
+            <div class="result" id="q1-result"></div>
+        </div>
+        
+        <!-- Pregunta 2 -->
+        <div class="question">
+            <h2>2. El receptor adaptador hembra de un piramidal constará de: Marca la correcta.</h2>
+            <ul class="options">
+                <li><input type="radio" name="q2" value="a"> Cuatro caras planas de una pirámide invertida.</li>
+                <li><input type="radio" name="q2" value="b"> 4 tornillos allen de Métrica.</li>
+                <li><input type="radio" name="q2" value="c"> Una base tubular para adaptar el tubo de 32 mm.</li>
+                <li><input type="radio" name="q2" value="d"> Una base plana para asentarse mejor.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('q2', 'b', 'q2-result')">Comprobar</button>
+            <div class="result" id="q2-result"></div>
+        </div>
+
+        <!-- Pregunta 3 - Respuesta abierta -->
+        <div class="question">
+            <h2>3. Define la finalidad de los puntos de eleccion de colocacion del sistema piramidal en una protesis
+                de miembro inferior:</h2>
+            <textarea id="q3-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q3-answer', 'Para poder variar la alineación dinámica de la prótesis.', 'q3-result')">Comprobar</button>
+            <div class="result" id="q3-result"></div>
+        </div>
+
+        <!-- Pregunta 4 -->
+        <div class="question">
+            <h2>4. ¿Cuál es el grado de movilidad en ambos sentidos de un sistema piramidal (marca la correcta)?</h2>
+            <ul class="options">
+                <li><input type="checkbox" name="q4" value="a"> A - 20º en ambos sentidos</li>
+                <li><input type="checkbox" name="q4" value="b"> B - 30º en cada sentido</li>
+                <li><input type="checkbox" name="q4" value="c"> C - 10º en cada sentido</li>
+                <li><input type="checkbox" name="q4" value="d"> D - Hasta lograr su correcta alineación</li>
+            </ul>
+            <button class="button" onclick="checkMultiAnswerQuestion('q4', ['a', 'c'], 'q4-result')">Comprobar</button>
+            <div class="result" id="q4-result"></div>
+        </div>
+
+        <!-- Pregunta 5 - Respuesta abierta -->
+        <div class="question">
+            <h2>5. Conoces otros sistemas de alineacion ademas del sistema piramidal de Otto Bock: enuncialo y
+                define su funcionamiento</h2>
+            <textarea id="q5-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q5-answer', 'El sistema Endolite, es un sistema de alineacion mediante friccion y apriete de un tornillo.', 'q5-result')">Comprobar</button>
+            <div class="result" id="q5-result"></div>
+        </div>
+
+        <!-- Pregunta 6 - Respuesta abierta -->
+        <div class="question">
+            <h2>6. Que significa Pie Sach y traducelo al español </h2>
+            <textarea id="q6-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q6-answer', 'Significa Solid Ankle Cushioned Heel (tobillo sólido con talón amortiguado).', 'q6-result')">Comprobar</button>
+            <div class="result" id="q6-result"></div>
+        </div>
+
+        <!-- Pregunta 7 -->
+        <div class="question">
+            <h2>7. ¿Cómo es la articulación de tobillo de un pie de quilla corta? Marca la correcta.</h2>
+            <ul class="options">
+                <li><input type="radio" name="q7" value="a"> Con un bumper de caucho.</li>
+                <li><input type="radio" name="q7" value="b"> Con una articulación neumática.</li>
+                <li><input type="radio" name="q7" value="c"> No tiene articulación.</li>
+                <li><input type="radio" name="q7" value="d"> Con un basculante o balancín articulado que apoya sobre la parte superior.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('q7', 'c', 'q7-result')">Comprobar</button>
+            <div class="result" id="q7-result"></div>
+        </div>
+
+        <!-- Pregunta 8 - Respuesta abierta -->
+        <div class="question">
+            <h2>8. Relaciona los movimientos de un pie articulado de eje múltiple:
+            </h2>
+            <textarea id="q8-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q8-answer', 'Flexión, extensión, pronación y supinación.', 'q8-result')">Comprobar</button>
+            <div class="result" id="q8-result"></div>
+        </div>
+
+        <!-- Pregunta 9 - Respuesta abierta -->
+        <div class="question">
+            <h2>9. Define los movimientos de la articulación de tobillo, de un pie acumulador de energia o
+                respuesta dinamica:</h2>
+            <textarea id="q9-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q9-answer', 'Los pies acumuladores de energía no tienen articulación de tobillo.', 'q9-result')">Comprobar</button>
+            <div class="result" id="q9-result"></div>
+        </div>
+
+        <!-- Pregunta 10 -->
+        <div class="question">
+            <h2>10. ¿Cuál es uno de los componentes más complejos de una prótesis de miembro inferior?</h2>
+            <ul class="options">
+                <li><input type="radio" name="q10" value="a"> La articulación de tobillo.</li>
+                <li><input type="radio" name="q10" value="b"> La articulación de rodilla.</li>
+                <li><input type="radio" name="q10" value="c"> El sistema de suspensión.</li>
+                <li><input type="radio" name="q10" value="d"> La mano.</li>
+                <li><input type="radio" name="q10" value="e"> La funda cosmética.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('q10', 'b', 'q10-result')">Comprobar</button>
+            <div class="result" id="q10-result"></div>
+        </div>
+
+        <!-- Pregunta 11 - Respuesta abierta -->
+        <div class="question">
+            <h2>11. ¿Cómo funciona una rodilla de eje libre?</h2>
+            <textarea id="q11-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q11-answer', 'Mediante el posicionamiento del paciente, al llevar un eje retrasado y con la impulsion de la musculatura del muñon.', 'q11-result')">Comprobar</button>
+            <div class="result" id="q11-result"></div>
+        </div>
+
+        <!-- Pregunta 12 - Respuesta abierta -->
+        <div class="question">
+            <h2>12. como debe ser la rodilla de un paciente geriatrico:
+            </h2>
+            <textarea id="q12-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q12-answer', 'Lo más satisfactoria posible', 'q12-result')">Comprobar</button>
+            <div class="result" id="q12-result"></div>
+        </div>
+
+        <!-- Pregunta 13 -->
+        <div class="question">
+            <h2>13. Una rodilla monocéntrica puede ser:</h2>
+            <ul class="options">
+                <li><input type="radio" name="q13" value="a"> Libre.</li>
+                <li><input type="radio" name="q13" value="b"> Autofrenable.</li>
+                <li><input type="radio" name="q13" value="c"> Con bloqueo accionado manualmente.</li>
+                <li><input type="radio" name="q13" value="d"> Todas las anteriores, son correctas.</li>
+                <li><input type="radio" name="q13" value="e"> Ninguna de las anteriores son correctas.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('q13', 'd', 'q13-result')">Comprobar</button>
+            <div class="result" id="q13-result"></div>
+        </div>
+
+        <!-- Pregunta 14 - Respuesta abierta -->
+        <div class="question">
+            <h2>14. Cual será mas compleja de las siguientes rodillas: (marca la correcta y por que)
+                A- Rodilla Policentrica o de eje simple
+                B- Rodilla Monocentrica o de eje multiple</h2>
+            <textarea id="q14-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q14-answer', 'No existe ninguna, seria: Rodilla Policentrica o de eje multiple, Rodilla Monocentrica o de eje simple', 'q14-result')">Comprobar</button>
+            <div class="result" id="q14-result"></div>
+        </div>
+
+        <!-- Pregunta 15 - Respuesta abierta -->
+        <div class="question">
+            <h2>15. Que es la cadencia del paso:
+            </h2>
+            <textarea id="q15-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q15-answer', 'Serie de movimientos que se suceden de un modo regular o medido en la deambulación. (Cantidad de pasos que tu das en un periodo de tiempo)', 'q15-result')">Comprobar</button>
+            <div class="result" id="q15-result"></div>
+        </div>
+
+        <!-- Pregunta 16 - Respuesta abierta -->
+        <div class="question">
+            <h2>16. Que es una C-Leg o una Mercury:
+            </h2>
+            <textarea id="q16-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q16-answer', 'Rodilla computarizada que utiliza un software para controlar los movimientos.', 'q16-result')">Comprobar</button>
+            <div class="result" id="q16-result"></div>
+        </div>
+
+        <!-- Pregunta 17 - Respuesta abierta -->
+        <div class="question">
+            <h2>17. Que diferencia hay entre una rodilla de sistema neumatico y una rodilla con sistema hidraulico
+            </h2>
+            <textarea id="q17-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q17-answer', 'El fluido del sistema neumático es gaseoso y en el hidráulico es un fluido líquido.', 'q17-result')">Comprobar</button>
+            <div class="result" id="q17-result"></div>
+        </div>
+
+        <!-- Pregunta 18 - Respuesta abierta -->
+        <div class="question">
+            <h2>18. Como puede ser el pin de sujeccion de un liner femoral:
+            </h2>
+            <textarea id="q18-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q18-answer', 'Liso, estriado o de cremallera.', 'q18-result')">Comprobar</button>
+            <div class="result" id="q18-result"></div>
+        </div>
+
+        <!-- Pregunta 19 - Respuesta abierta -->
+        <div class="question">
+            <h2>19. Que es el sistema BOA en protesis
+            </h2>
+            <textarea id="q19-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q19-answer', 'Sistema de ajuste mediante cableado y discos rotativos.', 'q19-result')">Comprobar</button>
+            <div class="result" id="q19-result"></div>
+        </div>
+
+        <!-- Pregunta 20 - Respuesta abierta -->
+        <div class="question">
+            <h2>20. Define el sistema Icerros de liners:
+            </h2>
+            <textarea id="q20-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q20-answer', 'Es un liner que usa un sistema de membrana y presión negativa o vacío para su sustentación mediante el uso de válvulas de expulsión de aire.', 'q20-result')">Comprobar</button>
+            <div class="result" id="q20-result"></div>
+        </div>
+
+        <!-- Pregunta 21 - Respuesta abierta -->
+        <div class="question">
+            <h2>21. Describe que es un Cover protesico:
+            </h2>
+            <textarea id="q21-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q21-answer', 'Es la terminación estética de una prótesis de miembro inferior, realizado normalmente en plástico o fibra sintética y pueden dar decoración y sustituye a la funda cosmética en un sistema endoesqueletico.', 'q21-result')">Comprobar</button>
+            <div class="result" id="q21-result"></div>
+        </div>
+
+        <!-- Pregunta 22 - Respuesta abierta -->
+        <div class="question">
+            <h2>22. Que tipo de protesis pueden tener una realizacion de elementos de union en madera:
+            </h2>
+            <textarea id="q22-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q22-answer', 'Prótesis exoesqueléticas', 'q22-result')">Comprobar</button>
+            <div class="result" id="q22-result"></div>
+        </div>
+
+        <!-- Pregunta 23 - Respuesta abierta -->
+        <div class="question">
+            <h2>23. En que tipo de encajes usaremos unas cuñas moviles en el sistema de suspension:
+            </h2>
+            <textarea id="q23-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q23-answer', 'En encajes tipo KBM para prótesis tibiales.', 'q23-result')">Comprobar</button>
+            <div class="result" id="q23-result"></div>
+        </div>
+
+        <!-- Pregunta 24 - Respuesta abierta -->
+        <div class="question">
+            <h2>24. Que principal diferencia tendremos entre los elementos mecanicos de un elemento terminal de
+                una protesis de miembro superior con una pinza de trabajo, accionado por arnes, y una mano
+                articulada con sistema cinematizado por cable</h2>
+            <textarea id="q24-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q24-answer', 'La principal diferencia será la estética.', 'q24-result')">Comprobar</button>
+            <div class="result" id="q24-result"></div>
+        </div>
+
+        <!-- Pregunta 25 - Respuesta abierta -->
+        <div class="question">
+            <h2>25. Como será una muñeca de friccion en una protesis de miembro superior, activa o pasiva y
+                como la accionaremos</h2>
+            <textarea id="q25-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q25-answer', 'Pasiva, se acciona con el miembro contralateral', 'q25-result')">Comprobar</button>
+            <div class="result" id="q25-result"></div>
+        </div>
+
+        <!-- Pregunta 26 - Respuesta abierta -->
+        <div class="question">
+            <h2>26. A que se adapta una muñeca ovalada:
+            </h2>
+            <textarea id="q26-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q26-answer', 'Se adaptan a la fisionomía de la parte distal del antebrazo.', 'q26-result')">Comprobar</button>
+            <div class="result" id="q26-result"></div>
+        </div>
+
+        <!-- Pregunta 27 - Respuesta abierta -->
+        <div class="question">
+            <h2>27.que dos funciones puede tener un codo de bloqueo semiautomatico:
+            </h2>
+            <textarea id="q27-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q27-answer', 'Flexión/extensión y bloqueo/desbloqueo', 'q27-result')">Comprobar</button>
+            <div class="result" id="q27-result"></div>
+        </div>
+
+        <!-- Pregunta 28 - Respuesta abierta -->
+        <div class="question">
+            <h2>28. Relaciona los tipos de articulaciones de codo segun su movimiento:
+            </h2>
+            <textarea id="q28-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q28-answer', 'Libres, de bloqueo o multiplicadoras.', 'q28-result')">Comprobar</button>
+            <div class="result" id="q28-result"></div>
+        </div>
+
+        <!-- Pregunta 29 - Respuesta abierta -->
+        <div class="question">
+            <h2>29. Define los movimientos de una articulacion de hombro en una desarticulacion
+                escapulotoracica</h2>
+            <textarea id="q29-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q29-answer', 'Sus movimientos son básicos y se posicionan de una forma manual, permitiendo la: antepulsión, retropulsión, abducción y aducción.', 'q29-result')">Comprobar</button>
+            <div class="result" id="q29-result"></div>
+        </div>
+
+        <!-- Pregunta 30 -->
+        <div class="question">
+            <h2>30. ¿Qué método o sistema no podrás usar como sistema de suspensión en una prótesis de miembro superior para amputación transradial?</h2>
+            <ul class="options">
+                <li><input type="checkbox" name="q30" value="a"> A - Sistema supracondilar o Munster</li>
+                <li><input type="checkbox" name="q30" value="b"> B - Sistema de suspensión por liners</li>
+                <li><input type="checkbox" name="q30" value="c"> C - Sistema Lanyard</li>
+                <li><input type="checkbox" name="q30" value="d"> D - Sistema BOA</li>
+                <li><input type="checkbox" name="q30" value="e"> E - Suspensión por corsé humeral</li>
+            </ul>
+            <button class="button" onclick="checkMultiAnswerQuestion('q30', ['a', 'b', 'c', 'd', 'e'], 'q30-result')">Comprobar</button>
+            <div class="result" id="q30-result"></div>
+        </div>
+
+        <!-- Pregunta 31 -->
+        <div class="question">
+            <h2>31. En la realización de una prótesis cosmética, tendremos en cuenta principalmente estos aspectos: Marca las correctas.</h2>
+            <ul class="options">
+                <li><input type="checkbox" name="q31" value="a"> A - Volumen y morfología</li>
+                <li><input type="checkbox" name="q31" value="b"> B - Tono y color de la piel</li>
+                <li><input type="checkbox" name="q31" value="c"> C - Sexo del paciente</li>
+                <li><input type="checkbox" name="q31" value="d"> D - Diversas cicatrices, lunares, tatuajes y el aspecto del vello corporal</li>
+            </ul>
+            <button class="button" onclick="checkMultiAnswerQuestion('q31', ['a', 'b', 'c'], 'q31-result')">Comprobar</button>
+            <div class="result" id="q31-result"></div>
+        </div>
+
+        <!-- Pregunta 32 - Respuesta abierta -->
+        <div class="question">
+            <h2>32. Que es I-Limb en protesica:
+            </h2>
+            <textarea id="q32-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q32-answer', 'Mano biónica con movimiento independiente de los dedos y que permite una gran cantidad de movimientos', 'q32-result')">Comprobar</button>
+            <div class="result" id="q32-result"></div>
+        </div>
+
+        <!-- Pregunta 33 -->
+        <div class="question">
+            <h2>33. ¿Qué es Michelangelo en protésica?</h2>
+            <ul class="options">
+                <li><input type="radio" name="q33" value="a"> Es la mano biónica de Fillauer.</li>
+                <li><input type="radio" name="q33" value="b"> Es la mano biónica de Ossur.</li>
+                <li><input type="radio" name="q33" value="c"> Es la mano biónica de Otto Bock.</li>
+                <li><input type="radio" name="q33" value="d"> Es la mano biónica de Endolite.</li>
+                <li><input type="radio" name="q33" value="e"> Es la mano biónica de una de las tortugas Ninja.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('q33', 'c', 'q33-result')">Comprobar</button>
+            <div class="result" id="q33-result"></div>
+        </div>
+
+        <!-- Pregunta 34 - Respuesta abierta -->
+        <div class="question">
+            <h2>34. A que llamamos en protesica de miembro inferior, "garras o pulpo "
+            </h2>
+            <textarea id="q34-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q34-answer', 'Al sistema de anclaje al encaje de un sistema piramidal de unión.', 'q34-result')">Comprobar</button>
+            <div class="result" id="q34-result"></div>
+        </div>
+
+        <!-- Pregunta 35 -->
+        <div class="question">
+            <h2>35. ¿Qué sistema usaremos en el sistema de suspensión de una prótesis femoral? Marca la(s) CORRECTA(S).</h2>
+            <ul class="options">
+                <li><input type="checkbox" name="q35" value="a"> A - Cinturón Silesiano</li>
+                <li><input type="checkbox" name="q35" value="b"> B - Cinturón de Neopreno</li>
+                <li><input type="checkbox" name="q35" value="c"> C - Liners de silicona</li>
+                <li><input type="checkbox" name="q35" value="d"> D - Liners con válvula</li>
+                <li><input type="checkbox" name="q35" value="e"> E - Sistema Lanyard</li>
+            </ul>
+            <button class="button" onclick="checkMultiAnswerQuestion('q35', ['a', 'b', 'c', 'd', 'e'], 'q35-result')">Comprobar</button>
+            <div class="result" id="q35-result"></div>
+        </div>
+
+        <!-- Pregunta 36 -->
+        <div class="question">
+            <h2>36. ¿Qué sistema de codo se caracteriza por numerosos sensores conectados a un microprocesador central que permite movimientos armoniosos?</h2>
+            <ul class="options">
+                <li><input type="radio" name="q36" value="a"> Codo Boston.</li>
+                <li><input type="radio" name="q36" value="b"> Codo Milwaukee.</li>
+                <li><input type="radio" name="q36" value="c"> Codo Utah.</li>
+                <li><input type="radio" name="q36" value="d"> Codo Oklahoma.</li>
+                <li><input type="radio" name="q36" value="e"> Todos son correctos.</li>
+                <li><input type="radio" name="q36" value="f"> Ninguno es correcto.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('q36', 'c', 'q36-result')">Comprobar</button>
+            <div class="result" id="q36-result"></div>
+        </div>
+
+        <!-- Pregunta 37 -->
+        <div class="question">
+            <h2>37. ¿Qué son electrodos de doble canal?</h2>
+            <ul class="options">
+                <li><input type="radio" name="q37" value="a"> Los electrodos que realizan las funciones de apertura/cierre o prono/supinación con el control del mismo impulso muscular pero con intensidad diferente.</li>
+                <li><input type="radio" name="q37" value="b"> Las bornas que llevan las baterías de una prótesis mioeléctrica.</li>
+                <li><input type="radio" name="q37" value="c"> Los sistemas cinematizados por cable para flexo/extensión de una prótesis de doble tiro con articulación multiplicadora.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('q37', 'a', 'q37-result')">Comprobar</button>
+            <div class="result" id="q37-result"></div>
+        </div>
+
+        <!-- Pregunta 38 -->
+        <div class="question">
+            <h2>38. ¿Qué tensión usan generalmente las baterías de una prótesis mioeléctrica? Marca las posibles.</h2>
+            <ul class="options">
+                <li><input type="checkbox" name="q38" value="a"> A - 6 V.</li>
+                <li><input type="checkbox" name="q38" value="b"> B - 7.2V.</li>
+                <li><input type="checkbox" name="q38" value="c"> C - 9 V.</li>
+                <li><input type="checkbox" name="q38" value="d"> D - 12 V.</li>
+            </ul>
+            <button class="button" onclick="checkMultiAnswerQuestion('q38', ['a', 'b', 'c'], 'q38-result')">Comprobar</button>
+            <div class="result" id="q38-result"></div>
+        </div>
+
+        <!-- Pregunta 39 -->
+        <div class="question">
+            <h2>39. ¿Qué es el Greifer eléctrico?</h2>
+            <ul class="options">
+                <li><input type="radio" name="q39" value="a"> Un habitante amputado de miembro superior de Gryffindor.</li>
+                <li><input type="radio" name="q39" value="b"> La unión de la mano I-limb con la muñeca.</li>
+                <li><input type="radio" name="q39" value="c"> La mano de Hosmer de Estados Unidos.</li>
+                <li><input type="radio" name="q39" value="d"> La pinza de Otto Bock.</li>
+                <li><input type="radio" name="q39" value="e"> No tiene relación con protésica.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('q39', 'd', 'q39-result')">Comprobar</button>
+            <div class="result" id="q39-result"></div>
+        </div>
+
+        <!-- Pregunta 40 - Respuesta abierta -->
+        <div class="question">
+            <h2>40. Describe Fase de Oscilacion y linea de progresion:
+            </h2>
+            <textarea id="q40-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('q40-answer', 'La fase de oscilación es cuando el pie está despegado del suelo, y la línea de progresión es la línea y el sentido que debe recorrer la prótesis en deambulación.', 'q40-result')">Comprobar</button>
+            <div class="result" id="q40-result"></div>
+        </div>
+        <button class="button red" onclick="window.location.href='EAPE7-8.html'">Volver al menu de temas</button>
+
+
+    </div>
+
+    <script>
+        function checkQuestion(name, correctAnswer, resultId) {
+            const selected = document.querySelector(`input[name="${name}"]:checked`);
+            const resultDiv = document.getElementById(resultId);
+            if (!selected) {
+                resultDiv.textContent = 'Por favor, selecciona una respuesta.';
+                resultDiv.className = 'result wrong';
+                return;
+            }
+
+            if (selected.value === correctAnswer) {
+                resultDiv.textContent = 'Correcto.';
+                resultDiv.className = 'result correct';
+            } else {
+                resultDiv.textContent = `Incorrecto. La respuesta correcta es: ${correctAnswer}.`;
+                resultDiv.className = 'result wrong';
+            }
+        }
+
+        function checkDevelopment(answerId, correctAnswer, resultId) {
+            const userAnswer = document.getElementById(answerId).value;
+            const resultDiv = document.getElementById(resultId);
+            resultDiv.innerHTML = `<strong><u>Tu respuesta:</u></strong> ${userAnswer}<br><strong><u>Respuesta correcta:</u></strong> ${correctAnswer}`;
+            resultDiv.className = 'result corrects';
+        }
+
+
+        function checkMultiAnswerQuestion(name, correctAnswers, resultId) {
+            const selected = Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(input => input.value);
+            const resultDiv = document.getElementById(resultId);
+
+            const isCorrect = correctAnswers.every(answer => selected.includes(answer)) &&
+                            selected.every(answer => correctAnswers.includes(answer));
+
+            if (selected.length === 0) {
+                resultDiv.textContent = 'Por favor, selecciona al menos una respuesta.';
+                resultDiv.className = 'result wrong';
+            } else if (isCorrect) {
+                resultDiv.textContent = 'Correcto. Las respuestas son: ' + correctAnswers.join(', ') + '.';
+                resultDiv.className = 'result correct';
+            } else {
+                resultDiv.textContent = 'Incorrecto. Las respuestas correctas son: ' + correctAnswers.join(', ') + '.';
+                resultDiv.className = 'result wrong';
+            }
+        }
+
+
+    </script>
+</body>
+</html>
+

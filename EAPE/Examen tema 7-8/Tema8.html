@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../CSS/EAPE.css">
+    <title>Repaso de Preguntas</title>
+    <!-- <style>
+        /* Estilos generales
+        /* Estiliza los radio buttons y checkboxes */
+        input[type="radio"], input[type="checkbox"] {
+            appearance: none; /* Oculta el estilo por defecto */
+            width: 20px;
+            height: 20px;
+            border: 2px solid #007BFF;
+            border-radius: 50%; /* Hace los radio buttons redondos */
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+            vertical-align: middle;
+            background-color: white;
+            transition: 0.3s all ease;
+        }
+
+        /* Efecto al estar seleccionado */
+        input[type="radio"]:checked, input[type="checkbox"]:checked {
+            background-color: #007BFF;
+            border: 2px solid #0056b3;
+        }
+
+        /* Agrega un punto interno cuando está seleccionado */
+        input[type="radio"]::before, input[type="checkbox"]::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: 0.3s all ease;
+        }
+
+        /* Muestra el punto interno cuando está seleccionado */
+        input[type="radio"]:checked::before, input[type="checkbox"]:checked::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:#eef2f3;
+            color: #333;
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 25px;
+            background: #ffffff;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+
+        /* Títulos */
+        h1 {
+            text-align: center;
+            font-size: 30px;
+            color: #444; /* Cambiado a un tono más neutro */
+            font-weight: bold;
+        }
+
+        /* Estilos de las preguntas */
+        .question {
+            padding: 15px;
+            margin-bottom: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Opciones de respuestas */
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            margin: 10px 0;
+        }
+
+        /* Botón principal */
+        .button {
+            display: block;
+            width: fit-content;
+            margin: 10px auto;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #FFC107;
+            color: black;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+
+        /* Hover sobre los botones en lugar de las preguntas */
+        .button:hover {
+            background-color: #D39E00;
+        }
+
+        .button.red {
+            background-color: #DC3545; /* Rojo */
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .button.red:hover {
+            background-color: #B02A37; /* Rojo más oscuro al pasar el mouse */
+        }
+
+        /* Botón de desordenar preguntas */
+        .shuffle-button {
+            color: white;
+            background-color: #28a745;
+        }
+
+        .shuffle-button:hover {
+            background-color: #218838;
+        }
+
+        /* Cuadro de respuesta */
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            resize: none;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        /* Resultados de las respuestas */
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        /* Correcto en verde (ahora con texto oscuro para mejor visibilidad) */
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+            border: 2px solid #28a745;
+        }
+
+        .corrects{
+            background-color: #d4edda;
+            color: #155724;
+            border: 2px solid #28a745;
+            text-align: left !important;
+            font-size: 15px;
+            line-height: 1.5;  /* Mejora la legibilidad */
+            padding: 12px;
+        }
+
+        /* Incorrecto en rojo (ya estaba bien, pero lo mantengo aquí) */
+        .wrong {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 2px solid #dc3545;
+        }
+
+
+    </style> -->
+</head>
+
+
+
+<script>
+
+    function shuffleQuestions() {
+        const container = document.querySelector(".container");
+        const questions = Array.from(document.querySelectorAll(".question"));
+        
+        // Desordenar las preguntas usando el algoritmo de Fisher-Yates
+        for (let i = questions.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            container.insertBefore(questions[j], questions[i]);
+        }
+    }
+</script>
+
+
+<body>
+    <div class="container">
+        <h1>Repaso de Preguntas Tema 8</h1>
+        <button class="button red" onclick="window.location.href='EAPE7-8.html'">Volver al menu de temas</button>
+        <button class="button shuffle-button" onclick="shuffleQuestions()">Desordenar Preguntas</button>
+        
+         
+        <!-- Pregunta 1 -->
+        <div class="question">
+            <h2>1. Entras en la ortopedia y hay un paciente de una prótesis tibial esperándote en la sala de espera, sentado, y observamos que en la pierna contralateral, la rodilla es más alta y voluminosa, marca la razón por lo que puede ser:</h2>
+            <ul class="options">
+                <li><input type="radio" name="p1" value="a"> a) La rodilla es más voluminosa y alta porque es una desarticulación de rodilla y como no hay espacio para la rodilla protésica, esta ocupa más espacio.</li>
+                <li><input type="radio" name="p1" value="b"> b) La espuma de la funda cosmética está vieja y aplastada, con lo que presenta este aspecto.</li>
+                <li><input type="radio" name="p1" value="c"> c) La prótesis es corta.</li>
+                <li><input type="radio" name="p1" value="d"> d) La prótesis es larga.</li>
+                <li><input type="radio" name="p1" value="e"> e) Ninguna de las respuestas es correcta.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('p1', 'c', 'p1-result')">Comprobar</button>
+            <div class="result" id="p1-result"></div>
+        </div>
+
+        <!-- Pregunta 2 - Respuesta abierta -->
+        <div class="question">
+            <h2>2. Como se llaman las dos pruebas que debemos hacer a un paciente con la prótesis:
+            </h2>
+            <textarea id="p2-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p2-answer', 'Prueba estática y dinámica.', 'p2-result')">Comprobar</button>
+            <div class="result" id="p2-result"></div>
+        </div>
+
+        <!-- Pregunta 3 - Respuesta abierta -->
+        <div class="question">
+            <h2>3. Que posibles desviaciones podremos observar en un paciente durante la deambulación y
+                marcha</h2>
+            <textarea id="p3-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p3-answer', 'Desviaciones en varo (rodillas hacia afuera) o valgo (rodillas hacia adentro)', 'p3-result')">Comprobar</button>
+            <div class="result" id="p3-result"></div>
+        </div>
+
+        <!-- Pregunta 4 - Respuesta abierta -->
+        <div class="question">
+            <h2>4. Manuel, un paciente al que acabas de poner una prótesis tibial el pasado día 01/01/2025 por
+                una amputación diabética el pasado mes de Noviembre, llega a tu establecimiento, relatando
+                molestias en la parte distal del encaje, pistones, y roces en la parte superior del encaje, a que
+                puede ser debido, si comprobaste a la entrega su correcto funcionamiento</h2>
+            <textarea id="p4-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p4-answer', 'Puede deberse a una pérdida de volumen del muñón, lo que provoca pistoneo y roces en la parte superior del encaje.', 'p4-result')">Comprobar</button>
+            <div class="result" id="p4-result"></div>
+        </div>
+
+        <!-- Pregunta 5 - Respuesta abierta -->
+        <div class="question">
+            <h2>5. Que le puedes proponer a manuel, para solucionar este problema y como:
+            </h2>
+            <textarea id="p5-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p5-answer', 'Proponerle que rellene el encaje con una media entre el liner y el encaje, y en el caso de ser muy intenso la pérdida de volumen rellenar con una placa de pelite en la parte posterior del encaje.', 'p5-result')">Comprobar</button>
+            <div class="result" id="p5-result"></div>
+        </div>
+
+        <!-- Pregunta 6 - Respuesta abierta -->
+        <div class="question">
+            <h2>6. El siguiente paciente, presenta un buen apoyo de su prótesis tibial, pero relata que se tropieza
+                mucho y observa la punta del pie un poco hacia dentro, a que puede ser debido?</h2>
+            <textarea id="p6-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p6-answer', 'Posible mala alineación del pie protésico en rotación interna o que la prótesis completa rota con respecto al muñón.', 'p6-result')">Comprobar</button>
+            <div class="result" id="p6-result"></div>
+        </div>
+
+        <!-- Pregunta 7 - Respuesta abierta -->
+        <div class="question">
+            <h2>7. Otro paciente presente y se queja de lo siguiente, parece que no apoya la punta del pie, en el
+                zapato, con lo que gasta solo el tacón, el antepié de su calzado casi no esta marcado ni gastado,
+                a que puede ser debido?</h2>
+            <textarea id="p7-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p7-answer', 'Excesiva flexión dorsal del pie.', 'p7-result')">Comprobar</button>
+            <div class="result" id="p7-result"></div>
+        </div>
+
+        <!-- Pregunta 8 - Respuesta abierta -->
+        <div class="question">
+            <h2>8. Con que comprobaremos la justa longitud de una prótesis en estática:
+            </h2>
+            <textarea id="p8-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p8-answer', 'Con un nivel de caderas y un juego de tablillas.', 'p8-result')">Comprobar</button>
+            <div class="result" id="p8-result"></div>
+        </div>
+
+        <!-- Pregunta 9 -->
+        <div class="question">
+            <h2>9. Qué elemento del gabinete, por seguridad, será imprescindible en la prueba en dinámica de una prótesis:</h2>
+            <ul class="options">
+                <li><input type="radio" name="p9" value="a"> a) Un juego de protección personal, compuesto por guantes, mascarilla, bata, etc...</li>
+                <li><input type="radio" name="p9" value="b"> b) Un extintor.</li>
+                <li><input type="radio" name="p9" value="c"> c) Un juego de paralelas.</li>
+                <li><input type="radio" name="p9" value="d"> d) Un esay proth.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('p9', 'c', 'p9-result')">Comprobar</button>
+            <div class="result" id="p9-result"></div>
+        </div>
+
+        <!-- Pregunta 10 - Respuesta abierta -->
+        <div class="question">
+            <h2>10. que usaremos para que el paciente, se acostumbre a andar erguido, y no bascule
+                excesivamente el cuerpo en una prueba dinámica y en su posterior rehabilitación:</h2>
+            <textarea id="p10-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p10-answer', 'Un espejo reticulado', 'p10-result')">Comprobar</button>
+            <div class="result" id="p10-result"></div>
+        </div>
+
+        <!-- Pregunta 11 - Respuesta abierta -->
+        <div class="question">
+            <h2>11. A qué altura debemos observar, las escotaduras de los tendones isquiotibiales en una prótesis
+                PTB:
+                </h2>
+            <textarea id="p11-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p11-answer', 'A la misma que el tendón rotuliano', 'p11-result')">Comprobar</button>
+            <div class="result" id="p11-result"></div>
+        </div>
+
+        <!-- Pregunta 12 - Respuesta abierta -->
+        <div class="question">
+            <h2>12. En una prótesis femoral de un cuadrangular con valvula de vacio, que tipo de valvula será
+                preferible:</h2>
+            <textarea id="p12-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p12-answer', 'Válvula de expulsion automatica', 'p12-result')">Comprobar</button>
+            <div class="result" id="p12-result"></div>
+        </div>
+
+        <!-- Pregunta 13 - Respuesta abierta -->
+        <div class="question">
+            <h2>13. ¿Qué es lo primero que debemos comprobar en una prótesis femoral con encaje cuadrangular
+                con sistema de vacío, tras colocarse el encaje el paciente con un easy proth?
+                </h2>
+            <textarea id="p13-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p13-answer', 'Que puso la válvula', 'p13-result')">Comprobar</button>
+            <div class="result" id="p13-result"></div>
+        </div>
+
+        <!-- Pregunta 14 - Respuesta abierta -->
+        <div class="question">
+            <h2>14. qué es lo segundo que debemos comprobar en una prótesis femoral con encaje cuadrangular
+                en bipedestación.
+                </h2>
+            <textarea id="p14-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p14-answer', 'Comprobar que el isquion cargue sobre la tabla isquiática siendo esta lo suficientemente ancha para que el paciente se apoye en esta con comodidad y esta esté completamente horizontal al suelo.', 'p14-result')">Comprobar</button>
+            <div class="result" id="p14-result"></div>
+        </div>
+
+        <!-- Pregunta 14 - Respuesta abierta -->
+        <div class="question">
+            <h2>14. que comprobaremos en relación a la rama isquiopubiana de un paciente de Amputación
+                femoral con encaje laminado en carbono.
+                </h2>
+            <textarea id="p142-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p142-answer', 'Que el encaje en su pared medial tenga una inclinación que permita la salida de la rama isquiopubiana sin presionarla.', 'p142-result')">Comprobar</button>
+            <div class="result" id="p142-result"></div>
+        </div>
+
+        <!-- Pregunta 15 - Respuesta abierta -->
+        <div class="question">
+            <h2>15. como debe ser por su parte interna, un encaje femoral, la pared lateral externa, con relación al
+                trocánter mayor:</h2>
+            <textarea id="p15-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p15-answer', 'La parte interna tiene que ser cóncava y la externa convexa.', 'p15-result')">Comprobar</button>
+            <div class="result" id="p15-result"></div>
+        </div>
+
+        <!-- Pregunta 16 - Respuesta abierta -->
+        <div class="question">
+            <h2>16. Que nos hará sospechar un paciente que en bipedestación presente una ligera flexión en el
+                miembro contralateral:
+                </h2>
+            <textarea id="p16-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p16-answer', 'Protesis ligeramente corta', 'p16-result')">Comprobar</button>
+            <div class="result" id="p16-result"></div>
+        </div>
+
+        <!-- Pregunta 17 - Respuesta abierta -->
+        <div class="question">
+            <h2>17. un paciente con una prótesis con encaje femoral, en termoplástico, nos relata que cada vez
+                que se sienta en una silla de madera plegable tipo sevillano, como las de semana santa, al
+                levantarse, siempre tiende a caerse..... piensa por que puede ser:
+                </h2>
+            <textarea id="p17-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p17-answer', 'Posiblemente el técnico no relleno el encaje por debajo del apoyo isquiatico.', 'p17-result')">Comprobar</button>
+            <div class="result" id="p17-result"></div>
+        </div>
+
+        <!-- Pregunta 18 - Respuesta abierta -->
+        <div class="question">
+            <h2>18. Que debe hacer un paciente con una prótesis, con rodilla monocéntrica de bloqueo, si el
+                encaje es laminado en carbono, y tiene un pie SACH, justo antes de sentarse en esa silla. y por
+                que:
+                </h2>
+            <textarea id="p18-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p18-answer', 'Debe desbloquear la rodilla antes de sentarse para garantizar una correcta flexión de la rodilla y poder sentarse de forma controlada y segura.', 'p18-result')">Comprobar</button>
+            <div class="result" id="p18-result"></div>
+        </div>
+
+        <!-- Pregunta 19 - Respuesta abierta -->
+        <div class="question">
+            <h2>19. Que debemos comprobar en un paciente sentado en una protesis tibial y en una protesis
+                femoral, con respecto al encaje</h2>
+            <textarea id="p19-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p19-answer', '<br>Tibial: que se pueda sentar a 90º <br>Femoral: que el paciente se pueda sentar a 120º', 'p19-result')">Comprobar</button>
+            <div class="result" id="p19-result"></div>
+        </div>
+
+        <!-- Pregunta 20 - Respuesta abierta -->
+        <div class="question">
+            <h2>20. que observaremos para conseguir una cadencia de paso, armoniosa y natural
+            </h2>
+            <textarea id="p20-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p20-answer', 'Que la fase de apoyo y balanceo sean temporalmente iguales, y que la distancia de los pasos sea lo más similar posible.', 'p20-result')">Comprobar</button>
+            <div class="result" id="p20-result"></div>
+        </div>
+
+        <!-- Pregunta 21 - Respuesta abierta -->
+        <div class="question">
+            <h2>21. Que nos puede delatar que un paciente, con el pie amputado, siempre tienda a tener esta
+                adelantada, no pasando en la fase de balanceo el pie sano al miembro amputado:</h2>
+            <textarea id="p21-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p21-answer', 'Porque la pierna esta larga o en flexión plantar', 'p21-result')">Comprobar</button>
+            <div class="result" id="p21-result"></div>
+        </div>
+
+        <!-- Pregunta 22 - Respuesta abierta -->
+        <div class="question">
+            <h2>22. Que es primordial comprobar en la alineacion estática de una protesis
+            </h2>
+            <textarea id="p22-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p22-answer', 'La linea de carga', 'p22-result')">Comprobar</button>
+            <div class="result" id="p22-result"></div>
+        </div>
+
+        <!-- Pregunta 23 - Respuesta abierta -->
+        <div class="question">
+            <h2>23. con que lo comprobaremos:
+            </h2>
+            <textarea id="p23-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p23-answer', 'Plomada o laser', 'p23-result')">Comprobar</button>
+            <div class="result" id="p23-result"></div>
+        </div>
+
+        <!-- Pregunta 24 - Respuesta abierta -->
+        <div class="question">
+            <h2>24. En la alineacion de un sistema piramidal cuantos tornillos aflojaremos, de que tipo, en que
+                posicion y por que:</h2>
+            <textarea id="p24-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p24-answer', '2 tornillos, siempre los mismos, porque así no perderemos la alineación previa conseguida', 'p24-result')">Comprobar</button>
+            <div class="result" id="p24-result"></div>
+        </div>
+
+        <!-- Pregunta 25 - Respuesta abierta -->
+        <div class="question">
+            <h2>25. ¿Han de ser siempre rectos y alineados los adaptas de las protesis, por que?
+            </h2>
+            <textarea id="p25-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p25-answer', 'No, porque también los hay de traslación y rotación para corregir diversas patologías.', 'p25-result')">Comprobar</button>
+            <div class="result" id="p25-result"></div>
+        </div>
+
+        <!-- Pregunta 26 - Respuesta abierta -->
+        <div class="question">
+            <h2>26. Como se llama el dispositivo que pondremos en el molde para disponer el asiento de la valvula
+                de expulsion
+                </h2>
+            <textarea id="p26-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p26-answer', 'Dummy', 'p26-result')">Comprobar</button>
+            <div class="result" id="p26-result"></div>
+        </div>
+
+         <!-- Pregunta 27 -->
+         <div class="question">
+            <h2>27. Cómo se denominan los alineadores reutilizables, que usaremos en una prótesis exoesquelética tibial:</h2>
+            <ul class="options">
+                <li><input type="radio" name="p27" value="a"> a) Staros-Gardner.</li>
+                <li><input type="radio" name="p27" value="b"> b) P.A.D. (Proteor Alignment Devices).</li>
+                <li><input type="radio" name="p27" value="c"> c) P.S.D. (Proteor Sliding Devices).</li>
+                <li><input type="radio" name="p27" value="d"> d) Todos los anteriores son correctos.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('p27', 'a', 'p27-result')">Comprobar</button>
+            <div class="result" id="p27-result"></div>
+        </div>
+
+        <!-- Pregunta 28 - Respuesta abierta -->
+        <div class="question">
+            <h2>28. Que nos delatará en un paciente con protesis de miembro superior que al apoyar las manos,
+                encima de la mesa con los humeros paralelos al tronco y la mano extendida, esta adelantada con
+                respecto a a parte distal de la mano protesica:
+                </h2>
+            <textarea id="p28-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p28-answer', 'Distinta longitud del miembro o que la mano está en flexión.', 'p28-result')">Comprobar</button>
+            <div class="result" id="p28-result"></div>
+        </div>
+
+        <!-- Pregunta 29 - Respuesta abierta -->
+        <div class="question">
+            <h2>29. Cual es la posicion inicial de una protesis cosmetica de mano.
+            </h2>
+            <textarea id="p29-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p29-answer', 'La posición funcional de la mano.', 'p29-result')">Comprobar</button>
+            <div class="result" id="p29-result"></div>
+        </div>
+
+        <!-- Pregunta 30 - Respuesta abierta -->
+        <div class="question">
+            <h2>30. Que son los tres aspectos o principios, fundamentales que debemos tener en cuenta
+                en la adaptacion de cualquier protesis en un paciente:</h2>
+            <textarea id="p30-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p30-answer', 'Funcionalidad, estética y psicología.', 'p30-result')">Comprobar</button>
+            <div class="result" id="p30-result"></div>
+        </div>
+
+        <!-- Pregunta 31 - Respuesta abierta -->
+        <div class="question">
+            <h2>31. Que debes comprobar en una prótesis con Lanzadera, antes de que el paciente
+                empiece a usar la prótesis
+                </h2>
+            <textarea id="p31-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p31-answer', 'Que el pin ha quedado alojado en la lanzadera y está sujeto.', 'p31-result')">Comprobar</button>
+            <div class="result" id="p31-result"></div>
+        </div>
+
+        <!-- Pregunta 32 -->
+        <div class="question">
+            <h2>32. Mediante qué sistema será accionada una prótesis de miembro superior con control de pinza y apertura, cinematizado por cables:</h2>
+            <ul class="options">
+                <li><input type="radio" name="p32" value="a"> a) Mediante los cables eléctricos de dicha prótesis.</li>
+                <li><input type="radio" name="p32" value="b"> b) Mediante un arnés en ocho.</li>
+                <li><input type="radio" name="p32" value="c"> c) Mediante un dispositivo pasivo a manejar con la mano contralateral.</li>
+                <li><input type="radio" name="p32" value="d"> d) Todos los anteriores son correctos.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('p32', 'b', 'p32-result')">Comprobar</button>
+            <div class="result" id="p32-result"></div>
+        </div>
+
+        <!-- Pregunta 33 -->
+        <div class="question">
+            <h2>33. Qué es una microllave en una prótesis tibial, de control mioeléctrico:</h2>
+            <ul class="options">
+                <li><input type="radio" name="p33" value="a"> a) Una llave pequeña, usada habitualmente para retirar las baterías de la prótesis.</li>
+                <li><input type="radio" name="p33" value="b"> b) Una pequeña llave usada para desmontar el dispositivo terminal y poder cambiar la pinza o la mano cosmética.</li>
+                <li><input type="radio" name="p33" value="c"> c) El dispositivo de control voluntario, para control muscular de los grupos de apertura-cierre, o prono/supinación.</li>
+                <li><input type="radio" name="p33" value="d"> d) Todas son correctas.</li>
+                <li><input type="radio" name="p33" value="e"> e) No es nada en protésica.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('p33', 'c', 'p33-result')">Comprobar</button>
+            <div class="result" id="p33-result"></div>
+        </div>
+
+        <!-- Pregunta 34 - Respuesta abierta -->
+        <div class="question">
+            <h2>34. Cual es el aspecto mas importante en la adaptacion de una protesis de miembro superior:
+            </h2>
+            <textarea id="p34-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p34-answer', 'Movilidad', 'p34-result')">Comprobar</button>
+            <div class="result" id="p34-result"></div>
+        </div>
+
+        <!-- Pregunta 35 -->
+        <div class="question">
+            <h2>35. Cómo compensaremos la pérdida de volumen en un muñón, que ha perdido compacidad con el encaje y provoca pistoneos indeseados:</h2>
+            <ul class="options">
+                <li><input type="radio" name="p35" value="a"> a) Mediante una calceta Daw.</li>
+                <li><input type="radio" name="p35" value="b"> b) Mediante una vaina Daw.</li>
+                <li><input type="radio" name="p35" value="c"> c) Mediante relleno con material Pelite o similar.</li>
+                <li><input type="radio" name="p35" value="d"> d) Mediante el uso de Cokies de silicona en caso de liner de suspensión.</li>
+                <li><input type="radio" name="p35" value="e"> e) Apretando más el sistema BOA, en caso de que dispongamos de él.</li>
+                <li><input type="radio" name="p35" value="f"> f) Todas son correctas.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('p35', 'f', 'p35-result')">Comprobar</button>
+            <div class="result" id="p35-result"></div>
+        </div>
+
+        <!-- Pregunta 36 - Respuesta abierta -->
+        <div class="question">
+            <h2>36. Que ventaja podemos tener con un encaje provisional, en una protesis femoral en la
+                rehabilitacion de un paciente recien amputado.
+                </h2>
+            <textarea id="p36-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p36-answer', 'La inmediatez de protetizar con lo que conseguiremos que el paciente no pierda el patrón de marcha.', 'p36-result')">Comprobar</button>
+            <div class="result" id="p36-result"></div>
+        </div>
+
+        <!-- Pregunta 37 - Respuesta abierta -->
+        <div class="question">
+            <h2>37. Qué es el autofreno en protesica:
+            </h2>
+            <textarea id="p37-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p37-answer', 'Regulación que podemos variar en una rodilla con freno de presión según el peso del paciente para que ésta se bloquee según lo deseemos para dar más seguridad al paciente.', 'p37-result')">Comprobar</button>
+            <div class="result" id="p37-result"></div>
+        </div>
+
+        <!-- Pregunta 38 - Respuesta abierta -->
+        <div class="question">
+            <h2>38. Si el paciente de una prótesis femoral con un encaje cuadrangular, nos relata que al sentarse
+                nota la sensación de que se clava el filo de la protesis por debajo del pliegue gluteo, e incluso esta
+                se le sale, a que suele ser debido:
+                </h2>
+            <textarea id="p38-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p38-answer', 'La tabla isquiática tiene una longitud excesiva.', 'p38-result')">Comprobar</button>
+            <div class="result" id="p38-result"></div>
+        </div>
+
+        <!-- Pregunta 39 - Respuesta abierta -->
+        <div class="question">
+            <h2>39. Como debe quedar cómodo un paciente en sedestación, en la prueba y chequeo de una
+                prótesis en la prueba dinámica.
+                </h2>
+            <textarea id="p39-answer" rows="4" style="width: 100%;"></textarea>
+            <button class="button" onclick="checkDevelopment('p39-answer', 'Cómodo', 'p39-result')">Comprobar</button>
+            <div class="result" id="p39-result"></div>
+        </div>
+
+        <!-- Pregunta 40 -->
+        <div class="question">
+            <h2>40. En una prótesis de encaje cuadrangular, ¿qué tendón tendremos que tener en especial consideración al chequear el encaje?</h2>
+            <ul class="options">
+                <li><input type="radio" name="p40" value="a"> a) Tendón isquiotibial interno.</li>
+                <li><input type="radio" name="p40" value="b"> b) Tendón isquiotibial externo.</li>
+                <li><input type="radio" name="p40" value="c"> c) Ambos tendones isquiotibiales.</li>
+                <li><input type="radio" name="p40" value="d"> d) Tendón rotuliano.</li>
+                <li><input type="radio" name="p40" value="e"> e) Tendón aductor.</li>
+            </ul>
+            <button class="button" onclick="checkQuestion('p40', 'e', 'p40-result')">Comprobar</button>
+            <div class="result" id="p40-result"></div>
+        </div>
+        <button class="button red" onclick="window.location.href='EAPE7-8.html'">Volver al menu de temas</button>
+
+    </div>
+    <script>
+        function checkQuestion(name, correctAnswer, resultId) {
+            const selected = document.querySelector(`input[name="${name}"]:checked`);
+            const resultDiv = document.getElementById(resultId);
+            if (!selected) {
+                resultDiv.textContent = 'Por favor, selecciona una respuesta.';
+                resultDiv.className = 'result wrong';
+                return;
+            }
+
+            if (selected.value === correctAnswer) {
+                resultDiv.textContent = 'Correcto.';
+                resultDiv.className = 'result correct';
+            } else {
+                resultDiv.textContent = `Incorrecto. La respuesta correcta es: ${correctAnswer}.`;
+                resultDiv.className = 'result wrong';
+            }
+        }
+
+        function checkDevelopment(answerId, correctAnswer, resultId) {
+            const userAnswer = document.getElementById(answerId).value;
+            const resultDiv = document.getElementById(resultId);
+            resultDiv.innerHTML = `<strong><u>Tu respuesta:</u></strong> ${userAnswer}<br><strong><u>Respuesta correcta:</u></strong> ${correctAnswer}`;
+            resultDiv.className = 'result corrects';
+        }
+
+
+        function checkMultiAnswerQuestion(name, correctAnswers, resultId) {
+            const selected = Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(input => input.value);
+            const resultDiv = document.getElementById(resultId);
+
+            const isCorrect = correctAnswers.every(answer => selected.includes(answer)) &&
+                            selected.every(answer => correctAnswers.includes(answer));
+
+            if (selected.length === 0) {
+                resultDiv.textContent = 'Por favor, selecciona al menos una respuesta.';
+                resultDiv.className = 'result wrong';
+            } else if (isCorrect) {
+                resultDiv.textContent = 'Correcto. Las respuestas son: ' + correctAnswers.join(', ') + '.';
+                resultDiv.className = 'result correct';
+            } else {
+                resultDiv.textContent = 'Incorrecto. Las respuestas correctas son: ' + correctAnswers.join(', ') + '.';
+                resultDiv.className = 'result wrong';
+            }
+        }
+
+
+    </script>
+</body>
+</html>
+
